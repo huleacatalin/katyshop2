@@ -1,0 +1,331 @@
+
+body {
+	font-family: arial;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: verdana;
+	font-weight: normal;
+	background-color: #dddddd;
+	padding: 10px;
+}
+
+h1 {
+	background-color: #bbbbbb;
+}
+
+h2 {
+	background-color: #cccccc;
+}
+
+input {
+	font-size: 1em;
+}
+
+select.select {
+	font-size: 1em;
+	width: 250px;
+	padding: 5px;
+	display: block;
+}
+
+textarea {
+	width: 500px;
+	height: 250px;
+	display: block;
+	font-size: larger;
+}
+
+input.text {
+	width: 250px;
+	padding: 5px;
+}
+
+input.button {
+	padding: 5px;
+}
+
+label {
+	display: block;
+	margin-bottom: 10px;
+}
+
+label input.text {
+	display: block;
+}
+
+a {
+	color: black;
+}
+
+a:hover {
+	background-color: #dddddd;
+}
+
+table.cuborder
+{
+	border-left: 1px solid black;
+	border-top: 1px solid black;
+}
+
+table.cuborder td
+{
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+	padding: 5px;
+}
+
+table.cuborder th
+{
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+	padding: 5px;
+}
+
+div#print_messages
+{
+	border: 1px solid #aaaaaa;
+	margin: 10px;
+}
+
+div#print_messages p.message
+{
+	color: darkgreen;
+	font-weight: bold;
+	margin: 5px;
+}
+
+div#print_messages p.error
+{
+	color: red;
+	margin: 5px;
+}
+
+div#header {
+	background-color: #dddddd;
+}
+
+img#logo {
+	width: 150px;
+	height: 75px;
+	float: left;
+}
+
+div#menu ul li {
+	float: left;
+	list-style-type: none;
+	margin: 10px;
+}
+
+div#search_box {
+	margin: 10px;
+	float: right;
+}
+
+div#search_box input.text {
+	width: 400px;
+	font-size: 1.4em;
+	padding: 0px;
+}
+
+div#search_box input.button {
+	background-image: url('../img/design/search.gif');
+	width: 30px;
+	height: 30px;
+	font-size: 0px;
+	margin: 0px;
+	vertical-align: bottom;
+}
+
+div#left {
+	float: left;
+	width: 250px;
+	overflow-x: scroll;
+}
+
+div#categories ul {
+	list-style-type: none;
+	padding-left: 30px;
+}
+
+div#categories ul li.nest_level_0 {
+	font-size: 1.4em;
+}
+
+div#categories ul li.nest_level_1 {
+	font-size: 1.2em;
+}
+
+div#left ul li a {
+	display: block;
+	padding: 5px;
+}
+
+li.selected
+{
+	background-color: #dddddd;
+}
+
+div.categories ul li a.active
+{
+	background-color: #dddddd;
+}
+
+div#content {
+	float: left;
+	width: 800px;
+	margin-left: 20px;
+}
+
+div.category_box {
+	width: 220px;
+	float: left;
+	text-align: center;
+	margin-right: 20px;
+}
+
+div.category_box h2 {
+	margin-bottom: 0px;
+	overflow-x: hidden;
+}
+
+div.category_box p.pic {
+	width: 220px;
+	height: 100px;
+	background-color: #eeeeee;
+	margin: 0px;
+	padding: 0px;
+	overflow: hidden;
+}
+
+table#products_list tr.border_top td {
+	border-top: 1px solid #aaaaaa;
+}
+
+table#products_list h3 {
+	margin: 0px;
+	padding: 0px;
+}
+
+table#products_list p.description {
+	background-color: #eeeeee;
+	margin: 0px;
+	padding: 0px;
+}
+
+div#product_image_box {
+	width: 400px;
+	float: left;
+}
+
+ul.actions {
+	list-style-type: none;
+}
+
+ul.actions li.delete a
+{
+	background-image: url('../img/icons/delete.png');
+	background-repeat: no-repeat;
+	padding-left: 20px;
+}
+
+ul.actions li.move a
+{
+	background-image: url('../img/icons/move.gif');
+	background-repeat: no-repeat;
+	padding-left: 20px;
+}
+
+ul.actions li.add_category a
+{
+	background-image: url('../img/icons/folder_new.gif');
+	background-repeat: no-repeat;
+	padding-left: 20px;
+}
+
+ul.actions li.add_product a
+{
+	background-image: url('../img/icons/page_new.gif');
+	background-repeat: no-repeat;
+	padding-left: 20px;
+}
+
+ul.actions li.up a
+{
+	background-image: url('../img/icons/up_folder.gif');
+	background-repeat: no-repeat;
+	padding-left: 20px;
+}
+
+ul.actions li.edit a
+{
+	background-image: url('../img/icons/edit.gif');
+	background-repeat: no-repeat;
+	padding-left: 20px;
+}
+
+ul.public_site {
+	list-style-type: none;
+}
+
+ul.properties {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+ul#my_addresses_actions {
+	border-bottom: 1px solid black;
+}
+
+ul#my_addresses_actions li {
+	list-style-type: none;
+	display: inline;
+	margin-right: 20px;
+}
+
+ul#my_addresses_actions li.add_new_address {
+	background-image: url('../img/icons/page_new.gif');
+	background-repeat: no-repeat;
+	padding-left: 20px;
+}
+
+ul.properties li {
+	margin-bottom: 10px;
+}
+
+ul.properties span.value {
+	width: 250px;
+	padding: 5px;
+	display: block;
+	background-color: #dddddd;
+}
+
+div#right {
+	float: right;
+	font-size: 0.9em;
+}
+
+div#right h3 {
+	background-color: #dddddd;
+}
+
+div#shopping_cart_box ul {
+	list-style-type: none;
+}
+
+div#footer {
+	background-color: #aaaaaa;
+}
+
+div#footer_menu li {
+	float: left;
+	list-style-type: none;
+	margin: 10px;
+}
+
+a#copyleft {
+	display: block;
+	float: right;
+	margin: 10px;
+}
