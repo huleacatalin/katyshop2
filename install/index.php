@@ -76,8 +76,8 @@ if(@$_POST['submit'] == 'Submit' && empty($error)) {
 		$mysqli = new mysqli();
 		$connected = @$mysqli->real_connect($db_host, $db_user, $db_password, $db_name);
 		if($connected) {
-			$tables = array('address', 'admin', 'category', 'contact_message', 'manufacturer', 
-							'order_product', 'orders', 'product', 'product_image', 'user', 'user_company', 'user_person');
+			$tables = array('address', '_admins', 'category', 'contact_message', 'manufacturer', 
+							'order_product', '_orders', 'product', 'product_image', '_users', 'user_company', 'user_person');
 			$q = "show tables";
 			$res = $mysqli->query($q);
 			$arr = $res->fetch_all();
@@ -115,7 +115,7 @@ if(@$_POST['submit'] == 'Submit' && empty($error)) {
 					$user_email2 = tools_encrypt($admin_email, $openssl_key);
 					$user_acc_type = "admin";
 					$user_active = 1;
-					$q = "insert into user(id, username, password, email, email2, acc_type, active) values(
+					$q = "insert into _users(id, username, password, email, email2, acc_type, active) values(
 						'" . $mysqli->real_escape_string($user_id) . "',
 						'" . $mysqli->real_escape_string($user_username) . "',
 						'" . $mysqli->real_escape_string($user_password) . "',
@@ -126,7 +126,7 @@ if(@$_POST['submit'] == 'Submit' && empty($error)) {
 					if(!$mysqli->query($q))
 						$error .= 'Could not insert admin account into the database. ' . $mysqli->error . '. ';
 					
-					if(!$mysqli->query('insert into admin(id_admin, is_admin) values(1, 1) '))
+					if(!$mysqli->query('insert into _admins(id_admin, is_admin) values(1, 1) '))
 						$error .= 'Error while creating the admin account. ' . $mysqli->error . '. ';
 				}
 				

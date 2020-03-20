@@ -9,7 +9,7 @@ class TableOrder extends MysqlTable
 {
 	function __construct(&$database)
 	{
-		parent::__construct($database, 'orders');
+		parent::__construct($database, '_orders');
 	}
 
 	function createLogicObject()

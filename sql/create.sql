@@ -15,7 +15,7 @@ create table address (
 	address text not null
 );
 
-create table admin (
+create table _admins (
 	id_admin int(11) not null primary key,
 	is_admin int(1) not null
 );
@@ -33,7 +33,7 @@ create table category (
 	constraint unique(id_parent, title)
 );
 
-create table orders (
+create table _orders (
 	id int(11) not null primary key auto_increment,
 	code varchar(25) not null default '',
 	id_user int(11) not null,
@@ -89,7 +89,7 @@ create table product_image (
 	constraint foreign key(id_product) references product(id)
 );
 
-create table user (
+create table _users (
 	id int(11) not null primary key auto_increment,
 	username varchar(20) not null default '',
 	password varchar(255) not null default '',

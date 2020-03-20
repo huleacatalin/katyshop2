@@ -10,7 +10,7 @@ class TableAdmin extends MysqlTable
 
 	function __construct(&$database)
 	{
-		parent::__construct($database, 'admin');
+		parent::__construct($database, '_admins');
 	}
 
 	function createLogicObject()

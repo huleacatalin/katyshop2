@@ -10,7 +10,7 @@ class TableUser extends MysqlTable
 
 	function __construct(&$database)
 	{
-		parent::__construct($database, 'user');
+		parent::__construct($database, '_users');
 	}
 
 	function createLogicObject()
