@@ -2,7 +2,7 @@
 
 /**
  * Product: Katyshop2
- * @version 2.1
+ * @version 2.4
  * @author Catalin Hulea - catalinhulea@users.sourceforge.net
  * @copyright Copyleft 2020 Catalin Hulea
  * @license GNU General Public License version 3
