@@ -17,7 +17,7 @@ require_once(WEB_DIR . "/includes/req_admin.php");
 <?php require_once(WEB_DIR . "/includes/header.php"); ?>
 <?php require_once(WEB_DIR . "/admin/includes/left.php"); ?>
 <div id="content">
-<h1>Manufacturers admin</h1>
+<h1><?php echo translate("Manufacturers admin"); ?></h1>
 
 <form action="admin/formparser/manufacturer.php?action=delete" method="post" id="frm_delete_manufacturer">
 <input type="hidden" name="id" value="0">
@@ -40,14 +40,14 @@ if(@$_GET["action"] == "detail")
 			$m = new Manufacturer();
 	}
 	?>
-	<h2><?php echo ($m->id == 0) ? "Add a new manufacturer" : "Edit manufacturer details"; ?></h2>
-	<p><a href="admin/manufacturer.php">&laquo; Back to the manufacturers list</a></p>
+	<h2><?php echo ($m->id == 0) ? translate("Add a new manufacturer") : translate("Edit manufacturer details"); ?></h2>
+	<p><a href="admin/manufacturer.php">&laquo; <?php echo translate("Back to the manufacturers list"); ?></a></p>
 	<form action="admin/formparser/manufacturer.php?action=save" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="MAX_FILE_SIZE" value="8000000">
 	<input type="hidden" name="id" value="<?php echo htmlspecialchars($m->id); ?>">
-	<label>Title: <input type="text" name="title" value="<?php echo htmlspecialchars($m->title); ?>" class="text"></label>
-	<label>Description: <textarea name="description" style="height: 100px; "><?php echo htmlspecialchars($m->description); ?></textarea></label>
-	<p>Image <br>
+	<label><?php echo translate("Title"); ?>: <input type="text" name="title" value="<?php echo htmlspecialchars($m->title); ?>" class="text"></label>
+	<label><?php echo translate("Description"); ?>: <textarea name="description" style="height: 100px; "><?php echo htmlspecialchars($m->description); ?></textarea></label>
+	<p><?php echo translate("Image"); ?> <br>
 		<?php
 		if(!empty($m->picture))
 		{
@@ -59,12 +59,12 @@ if(@$_GET["action"] == "detail")
 			<?php
 		}
 		?>
-		<a href="javascript:changeManufacturerPicture(); " id="the_picture_link">click here to change the image</a><br>
+		<a href="javascript:changeManufacturerPicture(); " id="the_picture_link"><?php echo translate("click here to change the image"); ?></a><br>
 		<input type="file" name="picture" disabled style="display: none; " id="the_picture">
 	</p>
 	<p>
-		<input type="submit" value="Save" class="button">
-		<input type="button" value="Cancel" class="button" onclick="redirect('admin/manufacturer.php'); ">
+		<input type="submit" value="<?php echo translate("Save"); ?>" class="button">
+		<input type="button" value="<?php echo translate("Cancel"); ?>" class="button" onclick="redirect('admin/manufacturer.php'); ">
 	</p>
 	</form>
 	<?php
@@ -72,15 +72,15 @@ if(@$_GET["action"] == "detail")
 else
 {
 	?>
-	<h2>Manufacturers list</h2>
-	<a href="admin/manufacturer.php?action=detail&id=0">click here to add a new manufacturer</a>
+	<h2><?php echo translate("Manufacturers list"); ?></h2>
+	<a href="admin/manufacturer.php?action=detail&id=0"><?php echo translate("click here to add a new manufacturer"); ?></a>
 	<?php
 	$list = $db->tbManufacturer->search(@$_GET, @$_GET["start"], @$_GET["rowsPerPage"], @$_GET["order_by"], @$_GET["order_direction"]);
 	$manufacturersCount = $db->tbManufacturer->getCount(@$_GET, @$_GET["start"], @$_GET["rowsPerPage"], @$_GET["order_by"], @$_GET["order_direction"]);
 	if($manufacturersCount == 0)
 	{
 		?>
-		<p>There are no manufacturers in the list</p>
+		<p><?php echo translate("There are no manufacturers in the list"); ?></p>
 		<?php
 	}
 	else
@@ -89,8 +89,8 @@ else
 		<table cellpadding="2" cellspacing="0" class="cuborder">
 		<tr>
 		<td>&nbsp;</td>
-		<td><?php echo pagination_columnHead("Title", "title") ?></td>
-		<td><?php echo pagination_columnHead("Description", "description") ?></td>
+		<td><?php echo pagination_columnHead(translate("Title"), "title") ?></td>
+		<td><?php echo pagination_columnHead(translate("Description"), "description") ?></td>
 		<td>&nbsp;</td>
 		</tr>
 		<?php

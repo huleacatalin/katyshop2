@@ -19,7 +19,7 @@ require_once(WEB_DIR . "/includes/req_admin.php");
 
 <?php require_once(WEB_DIR . "/admin/includes/left.php"); ?>
 <div id="content">
-<h1>Users admin</h1>
+<h1><?php echo translate("Users admin"); ?></h1>
 <?php require_once(WEB_DIR . "/includes/print_messages.php"); ?>
 
 <?php
@@ -32,16 +32,16 @@ if(@$_GET["action"] == "detail")
 	<h2><?php echo htmlspecialchars(@$u->username); ?></h2>
 	
 	<p>
-	<a href="admin/address.php?id_user=<?php echo intval($u->id); ?>">view the addresses of this user</a>
+	<a href="admin/address.php?id_user=<?php echo intval($u->id); ?>"><?php echo translate("view the addresses of this user"); ?></a>
 	</p>
 	
 	<div style="width: 350px; float: left; margin-right: 30px; ">
-	<h3>Login informations</h3>
+	<h3><?php echo translate("Login informations"); ?></h3>
 	<ul class="properties">
-	<li>Username: <span class="value"><?php echo htmlspecialchars(@$u->username); ?></span></li>
-	<li>Email: <span class="value"><?php echo htmlspecialchars(@$u->email2); ?></span></li>
-	<li>Account type: <span class="value"><?php echo ucfirst($u->acc_type); ?></span></li>
-	<li>Active: <span class="value"><?php echo (@$u->active) ? "Yes" : "No"; ?></span></li>
+	<li><?php echo translate("Username"); ?>: <span class="value"><?php echo htmlspecialchars(@$u->username); ?></span></li>
+	<li><?php echo translate("Email"); ?>: <span class="value"><?php echo htmlspecialchars(@$u->email2); ?></span></li>
+	<li><?php echo translate("Account type"); ?>: <span class="value"><?php echo ucfirst($u->acc_type); ?></span></li>
+	<li><?php echo translate("Active"); ?>: <span class="value"><?php echo (@$u->active) ? "Yes" : "No"; ?></span></li>
 	<li>
 		<?php
 		$temp = (intval(@$u->active) == 1) ? "deactivate" : "activate";
@@ -50,11 +50,11 @@ if(@$_GET["action"] == "detail")
 		<form action="admin/formparser/user.php?action=<?php echo $action; ?>" method="post">
 		<input type="hidden" name="id" value="<?php echo intval(@$u->id); ?>">
 		<input type="hidden" name="detail" value="true">
-		<input type="submit" value="<?php echo $temp; ?>" class="button">
+		<input type="submit" value="<?php echo translate($temp); ?>" class="button">
 		</form>
 	</li>
 	<li>
-		<form action="admin/formparser/user.php?action=delete" method="post" onsubmit="return confirm('Are you sure you want to delete this user?'); ">
+		<form action="admin/formparser/user.php?action=delete" method="post" onsubmit="return confirm('<?php echo translate("Are you sure you want to delete this user?"); ?>'); ">
 		<input type="hidden" name="id" value="<?php echo intval(@$u->id); ?>">
 		<input type="hidden" name="detail" value="true">
 		<input type="submit" value="Delete" style="color: red; " class="button">
@@ -65,29 +65,29 @@ if(@$_GET["action"] == "detail")
 
 	<div id="div_person" style="display: none; width: 350px; float: left; ">
 	
-		<h3>Personal info</h3>
+		<h3><?php echo translate("Personal info"); ?></h3>
 
 		<ul class="properties">
-		<li>Gender: <span class="value"><?php echo htmlspecialchars(ucfirst(@$u->gender)); ?></span></li>
-		<li>First name: <span class="value"><?php echo htmlspecialchars(@$u->first_name); ?></span></li>
-		<li>Last name: <span class="value"><?php echo htmlspecialchars(@$u->last_name); ?></span></li>
-		<li>Birth date (mm/dd/yyyy): <span class="value"><?php echo htmlspecialchars(@$u->displayDate("birth_date")); ?></span></li>
-		<li>Phone: <span class="value"><?php echo htmlspecialchars(@$u->phone); ?></span></li>
+		<li><?php echo translate("Gender"); ?>: <span class="value"><?php echo htmlspecialchars(ucfirst(@$u->gender)); ?></span></li>
+		<li><?php echo translate("First name"); ?>: <span class="value"><?php echo htmlspecialchars(@$u->first_name); ?></span></li>
+		<li><?php echo translate("Last name"); ?>: <span class="value"><?php echo htmlspecialchars(@$u->last_name); ?></span></li>
+		<li><?php echo translate("Birth date (mm/dd/yyyy)"); ?>: <span class="value"><?php echo htmlspecialchars(@$u->displayDate("birth_date")); ?></span></li>
+		<li><?php echo translate("Phone"); ?>: <span class="value"><?php echo htmlspecialchars(@$u->phone); ?></span></li>
 		</ul>
 	</div>
 	<br clear="all">
 
 	<div id="div_company" style="display: none; ">
-		<h3>Company info</h3>
+		<h3><?php echo translate("Company info"); ?></h3>
 		
 		<ul class="properties">
-		<li>Company name: <span class="value"><?php echo htmlspecialchars(@$u->company_name); ?></span></li>
-		<li>Tax code: <span class="value"><?php echo htmlspecialchars(@$u->tax_code); ?></span></li>
-		<li>Bank: <span class="value"><?php echo htmlspecialchars(@$u->bank); ?></span></li>
-		<li>IBAN: <span class="value"><?php echo htmlspecialchars(@$u->iban); ?></span></li>
-		<li>Company phone: <span class="value"><?php echo htmlspecialchars(@$u->comp_phone); ?></span></li>
-		<li>Company fax: <span class="value"><?php echo htmlspecialchars(@$u->comp_fax); ?></span></li>
-		<li>Company email: <span class="value"><?php echo htmlspecialchars(@$u->comp_email); ?></span></li>
+		<li><?php echo translate("Company name"); ?>: <span class="value"><?php echo htmlspecialchars(@$u->company_name); ?></span></li>
+		<li<?php echo translate("Tax code"); ?>: <span class="value"><?php echo htmlspecialchars(@$u->tax_code); ?></span></li>
+		<li><?php echo translate("Bank"); ?>: <span class="value"><?php echo htmlspecialchars(@$u->bank); ?></span></li>
+		<li><?php echo translate("IBAN"); ?>: <span class="value"><?php echo htmlspecialchars(@$u->iban); ?></span></li>
+		<li><?php echo translate("Company phone"); ?>: <span class="value"><?php echo htmlspecialchars(@$u->comp_phone); ?></span></li>
+		<li><?php echo translate("Company fax"); ?>: <span class="value"><?php echo htmlspecialchars(@$u->comp_fax); ?></span></li>
+		<li><?php echo translate("Company email"); ?>: <span class="value"><?php echo htmlspecialchars(@$u->comp_email); ?></span></li>
 		</ul>
 	</div>
 
@@ -134,16 +134,16 @@ elseif (@$_GET["action"] == "create_admin")
 	?>
 	<form action="admin/formparser/user.php?action=create_admin" method="post">
 	
-	<h2>Create admin account</h2>
+	<h2><?php echo translate("Create admin account"); ?></h2>
 
 	<?php require_once(WEB_DIR . "/includes/print_messages.php"); ?>
 
-	<h3>Login info</h3>
-	<label>Username: <input type="text" name="username" value="<?php echo htmlspecialchars(@$registerAdmin->username); ?>" class="text"></label>
-	<label>Password: <input type="password" name="password" class="text"></label>
-	<label>Confirm password: <input type="password" name="confirm_password" class="text"></label>
-	<label>Email: <input type="text" name="email" value="<?php echo htmlspecialchars(@$registerAdmin->email); ?>" class="text"></label>
-	<input type="submit" value="New account" class="button">
+	<h3><?php echo translate("Login info"); ?></h3>
+	<label><?php echo translate("Username"); ?>: <input type="text" name="username" value="<?php echo htmlspecialchars(@$registerAdmin->username); ?>" class="text"></label>
+	<label><?php echo translate("Password"); ?>: <input type="password" name="password" class="text"></label>
+	<label><?php echo translate("Confirm password"); ?>: <input type="password" name="confirm_password" class="text"></label>
+	<label><?php echo translate("Email"); ?>: <input type="text" name="email" value="<?php echo htmlspecialchars(@$registerAdmin->email); ?>" class="text"></label>
+	<input type="submit" value="<?php echo translate("New account"); ?>" class="button">
 	</form>
 	<?php
 }
@@ -151,7 +151,7 @@ else
 {
 	?>
 	<p>
-	<a href="admin/user.php?action=create_admin">Create new admin account</a>
+	<a href="admin/user.php?action=create_admin"><?php echo translate("Create new admin account"); ?></a>
 	</p>
 	<?php
 	// list of users
@@ -162,12 +162,12 @@ else
 		?>
 		<table cellpadding="2" cellspacing="0" class="cuborder">
 		<tr>
-		<th>ID</th>
-		<th>username</th>
-		<th>email</th>
-		<th>active</th>
-		<th>account type</th>
-		<th>action</th>
+		<th><?php echo translate("ID"); ?></th>
+		<th><?php echo translate("username"); ?></th>
+		<th><?php echo translate("email"); ?></th>
+		<th><?php echo translate("active"); ?></th>
+		<th><?php echo translate("account type"); ?></th>
+		<th><?php echo translate("action"); ?></th>
 		</tr>
 		<?php
 		for ($i = 0; $i < count($list); $i++)
@@ -177,7 +177,7 @@ else
 			<td><?php echo $list[$i]->id; ?>&nbsp;</td>
 			<td><a href="admin/user.php?action=detail&id=<?php echo $list[$i]->id; ?>"><?php echo htmlspecialchars($list[$i]->username); ?></a>&nbsp;</td>
 			<td><a href="mailto:<?php echo htmlspecialchars($list[$i]->email2); ?>"><?php echo htmlspecialchars($list[$i]->email2); ?></a>&nbsp;</td>
-			<td><?php echo ($list[$i]->active == "1") ? "Yes" : "No"; ?>&nbsp;</td>
+			<td><?php echo ($list[$i]->active == "1") ? translate("Yes") : translate("No"); ?>&nbsp;</td>
 			<td><?php echo htmlspecialchars(ucfirst($list[$i]->acc_type)); ?></td>
 			<td>
 			<?php
@@ -186,7 +186,7 @@ else
 			?>
 			<form action="admin/formparser/user.php?action=<?php echo $action; ?>" method="post">
 			<input type="hidden" name="id" value="<?php echo intval($list[$i]->id); ?>">
-			<input type="submit" value="<?php echo $temp; ?>" class="button">
+			<input type="submit" value="<?php echo translate($temp); ?>" class="button">
 			</form>
 			</td>
 			</tr>
@@ -204,7 +204,7 @@ else
 	else
 	{
 		?>
-		<p class="box">Could not find any users for your search criteria.</p>
+		<p class="box"><?php echo translate("Could not find any users for your search criteria"); ?>.</p>
 		<?php
 	}
 }

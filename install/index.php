@@ -127,6 +127,8 @@ $this->cfg["db"] = array(
 	"name" => "' . addslashes($cfg['db_name']) . '"
 );
 
+$this->cfg["lang_code"] = "' . addslashes($cfg['lang_code']) . '";
+
 define("INSTALL_DONE", true);
 
 ?>';
@@ -163,6 +165,7 @@ if(isset($_SERVER['HTTPS']) && !empty($_SERVER['HTTPS']) && strtolower($_SERVER[
 $BASE_HREF = $protocol . '://' . $_SERVER['SERVER_NAME'] . $s . '/';
 
 $default_currency = array_key_exists('default_currency', $_POST) ? $_POST['default_currency'] : '$';
+$lang_code = array_key_exists('lang_code', $_POST) ? $_POST['lang_code'] : 'en';
 $shop_invoice_info = @$_POST['shop_invoice_info'];
 
 $openssl_key = getRandomChars(128);
@@ -233,6 +236,7 @@ elseif($step == 2) {
 		$cfg = array('APP_NAME' => $APP_NAME,
 			'BASE_HREF' => $BASE_HREF,
 			'default_currency' => $default_currency,
+			'lang_code' => $lang_code,
 			'shop_invoice_info' => $shop_invoice_info,
 			'openssl_key' => $openssl_key,
 			'db_host' => $db_host,
@@ -276,6 +280,12 @@ label {
 	margin-bottom: 10px;
 }
 input.text {
+	width: 250px;
+	padding: 5px;
+	display: block;
+	font-size: 1.2em;
+}
+select {
 	width: 250px;
 	padding: 5px;
 	display: block;
@@ -327,7 +337,12 @@ if(!empty($error)) {
 <h2>Shop info</h2>
 <label>How do you want your site to be called? <input type="text" name="APP_NAME" value="<?php echo htmlspecialchars($APP_NAME); ?>" class="text"></label>
 <label>Default currency: <input type="text" name="default_currency" value="<?php echo htmlspecialchars($default_currency); ?>" class="text"></label>
-<label>Shop invoice info: 
+<label>Language: 
+	<select name="lang_code">
+	<option value="en" <?php echo ($lang_code == 'en') ? 'selected' : ''; ?>>en</option>
+	<option value="ro" <?php echo ($lang_code == 'ro') ? 'selected' : ''; ?>>ro</option>
+	</select>
+</label><label>Shop invoice info: 
 	<textarea name="shop_invoice_info" style="width: 250px; height: 100px; "><?php echo htmlspecialchars($shop_invoice_info); ?></textarea>
 	(this will appear in the invoices issued by your shop; it should contain your shop address, tax code, bank and IBAN)
 </label>

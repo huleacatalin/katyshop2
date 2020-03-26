@@ -19,7 +19,7 @@ require_once(dirname(__FILE__) . "/init.php");
 <div id="left_vertical_line">
 <?php require_once(WEB_DIR . "/includes/left.php"); ?>
 <div id="content">
-<h1>Terms and conditions</h1>
+<h1><?php echo translate("Terms and conditions"); ?></h1>
 <?php require_once(WEB_DIR . "/includes/print_messages.php"); ?>
 
 <h2>1. Introductions</h2>

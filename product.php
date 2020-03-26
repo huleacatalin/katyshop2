@@ -49,7 +49,7 @@ if($p->id > 0 && $p->canBeDisplayed())
 	if($p->id_manufacturer > 0)
 	{
 		?>
-		<li style="font-size: 12pt; color: #555555; font-weight: bold; ">Manufacturer: <?php echo htmlspecialchars($p->manufacturer); ?></li>
+		<li style="font-size: 12pt; color: #555555; font-weight: bold; "><?php echo translate("Manufacturer"); ?>: <?php echo htmlspecialchars($p->manufacturer); ?></li>
 		<?php
 	}
 	?>
@@ -59,25 +59,25 @@ if($p->id > 0 && $p->canBeDisplayed())
 	if($user->isAdminLoggedIn())
 	{
 		?>
-		<li><a href="admin/product.php?action=edit&id_product=<?php echo htmlspecialchars($p->id); ?>">Edit product</a></li>
+		<li><a href="admin/product.php?action=edit&id_product=<?php echo htmlspecialchars($p->id); ?>"><?php echo translate("Edit product"); ?></a></li>
 		<?php
 	}
 	?>
 	<li>
 		<form action="formparser/order.php?action=add_to_cart" method="post">
 		<input type="hidden" name="id_product" value="<?php echo htmlspecialchars(@$p->id); ?>">
-		<input type="submit" value="Add to the cart" class="button">
+		<input type="submit" value="<?php echo translate("Add to the cart"); ?>" class="button">
 		</form>
 	</li>
 	</ul>
 	
-	<h3>Description</h3>
+	<h3><?php echo translate("Description"); ?></h3>
 	<p><?php echo $p->content; ?></p>
 	
 	<?php
 	if(!empty($p->technical_details)) {
 		?>
-		<h3>Technical details</h3>
+		<h3><?php echo translate("Technical details"); ?></h3>
 		<?php
 		echo nl2br(htmlspecialchars($p->technical_details));
 	}

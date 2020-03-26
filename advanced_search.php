@@ -16,17 +16,17 @@ require_once(dirname(__FILE__) . "/init.php");
 <?php require_once(WEB_DIR . "/includes/header.php"); ?>
 <?php require_once(WEB_DIR . "/includes/left.php"); ?>
 <div id="content">
-<h1>Advanced search</h1>
+<h1><?php echo translate("Advanced search"); ?></h1>
 <?php require_once(WEB_DIR . "/includes/print_messages.php"); ?>
 
-<h2>Informations about the product</h2>
+<h2><?php echo translate("Informations about the product"); ?></h2>
 
 <form action="search.php" method="get">
 <?php echo Tools::http_build_hidden_inputs($_GET, array("keywords", "min_price", "max_price", "id_manufacturer", "only_current_category")); ?>
-<label>Keywords: <input type="text" name="keywords" value="<?php echo htmlspecialchars(@$_GET["keywords"]) ?>" class="text"></label>
-<label>Manufacturer: 
+<label><?php echo translate("Keywords"); ?>: <input type="text" name="keywords" value="<?php echo htmlspecialchars(@$_GET["keywords"]) ?>" class="text"></label>
+<label><?php echo translate("Manufacturer"); ?>: 
 	<select name="id_manufacturer" class="select">
-	<option value="0">-- Choose --</option>
+	<option value="0">-- <?php echo translate("Choose"); ?> --</option>
 	<?php
 	$db = Application::getDb();
 	$list = $db->tbManufacturer->search(array(), 0, 500, "title");
@@ -40,10 +40,10 @@ require_once(dirname(__FILE__) . "/init.php");
 	?>
 	</select>
 </label>
-<label>Minimal price: <input type="text" name="min_price" value="<?php echo htmlspecialchars(@$_GET["min_price"]); ?>" class="text"></label>
-<label>Maximum price: <input type="text" name="max_price" value="<?php echo htmlspecialchars(@$_GET["max_price"]); ?>" class="text"></label>
-<label><input type="checkbox" name="only_current_category" value="1" style="display: inline; " <?php echo (@$_GET["only_current_category"] == "1") ? "checked" : ""; ?>> Search only in current category and all subcategories</label>
-<input type="submit" value="Search!" class="button">
+<label><?php echo translate("Minimal price"); ?>: <input type="text" name="min_price" value="<?php echo htmlspecialchars(@$_GET["min_price"]); ?>" class="text"></label>
+<label><?php echo translate("Maximum price"); ?>: <input type="text" name="max_price" value="<?php echo htmlspecialchars(@$_GET["max_price"]); ?>" class="text"></label>
+<label><input type="checkbox" name="only_current_category" value="1" style="display: inline; " <?php echo (@$_GET["only_current_category"] == "1") ? "checked" : ""; ?>> <?php echo translate("Search only in current category and all subcategories"); ?></label>
+<input type="submit" value="<?php echo translate("Search"); ?>!" class="button">
 </form>
 
 </div>

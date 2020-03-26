@@ -9,7 +9,7 @@ class Order extends LogicObject
 {
 	var $id = 0;
 	var $code = "";
-	var $title = "New order";
+	var $title = "";
 	var $id_user = 0;
 	var $status = "in cart";
 	var $date_ordered = "";
@@ -35,6 +35,7 @@ class Order extends LogicObject
 		parent::__construct();
 		$this->date_ordered = date("Y-m-d H:i:s");
 		$this->date_updated = date("Y-m-d H:i:s");
+		$this->title = translate("New order");
 	}
 
 	function validate()
@@ -154,7 +155,7 @@ class Order extends LogicObject
 		$s = ob_get_clean();
 		if(file_exists(DATA_DIR . "/orders/{$this->code}.html"))
 		{
-			Application::addError("Could not write the proforma file for {$this->code} because there is already another file with the same name");
+			Application::addError(translate("Could not write the proforma file for") . " " . $this->code . " " . translate("because there is already another file with the same name"));
 			Logger::err("Could not write the proforma file for {$this->code} because another file with the same name already exists", __FILE__, __LINE__);
 		}
 		else
@@ -163,7 +164,7 @@ class Order extends LogicObject
 			$f = fopen(DATA_DIR . "/orders/{$this->code}.html", "w");
 			if(fwrite($f, $s) === false)
 			{
-				Application::addError("There was an error while trying to write the file {$this->code}.html");
+				Application::addError(translate("There was an error while trying to write the file") . " {$this->code}.html");
 				Logger::err("There was an error while trying to write the file {$this->code}.html", __FILE__, __LINE__);
 			}
 			fclose($f);

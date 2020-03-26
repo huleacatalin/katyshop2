@@ -10,7 +10,7 @@ require_once(WEB_DIR . "/includes/req_admin.php");
 $filename = DATA_DIR . "/orders/{$_GET["code"]}.html";
 if (!is_file($filename))
 {
-	die("Could not find the file that contains proforma invoice");
+	die(translate("Could not find the file that contains proforma invoice"));
 }
 else
 {

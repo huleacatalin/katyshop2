@@ -28,7 +28,7 @@ if(!is_a($updateUser, "User"))
 
 <form action="formparser/user.php?action=profile" method="post">
 
-<h1>Profile</h1>
+<h1><?php echo translate("Profile"); ?></h1>
 
 <?php
 require_once(WEB_DIR . "/includes/print_messages.php");
@@ -40,61 +40,61 @@ if($user->isCompanyLoggedIn() || $user->isPersonLoggedIn())
 	if($x == 0)
 	{
 		?>
-		<p>You have no addresses. <a href="address.php?detail=true&id=0">Click here to add a new address</a></p>
+		<p><?php echo translate("You have no addresses."); ?> <a href="address.php?detail=true&id=0"><?php echo translate("Click here to add a new address"); ?></a></p>
 		<?php
 	}
 	else
 	{
 		?>
-		<p><a href="address.php">Click here to see the list of addresses &raquo; </a></p>
+		<p><a href="address.php"><?php echo translate("Click here to see the list of addresses"); ?> &raquo; </a></p>
 		<?php
 	}
 }
 ?>
 <div style="width: 350px; float: left; margin-right: 30px; ">
-<h2>Login info</h2>
-<p>Username: <?php echo htmlspecialchars(@$updateUser->username); ?></p>
+<h2><?php echo translate("Login info"); ?></h2>
+<p><?php echo translate("Username"); ?>: <?php echo htmlspecialchars(@$updateUser->username); ?></p>
 
-<p id="tbl_change_password">Password: <a href="javascript:changePassword(); ">Click here to change the password</a></p>
+<p id="tbl_change_password"><?php echo translate("Password"); ?>: <a href="javascript:changePassword(); "><?php echo translate("Click here to change the password"); ?></a></p>
 
 <p id="tbl_new_password" style="display: none; ">
-<label>Old password: <input type="password" name="old_password" class="text"></label>
-<label>New password: <input type="password" name="password" class="text"></label>
-<label>Confirm password: <input type="password" name="confirm_password" class="text"></label>
-<input type="submit" value="Change the password" class="button">
+<label><?php echo translate("Old password"); ?>: <input type="password" name="old_password" class="text"></label>
+<label><?php echo translate("New password"); ?>: <input type="password" name="password" class="text"></label>
+<label><?php echo translate("Confirm password"); ?>: <input type="password" name="confirm_password" class="text"></label>
+<input type="submit" value="<?php echo translate("Change the password"); ?>" class="button">
 </p>
 
-<p>Email: <?php echo htmlspecialchars(@$updateUser->email2); ?></p>
-<p>Account type: <?php echo ucfirst(@$updateUser->acc_type);	?></p>
+<p><?php echo translate("Email"); ?>: <?php echo htmlspecialchars(@$updateUser->email2); ?></p>
+<p><?php echo translate("Account type"); ?>: <?php echo ucfirst(@$updateUser->acc_type);	?></p>
 </div>
 
 <div id="div_person" style="display: none; width: 350px; float: left; ">
-	<h2>Personal info</h2>
-	<p>Gender:
+	<h2><?php echo translate("Personal info"); ?></h2>
+	<p><?php echo translate("Gender"); ?>:
 		<?php
 		$chkFemale = (@$updateUser->gender == "female") ? "checked" : "";
 		$chkMale = (@$updateUser->gender == "male") ? "checked" : "";
 		?>
-		<label style="display: inline; "><input type="radio" name="gender" value="female" <?php echo $chkFemale; ?>> Miss</label>
-		<label style="display: inline; "><input type="radio" name="gender" value="male" <?php echo $chkMale; ?>> Mister</label>
+		<label style="display: inline; "><input type="radio" name="gender" value="female" <?php echo $chkFemale; ?>> <?php echo translate("Miss"); ?></label>
+		<label style="display: inline; "><input type="radio" name="gender" value="male" <?php echo $chkMale; ?>> <?php echo tranlsate("Mister"); ?></label>
 	</p>
-	<label>First name: <input type="text" name="first_name" value="<?php echo htmlspecialchars(@$updateUser->first_name); ?>" class="text"></label>
-	<label>Last name: <input type="text" name="last_name" value="<?php echo htmlspecialchars(@$updateUser->last_name); ?>" class="text"></label>
-	<label>Birth date (mm/dd/yyyy): <input type="text" name="birth_date" value="<?php echo htmlspecialchars(@$updateUser->displayDate("birth_date")); ?>" class="text"></label>
-	<label>Phone: <input type="text" name="phone" value="<?php echo htmlspecialchars(@$updateUser->phone); ?>" class="text"></label>
+	<label><?php echo translate("First name"); ?>: <input type="text" name="first_name" value="<?php echo htmlspecialchars(@$updateUser->first_name); ?>" class="text"></label>
+	<label><?php echo translate("Last name"); ?>: <input type="text" name="last_name" value="<?php echo htmlspecialchars(@$updateUser->last_name); ?>" class="text"></label>
+	<label><?php echo translate("Birth date (mm/dd/yyyy)"); ?>: <input type="text" name="birth_date" value="<?php echo htmlspecialchars(@$updateUser->displayDate("birth_date")); ?>" class="text"></label>
+	<label><?php echo translate("Phone"); ?>: <input type="text" name="phone" value="<?php echo htmlspecialchars(@$updateUser->phone); ?>" class="text"></label>
 </div>
 
 <br clear="all">
 
 <div id="div_company" style="display: none; ">
-	<h2>Company info</h2>
-	<label>Company name: <input type="text" name="company_name" value="<?php echo htmlspecialchars(@$updateUser->company_name); ?>" class="text"></label>
-	<label>Tax code: <input type="text" name="tax_code" value="<?php echo htmlspecialchars(@$updateUser->tax_code); ?>" class="text"></label>
-	<label>Bank: <input type="text" name="bank" value="<?php echo htmlspecialchars(@$updateUser->bank); ?>" class="text"></label>
-	<label>IBAN: <input type="text" name="iban" value="<?php echo htmlspecialchars(@$updateUser->iban); ?>" class="text"></label>
-	<label>Phone: <input type="text" name="comp_phone" value="<?php echo htmlspecialchars(@$updateUser->comp_phone); ?>" class="text"></label>
-	<label>Fax: <input type="text" name="comp_fax" value="<?php echo htmlspecialchars(@$updateUser->comp_fax); ?>" class="text"></label>
-	<label>Email: <input type="text" name="comp_email" value="<?php echo htmlspecialchars(@$updateUser->comp_email); ?>" class="text"></label>
+	<h2><?php echo translate("Company info"); ?></h2>
+	<label><?php echo translate("Company name"); ?>: <input type="text" name="company_name" value="<?php echo htmlspecialchars(@$updateUser->company_name); ?>" class="text"></label>
+	<label><?php echo translate("Tax code"); ?>: <input type="text" name="tax_code" value="<?php echo htmlspecialchars(@$updateUser->tax_code); ?>" class="text"></label>
+	<label><?php echo translate("Bank"); ?>: <input type="text" name="bank" value="<?php echo htmlspecialchars(@$updateUser->bank); ?>" class="text"></label>
+	<label><?php echo translate("IBAN"); ?>: <input type="text" name="iban" value="<?php echo htmlspecialchars(@$updateUser->iban); ?>" class="text"></label>
+	<label><?php echo translate("Phone"); ?>: <input type="text" name="comp_phone" value="<?php echo htmlspecialchars(@$updateUser->comp_phone); ?>" class="text"></label>
+	<label><?php echo translate("Fax"); ?>: <input type="text" name="comp_fax" value="<?php echo htmlspecialchars(@$updateUser->comp_fax); ?>" class="text"></label>
+	<label><?php echo translate("Email"); ?>: <input type="text" name="comp_email" value="<?php echo htmlspecialchars(@$updateUser->comp_email); ?>" class="text"></label>
 </div>
 <?php
 if(is_a($updateUser, "UserPerson"))
@@ -114,7 +114,7 @@ if (is_a($updateUser, "UserCompany"))
 	<?php
 }
 ?>
-<input type="submit" value="Update" class="button">
+<input type="submit" value="<?php echo translate("Update"); ?>" class="button">
 </form>
 
 </div>

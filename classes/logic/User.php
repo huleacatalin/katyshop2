@@ -155,18 +155,18 @@ class User extends Visitor
 			if($brief)
 			{
 				$s = "
-customer ID: {$this->id}";
+" . translate("customer ID") . ": {$this->id}";
 			}
 			else
 			{
 				$s = "
-User account, with IP address {$this->ip} and details:
-ID: {$this->id}
-Username: {$this->username}
-Email: {$this->email2}
-Account type: {$this->acc_type}
-Active account: {$this->active} (1 = active, 0 = inactive)
-Activation code: {$this->activation_code}
+" . translate("User account, with IP address") . " {$this->ip}
+" . translate("ID") . ": {$this->id}
+" . translate("Username") . ": {$this->username}
+" . translate("Email") . ": {$this->email2}
+" . translate("Account type") . ": {$this->acc_type}
+" . translate("Active account") . ": {$this->active} (1 = active, 0 = inactive)
+" . translate("Activation code") . ": {$this->activation_code}
 ";
 			}
 			return $s;

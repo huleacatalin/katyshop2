@@ -16,7 +16,7 @@ require_once(dirname(__FILE__) . "/init.php");
 <?php require_once(WEB_DIR . "/includes/header.php"); ?>
 <?php require_once(WEB_DIR . "/includes/left.php"); ?>
 <div id="content">
-<h1>How to buy</h1>
+<h1><?php echo translate("How to buy"); ?></h1>
 <?php require_once(WEB_DIR . "/includes/print_messages.php"); ?>
 
 <h2>Step 1</h2>

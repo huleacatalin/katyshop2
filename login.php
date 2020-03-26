@@ -22,20 +22,20 @@ if($user->isUserLoggedIn())
 <?php require_once(WEB_DIR . "/includes/left.php"); ?>
 
 <div id="content">
-<h1>Login</h1>
+<h1><?php echo translate("Login"); ?></h1>
 <?php require_once(WEB_DIR . "/includes/print_messages.php"); ?>
 
 <form action="formparser/user.php?action=login" method="post">
-<label>Username: <input type="text" name="username" class="text"></label>
-<label>Password: <input type="password" name="password" class="text"></label>
-<label><input type="checkbox" name="remember_password" value="1"> Remember my password</label>
-<input type="submit" value="Login" class="button">
+<label><?php echo translate("Username"); ?>: <input type="text" name="username" class="text"></label>
+<label><?php echo translate("Password"); ?>: <input type="password" name="password" class="text"></label>
+<label><input type="checkbox" name="remember_password" value="1"> <?php echo translate("Remember my password"); ?></label>
+<input type="submit" value="<?php echo translate("Login"); ?>" class="button">
 </form>
 
 <ul>
-<li><a href="forgot_password.php">Password or activation code forgotten?</a></li>
-<li><a href="activate.php">Activation link</a></li>
-<li><a href="register.php">Register new account</a></li>
+<li><a href="forgot_password.php"><?php echo translate("Password or activation code forgotten?"); ?></a></li>
+<li><a href="activate.php"><?php echo translate("Activation link"); ?></a></li>
+<li><a href="register.php"><?php echo translate("Register new account"); ?></a></li>
 </ul>
 
 </div>

@@ -32,7 +32,7 @@ class UserCompany extends UserPerson
 		for($i = 0; $i < count($fields); $i++) {
 			$field = $fields[$i];
 			if(strlen($this->$field) < 3 || strlen($this->$field) > 177)
-				$errors[] = $fieldNames[$i] . " must have between 3 and 177 characters";
+				$errors[] = translate($fieldNames[$i]) . " must have between 3 and 177 characters";
 		}
 		return $errors;
 	}
@@ -65,21 +65,21 @@ class UserCompany extends UserPerson
 			if($brief)
 			{
 				$s .= "
-Company name: {$this->company_name}
-Bank: {$this->bank}
-IBAN: {$this->iban}";
+" . translate("Company name") . ": {$this->company_name}
+" . translate("Bank") . ": {$this->bank}
+" . translate("IBAN") . ": {$this->iban}";
 			}
 			else
 			{
 				$s .= "
-Company account with details:
-Company name: {$this->company_name}
-Tax code: {$this->tax_code}
-Bank: {$this->bank}
-IBAN: {$this->iban}
-Company phone: {$this->comp_phone}
-Company fax: {$this->comp_fax}
-Company email: {$this->comp_email}
+" . translate("Company account with details") . ":
+" . translate("Company name") . ": {$this->company_name}
+" . translate("Tax code") . ": {$this->tax_code}
+" . translate("Bank") . ": {$this->bank}
+" . translate("IBAN") . ": {$this->iban}
+" . translate("Company phone") . ": {$this->comp_phone}
+" . translate("Company fax") . ": {$this->comp_fax}
+" . translate("Company email") . ": {$this->comp_email}
 ";
 			}
 			return $s;

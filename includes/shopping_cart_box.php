@@ -6,13 +6,13 @@
 
 ?>
 <div id="shopping_cart_box">
-<h3><a href="shopping_cart.php">Shopping cart</a></h3>
+<h3><a href="shopping_cart.php"><?php echo translate("Shopping cart"); ?></a></h3>
 <?php
 $basket = Application::getShoppingCart();
 if($basket->getProductsCount() == 0)
 {
 	?>
-	<p>The cart is empty</p>
+	<p><?php echo translate("The cart is empty"); ?></p>
 	<?php
 }
 else
@@ -34,7 +34,7 @@ else
 	}
 	?>
 	</ul>
-	<p>Total to pay: <?php echo htmlspecialchars(displayPrice($basket->total)); ?></p>
+	<p><?php echo translate("Total to pay"); ?>: <?php echo htmlspecialchars(displayPrice($basket->total)); ?></p>
 	<?php
 }
 ?>

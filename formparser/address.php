@@ -68,7 +68,7 @@ elseif (@$_GET["action"] == "delete")
 	}
 	elseif ($a->id_user != $user->id)
 	{
-		Application::addError("That address doens't belong to you");
+		Application::addError("That address doesn't belong to you");
 	}
 	else
 	{

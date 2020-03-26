@@ -16,10 +16,10 @@ require_once(dirname(__FILE__) . "/init.php");
 <?php require_once(WEB_DIR . "/includes/header.php"); ?>
 <?php require_once(WEB_DIR . "/includes/left.php"); ?>
 <div id="content">
-<h1>Payment and delivery</h1>
+<h1><?php echo translate("Payment and delivery"); ?></h1>
 <?php require_once(WEB_DIR . "/includes/print_messages.php"); ?>
 
-<h2>How do I pay?</h2>
+<h2><?php echo translate("How do I pay?"); ?></h2>
 <p>You can pay:
 <ul>
 <li>in cache, at delivery (for persons);</li>

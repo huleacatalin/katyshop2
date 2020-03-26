@@ -58,18 +58,18 @@ class AppMailAgent extends PHPMailer
 
 		$this->Body = "
 			<div style=\"padding: 10px; background-color: #fffaf4; color: #582f06; font-family: verdana; font-size: 10pt;\">
-			<h1 style=\"font-size: 10pt; border: 1px solid #a17f60;	padding: 5px; \">Hello {$user->username},</h1>
+			<h1 style=\"font-size: 10pt; border: 1px solid #a17f60;	padding: 5px; \">" . translate("Hello") . " {$user->username},</h1>
 
-			<p>Welcome to " . APP_NAME . ", thank you for your registration.</p>
+			<p>" . translate("Welcome to ") . APP_NAME . translate(", thank you for your registration") . ".</p>
 			<pre>
 			----------------------------
-			Username: {$user->username}
-			Password: $escPass
-			Activation code: {$user->activation_code}
+			" . translate("Username") . ": {$user->username}
+			" . translate("Password") . ": $escPass
+			" . translate("Activation code") . ": {$user->activation_code}
 			----------------------------
 			</pre>
 
-			<p>Please click the following link in order to activate your account:</p>
+			<p>" . translate("Please click the following link in order to activate your account") . ":</p>
 
 			<a href=\"" . BASE_HREF . "activate.php?username={$user->username}&activation_code={$user->activation_code}\" style=\"color: #582f06; font-family: verdana; font-size: 10pt;\">
 			" . BASE_HREF . "activate.php?username={$user->username}&activation_code={$user->activation_code}
@@ -78,17 +78,17 @@ class AppMailAgent extends PHPMailer
 			";
 		
 		$this->AltBody = "
-			Hello {$user->username},
+			" . translate("Hello") . " {$user->username},
 
-			Welcome to " . APP_NAME . ", thank you for your registration.
+			" . translate("Welcome to ") . APP_NAME . translate(", thank you for your registration") . ".
 
 			----------------------------
-			Username: {$user->username}
-			Password: $escPass
-			Activation code: {$user->activation_code}
+			" . translate("Username") . ": {$user->username}
+			" . translate("Password") . ": $escPass
+			" . translate("Activation code") . ": {$user->activation_code}
 			----------------------------
 
-			Please click the following link in order to activate your account:
+			" . translate("Please click the following link in order to activate your account") . ":
 
 			" . BASE_HREF . "activate.php?username={$user->username}&activation_code={$user->activation_code}
 			";
@@ -104,9 +104,9 @@ class AppMailAgent extends PHPMailer
 		$escPass = htmlspecialchars($pass);
 		$this->AddAddress($user->email2);
 		$this->AddReplyTo($this->From, $this->FromName);
-		$this->Subject = APP_NAME . " - password changed";
+		$this->Subject = APP_NAME . " - " . translate("password changed");
 
-		$shortActCode = "Activation code: {$user->activation_code}";
+		$shortActCode = translate("Activation code") . ": {$user->activation_code}";
 		$htmlActCode = "";
 		$textActCode = "";
 		if(!$user->wasActivated())
@@ -114,14 +114,14 @@ class AppMailAgent extends PHPMailer
 			$shortActCode = "";
 
 			$htmlActCode = "
-			<p>Please click the following link in order to activate your account:</p>
+			<p>" . translate("Please click the following link in order to activate your account") . ":</p>
 
 			<a href=\"" . BASE_HREF . "activate.php?username={$user->username}&activation_code={$user->activation_code}\" style=\"color: #582f06; font-family: verdana; font-size: 10pt;\">
 			" . BASE_HREF . "activate.php?username={$user->username}&activation_code={$user->activation_code}
 			</a>";
 
 			$textActCode = "
-			Please click the following link in order to activate your account:
+			" . translate("Please click the following link in order to activate your account") . ":
 
 			" . BASE_HREF . "activate.php?username={$user->username}&activation_code={$user->activation_code}
 			";
@@ -129,25 +129,24 @@ class AppMailAgent extends PHPMailer
 
 		$this->Body = "
 			<div style=\"padding: 10px; background-color: #fffaf4; color: #582f06; font-family: verdana; font-size: 10pt;\">
-			<h1 style=\"font-size: 10pt; border: 1px solid #a17f60;	padding: 5px; \">Hello {$user->username},</h1>
+			<h1 style=\"font-size: 10pt; border: 1px solid #a17f60;	padding: 5px; \">" . translate("Hello") . " {$user->username},</h1>
 
-			<p>Your password has been changed.</p>
+			<p>" . translate("Your password has been changed") . ".</p>
 			<pre>
 			----------------------------
-			Username: {$user->username}
-			Password: $escPass
+			" . translate("Username") . ": {$user->username}
+			" . translate("Password") . ": $escPass
 			$shortActCode
 			----------------------------
 			</pre>
 
-			<p>This email is sent automatically because the 'forgot password' form
-			on our site was used to change your password. You can see this form here:</p>
+			<p>" . translate("This email is sent automatically because the 'forgot password' form on our site was used to change your password. You can see this form here") . ":</p>
 			<a href=\"" . BASE_HREF . "forgot_password.php\">" . BASE_HREF . "forgot_password.php</a>
 
-			<p>You may now click on this link to login using the new random generated password:</p>
+			<p>" . translate("You may now click on this link to login using the new random generated password") . ":</p>
 			<a href=\"" . BASE_HREF . "login.php\">" . BASE_HREF . "login.php</a>
 
-			<p>After you login you can change your profile preferences here:</p>
+			<p>" . translate("After you login you can change your profile preferences here") . ":</p>
 			<a href=\"" . BASE_HREF . "profile_view.php\">" . BASE_HREF . "profile_view.php</a>
 
 			$htmlActCode
@@ -155,24 +154,23 @@ class AppMailAgent extends PHPMailer
 			";
 
 		$this->AltBody = "
-			Hello {$user->username},
+			" . translate("Hello") . " {$user->username},
 
-			Your password has been changed
+			" . translate("Your password has been changed") . "
 
 			----------------------------
-			Username: {$user->username}
-			Password: $escPass
+			" . translate("Username") . ": {$user->username}
+			" . translate("Password") . ": $escPass
 			$shortActCode
 			----------------------------
 
-			This email is sent automatically because the 'forgot password' form
-			on our site was used to change your password. You can see this form here:
+			" . translate("This email is sent automatically because the 'forgot password' form on our site was used to change your password. You can see this form here") . ":
 			" . BASE_HREF . "forgot_password.php
 
-			You may now click on this link to login using the new random generated password:
+			" . translate("You may now click on this link to login using the new random generated password") . ":
 			" . BASE_HREF . "login.php
 
-			After you login you can change your profile preferences here:
+			" . translate("After you login you can change your profile preferences here") . ":
 			" . BASE_HREF . "profile_view.php
 
 			$textActCode
@@ -192,41 +190,41 @@ class AppMailAgent extends PHPMailer
 		$this->AddAddress($user->email2);
 		$this->AddCC($this->From, $this->FromName);
 		$this->AddReplyTo($this->From, $this->FromName);
-		$this->Subject = APP_NAME . " - new order";
+		$this->Subject = APP_NAME . " - " . translate("new order");
 
 		$s = "
-			<h1>" . htmlspecialchars(APP_NAME) . " New order!</h1>
+			<h1>" . htmlspecialchars(APP_NAME) . translate(" New order") . "!</h1>
 
-			<p>User " . htmlspecialchars($user->username) . " (" . htmlspecialchars($user->first_name . " " . $user->last_name) . ")
-			has sent a new order with total value {$order->total} $currency. Ordered products are:
+			<p>" . translate("User ") . htmlspecialchars($user->username) . " (" . htmlspecialchars($user->first_name . " " . $user->last_name) . ")
+			" . translate("has sent a new order with total value") . " {$order->total} $currency. " . translate("Ordered products are") . ":
 			";
 		for($i = 0; $i < $order->getProductsCount(); $i++)
 		{
 			if($i > 0)
 				$s .= ", ";
 			$op = $order->getOrderProduct($i + 1);
-			$s .= $op->quantity . " " . htmlspecialchars($op->measuring_unit) . " " . htmlspecialchars($op->product_name);
+			$s .= $op->quantity . " " . htmlspecialchars(translate($op->measuring_unit)) . " " . htmlspecialchars($op->product_name);
 		}
 		$s .= ".</p>
-			<p>The proforma invoice is attached.</p>
+			<p>" . translate("The proforma invoice is attached") . ".</p>
 			";
 		$this->Body = $s;
 
 		$s = "
-			" . APP_NAME . " New order!
+			" . APP_NAME . translate(" New order") . "!
 
-			User " . $user->username . " (" . $user->first_name . " " . $user->last_name . ")
-			has sent a new order with total value " . displayPrice($order->total) . " $currency. Ordered products are:
+			" . translate("User ") . $user->username . " (" . $user->first_name . " " . $user->last_name . ")
+			" . translate("has sent a new order with total value") . " " . displayPrice($order->total) . " $currency. " . translate("Ordered products are") . ":
 			";
 		for($i = 0; $i < $order->getProductsCount(); $i++)
 		{
 			if($i > 0)
 				$s .= ", ";
 			$op = $order->getOrderProduct($i + 1);
-			$s .= $op->quantity . " " . $op->measuring_unit . " " . $op->product_name;
+			$s .= $op->quantity . " " . translate($op->measuring_unit) . " " . $op->product_name;
 		}
 		$s .= ".
-			Attached is the proforma invoice.";
+			" . translate("The proforma invoice is attached") . ".";
 		$this->AltBody = $s;
 
 		$filename = DATA_DIR . "/orders/{$order->code}.html";
@@ -257,24 +255,24 @@ class AppMailAgent extends PHPMailer
 		$this->AddAddress($u->email2);
 		$this->AddCC($this->From, $this->FromName);
 		$this->AddReplyTo($this->From, $this->FromName);
-		$this->Subject = APP_NAME . " - order status update";
+		$this->Subject = APP_NAME . " - " . translate("order status update");
 
 		$this->Body = "
-			<h1>" . htmlspecialchars(APP_NAME) . " Order status changed!</h1>
+			<h1>" . htmlspecialchars(APP_NAME) . " " . translate("Order status changed") . "!</h1>
 
-			<p>The status of the order {$order->code} sent by user " . htmlspecialchars($u->username) . " (" . htmlspecialchars($u->first_name . " " . $u->last_name) . ") has changed.
-			The old status was '" . htmlspecialchars($order->status) . "', and now the new status is '" . htmlspecialchars($newStatus) . "'.</p>
+			<p>" . translate("The status of the order") . " {$order->code} " . translate("sent by user") . " " . htmlspecialchars($u->username) . " (" . htmlspecialchars($u->first_name . " " . $u->last_name) . ") " . translate("has changed") . ".
+			" . translate("The old status was") . " '" . htmlspecialchars($order->status) . "', " . translate("and now the new status is") . " '" . htmlspecialchars($newStatus) . "'.</p>
 
-			<p>The proforma invoice is attached to this mail.</p>
+			<p>" . translate("The proforma invoice is attached to this mail") . ".</p>
 			";
 
 		$this->AltBody = "
-			" . APP_NAME . " order status update!
+			" . APP_NAME . " " . translate("order status update") . "!
 
-			The status of the order {$order->code} sent by user " . $u->username . " (" . $u->first_name . " " . $u->last_name . ") has changed.
-			The old status was '" . $order->status . "', and now the new status is '" . $newStatus . "'.
+			" . translate("The status of the order") . " {$order->code} " . translate("sent by user") . " " . $u->username . " (" . $u->first_name . " " . $u->last_name . ") " . translate("has changed") . ".
+			" . translate("The old status was") . " '" . $order->status . "', " . translate("and now the new status is") . " '" . $newStatus . "'.
 
-			The proforma invoice is attached.
+			" . translate("The proforma invoice is attached to this mail") . ".
 			";
 
 		$filename = DATA_DIR . "/orders/{$order->code}.html";
@@ -298,27 +296,27 @@ class AppMailAgent extends PHPMailer
 	{
 		$this->AddAddress($this->From, $this->FromName);
 		$this->AddReplyTo($this->From, $this->FromName);
-		$this->Subject = APP_NAME . " - contact message";
+		$this->Subject = APP_NAME . " - " . translate("contact message");
 
 		$this->Body = '
-			<h1>' . htmlspecialchars(APP_NAME) . ' - contact message</h1>
-			<p>Visitor: ' . htmlspecialchars($m->sender_name) . ' (<a href="mailto:' . htmlspecialchars($m->sender_email) . '">' . htmlspecialchars($m->sender_email) . '</a></p>
-			<p>Subject: <b>' . htmlspecialchars($m->subject) . '</b></p>
-			<p>Message: <br><br>' . htmlspecialchars($m->message) . '</p>
+			<h1>' . htmlspecialchars(APP_NAME) . ' - ' . translate('contact message') . '</h1>
+			<p>' . translate('Visitor') . ': ' . htmlspecialchars($m->sender_name) . ' (<a href="mailto:' . htmlspecialchars($m->sender_email) . '">' . htmlspecialchars($m->sender_email) . '</a></p>
+			<p>' . translate('Subject') . ': <b>' . htmlspecialchars($m->subject) . '</b></p>
+			<p>' . translate('Message') . ': <br><br>' . htmlspecialchars($m->message) . '</p>
 			<br>
 			<br>
-			<h2>User details</h2>
+			<h2>' . translate('User details') . '</h2>
 			<p>' . htmlspecialchars($m->user_details) . '</p>
 			';
 
 		$this->AltBody = '
-			' . APP_NAME . ' - contact message
-			Visitor: ' . $m->sender_name . ' (' . $m->sender_email . ')
-			Subject: ' . $m->subject . '
-			Message:
+			' . APP_NAME . ' - ' . translate("contact message") . '
+			' . translate('Visitor') . ': ' . $m->sender_name . ' (' . $m->sender_email . ')
+			' . translate('Subject') . ': ' . $m->subject . '
+			' . translate('Message') . ':
 			' . $m->message . '
 
-			User details
+			' . translate('User details') . '
 			' . ($m->user_details) . '
 			';
 

@@ -17,7 +17,7 @@ require_once(WEB_DIR . "/includes/req_admin.php");
 <?php require_once(WEB_DIR . "/includes/header.php"); ?>
 <?php require_once(WEB_DIR . "/admin/includes/left.php"); ?>
 <div id="content">
-<h1>View users addresses</h1>
+<h1><?php echo translate("View users addresses"); ?></h1>
 <?php require_once(WEB_DIR . "/includes/print_messages.php"); ?>
 
 <?php
@@ -41,13 +41,13 @@ if(count($list) > 0)
 		<table style="border-bottom: 1px solid #000000; width: 375px; ">
 		<tr valign="top">
 		<td width="150">
-			<input type="checkbox" <?php echo ($a->primary_addr == 1) ? "checked" : ""; ?> onclick="this.form.submit(); "> Primary address<br>
-			<input type="checkbox" <?php echo ($a->delivery == 1) ? "checked" : ""; ?> onclick="this.form.submit(); "> Delivery<br>
-			<input type="checkbox" <?php echo ($a->invoicing == 1) ? "checked" : ""; ?> onclick="this.form.submit(); ">Invoicing<br>
+			<input type="checkbox" <?php echo ($a->primary_addr == 1) ? "checked" : ""; ?> onclick="this.form.submit(); "> <?php echo translate("Primary address"); ?><br>
+			<input type="checkbox" <?php echo ($a->delivery == 1) ? "checked" : ""; ?> onclick="this.form.submit(); "> <?php echo translate("Delivery"); ?><br>
+			<input type="checkbox" <?php echo ($a->invoicing == 1) ? "checked" : ""; ?> onclick="this.form.submit(); "><?php echo translate("Invoicing"); ?><br>
 		</td>
 		<td>
-			County <?php echo $a->county; ?><br>
-			City <?php echo $a->city; ?><br>
+			<?php echo translate("County"); ?> <?php echo $a->county; ?><br>
+			<?php echo translate("City"); ?> <?php echo $a->city; ?><br>
 			<?php echo $a->address; ?>
 		</td>
 		</tr>
@@ -58,7 +58,7 @@ if(count($list) > 0)
 else
 {
 	?>
-	<p>No address has been found</p>
+	<p><?php echo translate("No address has been found"); ?></p>
 	<?php
 }
 ?>

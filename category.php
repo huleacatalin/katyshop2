@@ -43,7 +43,7 @@ $user = Application::getUser();
 if($user->isAdminLoggedIn())
 {
 	?>
-	<p><a href="admin/category.php?action=edit&id_category=<?php echo htmlspecialchars($category->id); ?>" style="font-size: 12pt; display: block; ">&raquo; Edit category <?php echo htmlspecialchars($category->title); ?></a></p>
+	<p><a href="admin/category.php?action=edit&id_category=<?php echo htmlspecialchars($category->id); ?>" style="font-size: 12pt; display: block; ">&raquo; <?php echo translate("Edit category"); ?> <?php echo htmlspecialchars($category->title); ?></a></p>
 	<?php
 }
 ?>

@@ -17,7 +17,7 @@ require_once(WEB_DIR . "/includes/req_person_company.php");
 <?php require_once(WEB_DIR . "/includes/header.php"); ?>
 <?php require_once(WEB_DIR . "/includes/left.php"); ?>
 <div id="content">
-<h1>Step <?php echo (@$_GET['action'] == 'select_delivery_address') ? 2 : 3; ?></h1>
+<h1><?php echo translate("Step"); ?> <?php echo (@$_GET['action'] == 'select_delivery_address') ? 2 : 3; ?></h1>
 <?php require_once(WEB_DIR . "/includes/print_messages.php"); ?>
 
 <?php
@@ -28,13 +28,13 @@ $noAddressText = "";
 $list = array();
 if(@$_GET["action"] == "select_delivery_address")
 {
-	$pageTitle = "Select delivery address";
+	$pageTitle = translate("Select delivery address");
 	$noAddressText = "delivery";
 	$list = $db->tbAddress->getRecordsByUserId($user->id, "delivery");
 }
 elseif(@$_GET["action"] == "select_invoice_address")
 {
-	$pageTitle = "Select invoicing address";
+	$pageTitle = translate("Select invoicing address");
 	$noAddressText = "invoicing";
 	$list = $db->tbAddress->getRecordsByUserId($user->id, "invoicing");
 }
@@ -56,18 +56,18 @@ if(count($list) > 0)
 		<table>
 		<tr valign="top">
 		<td>
-			<input type="checkbox" <?php echo ($a->primary_addr == 1) ? "checked" : ""; ?> disabled> Primary address<br>
-			<input type="checkbox" <?php echo ($a->delivery == 1) ? "checked" : ""; ?> disabled> Delivery<br>
-			<input type="checkbox" <?php echo ($a->invoicing == 1) ? "checked" : ""; ?> disabled> Invoicing<br>
+			<input type="checkbox" <?php echo ($a->primary_addr == 1) ? "checked" : ""; ?> disabled> <?php echo translate("Primary address"); ?><br>
+			<input type="checkbox" <?php echo ($a->delivery == 1) ? "checked" : ""; ?> disabled> <?php echo translate("Delivery"); ?><br>
+			<input type="checkbox" <?php echo ($a->invoicing == 1) ? "checked" : ""; ?> disabled> <?php echo translate("Invoicing"); ?><br>
 
 			<form action="formparser/order.php?action=<?php echo htmlspecialchars(@$_GET["action"]); ?>" method="post">
 			<input type="hidden" name="id_address" value="<?php echo intval($a->id); ?>">
-			<input type="submit" value="Select" class="button">
+			<input type="submit" value="<?php echo translate("Select"); ?>" class="button">
 			</form>
 		</td>
 		<td>
-			<a href="javascript:selectOrderAddress('<?php echo $a->id; ?>'); ">County <?php echo $a->county; ?><br>
-			City <?php echo $a->city; ?><br>
+			<a href="javascript:selectOrderAddress('<?php echo $a->id; ?>'); "><?php echo translate("County"); ?> <?php echo $a->county; ?><br>
+			<?php echo translate("City"); ?> <?php echo $a->city; ?><br>
 			<?php echo $a->address; ?></a>
 		</td>
 		</tr>
@@ -77,25 +77,36 @@ if(count($list) > 0)
 	if(@$_GET["action"] == "select_delivery_address")
 	{
 		?>
-		<input type="button" value="&laquo; Back" onclick="window.open('shopping_cart.php', '_self'); " class="button">
+		<input type="button" value="&laquo; <?php echo translate("Back"); ?>" onclick="window.open('shopping_cart.php', '_self'); " class="button">
 		<?php
 	}
 	elseif (@$_GET["action"] == "select_invoice_address")
 	{
 		?>
-		<input type="button" value="&laquo; Back" onclick="window.open('shopping_cart_address.php?action=select_delivery_address', '_self'); " class="button">
+		<input type="button" value="&laquo; <?php echo translate("Back"); ?>" onclick="window.open('shopping_cart_address.php?action=select_delivery_address', '_self'); " class="button">
 		<?php
 	}
 }
 else
 {
-	?>
-	<p>
-	No <?php echo $noAddressText; ?> address could be found.
-	<a href="address.php?detail=true&id=0">Click here</a>
-	to add a new <?php echo $noAddressText; ?> address in your address book.
-	</p>
-	<?php
+	if($noAddressText == 'delivery') {
+		?>
+		<p>
+		<?php echo translate("No delivery address could be found."); ?>
+		<a href="address.php?detail=true&id=0"><?php echo translate("Click here"); ?></a>
+		<?php echo translate("to add a new delivery address in your address book."); ?>
+		</p>
+		<?php
+	}
+	elseif($noAddressText == 'invoicing') {
+		?>
+		<p>
+		<?php echo translate("No invoicing address could be found."); ?>
+		<a href="address.php?detail=true&id=0"><?php echo translate("Click here"); ?></a>
+		<?php echo translate("to add a new invoicing address in your address book."); ?>
+		</p>
+		<?php
+	}
 }
 ?>
 

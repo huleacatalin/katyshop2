@@ -33,7 +33,7 @@ HTMLArea.init();
 
 <?php require_once(WEB_DIR . "/admin/includes/left.php"); ?>
 <div id="content">
-<h1>Admin products</h1>
+<h1><?php echo translate("Products admin"); ?></h1>
 <?php require_once(WEB_DIR . "/includes/print_messages.php"); ?>
 <?php require_once(WEB_DIR . "/admin/includes/breadcrumb.php"); ?>
 
@@ -73,30 +73,30 @@ if($p->id > 0)
 	if($p->id_manufacturer > 0)
 	{
 		?>
-		<li style="font-size: 12pt; color: #555555; font-weight: bold; ">Manufacturer: <?php echo htmlspecialchars($p->manufacturer); ?></li>
+		<li style="font-size: 12pt; color: #555555; font-weight: bold; "><?php echo translate("Manufacturer"); ?>: <?php echo htmlspecialchars($p->manufacturer); ?></li>
 		<?php
 	}
 	?>
 	<li style="font-size: 14pt; color: red; font-weight: bold; "><big><?php echo displayPrice($p->price); ?> <?php echo htmlspecialchars(Application::getConfigValue("default_currency")); ?></big></li>
-	<li class="up"><a href="admin/category.php?id_category=<?php echo intval(@$p->id_category); ?>">Parent category</a></li>
+	<li class="up"><a href="admin/category.php?id_category=<?php echo intval(@$p->id_category); ?>"><?php echo translate("Parent category"); ?></a></li>
 	<?php
 	if(intval($p->id) > 0)
 	{
 		?>
-		<li class="edit"><a href="admin/product.php?action=edit&id_product=<?php echo intval(@$p->id); ?>">Edit product <?php echo htmlspecialchars($p->title); ?></a></li>
-		<li class="delete"><a href="javascript:deleteProduct('<?php echo intval($p->id); ?>'); " style="color: red; ">Delete product <?php echo htmlspecialchars($p->title); ?></a></li>
+		<li class="edit"><a href="admin/product.php?action=edit&id_product=<?php echo intval(@$p->id); ?>"><?php echo translate("Edit product"); ?> <?php echo htmlspecialchars($p->title); ?></a></li>
+		<li class="delete"><a href="javascript:deleteProduct('<?php echo intval($p->id); ?>'); " style="color: red; "><?php echo translate("Delete product"); ?> <?php echo htmlspecialchars($p->title); ?></a></li>
 		<?php
 		if($p->active == 1)
 		{
 			?>
-			<li><img src="img/icons/bullet_green.gif"> Product is active</a></li>
-			<li><a href="product.php?id_product=<?php echo htmlspecialchars($p->id); ?>">See the product on the public site</a></li>
+			<li><img src="img/icons/bullet_green.gif"> <?php echo translate("Product is active"); ?></a></li>
+			<li><a href="product.php?id_product=<?php echo htmlspecialchars($p->id); ?>"><?php echo translate("See the product on the public site"); ?></a></li>
 			<?php
 		}
 		else
 		{
 			?>
-			<li><img src="img/icons/bullet_red.gif"> Product is not active</a></li>
+			<li><img src="img/icons/bullet_red.gif"> <?php echo translate("Product is not active"); ?></a></li>
 			<?php
 		}
 	}
@@ -128,28 +128,28 @@ if(@$_GET["action"] == "edit")
 		$p->pos = $temp + 1;
 	}
 	?>
-	<h2><?php echo (intval($p->id) > 0) ? "Edit product " . htmlspecialchars($p->title) : "Add a new product"; ?></h2>
+	<h2><?php echo (intval($p->id) > 0) ? translate("Edit product ") . htmlspecialchars($p->title) : translate("Add a new product"); ?></h2>
 	<form action="admin/formparser/product.php?action=save" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="MAX_FILE_SIZE" value="8000000">
 	<input type="hidden" name="id" value="<?php echo htmlspecialchars($p->id); ?>">
-	<label>Title: <input type="text" name="title" value="<?php echo htmlspecialchars($p->title); ?>" class="text"></label>
-	<label>Price: <input type="text" name="price" value="<?php echo displayPrice($p->price); ?>" class="text"></label>
-	<label>Measuring unit:
+	<label><?php echo translate("Title"); ?>: <input type="text" name="title" value="<?php echo htmlspecialchars($p->title); ?>" class="text"></label>
+	<label><?php echo translate("Price"); ?>: <input type="text" name="price" value="<?php echo displayPrice($p->price); ?>" class="text"></label>
+	<label><?php echo translate("Measuring unit"); ?>:
 		<select name="measuring_unit" class="select">
-		<option value="">-- Choose --</option>
+		<option value="">-- <?php echo translate("Choose"); ?> --</option>
 		<?php
 		$list = Product::getPossibleMeasuringUnits();
 		for($i = 0; $i < count($list); $i++)
 		{
 			$selected = ($p->measuring_unit == $list[$i]) ? "selected" : "";
 			?>
-			<option value="<?php echo htmlspecialchars($list[$i]); ?>" <?php echo $selected; ?>><?php echo htmlspecialchars($list[$i]); ?></option>
+			<option value="<?php echo htmlspecialchars($list[$i]); ?>" <?php echo $selected; ?>><?php echo htmlspecialchars(translate($list[$i])); ?></option>
 			<?php
 		}
 		?>
 		</select>
 	</label>
-	<label>Parent category:
+	<label><?php echo translate("Parent category"); ?>:
 		<select name="id_category" class="select">
 		<?php
 		$tree = $db->tbCategory->getTree(false);
@@ -157,9 +157,9 @@ if(@$_GET["action"] == "edit")
 		?>
 		</select>
 	</label>
-	<label>Manufacturer:
+	<label><?php echo translate("Manufacturer"); ?>:
 	<select name="id_manufacturer" class="select">
-	<option value="0">-- Choose --</option>
+	<option value="0">-- <?php echo translate("Choose"); ?> --</option>
 	<?php
 	$list = $db->tbManufacturer->search(array(), 0, 500, "title");
 	for($i = 0; $i < count($list); $i++)
@@ -172,30 +172,18 @@ if(@$_GET["action"] == "edit")
 	?>
 	</select>
 	</label>
-	<label>Position: <input type="text" name="pos" value="<?php echo htmlspecialchars($p->pos); ?>" class="text"></label>
-	<label>Short description (appeares to the list of products): <textarea name="description" style="width: 500px; height: 100px; "><?php echo htmlspecialchars($p->description); ?></textarea></label>
-	<label>Content (detailed description, appeares to the product details page):
+	<label><?php echo translate("Position"); ?>: <input type="text" name="pos" value="<?php echo htmlspecialchars($p->pos); ?>" class="text"></label>
+	<label><?php echo translate("Short description (appeares to the list of products)"); ?>: <textarea name="description" style="width: 500px; height: 100px; "><?php echo htmlspecialchars($p->description); ?></textarea></label>
+	<label><?php echo translate("Content (detailed description, appeares to the product details page)"); ?>:
 		<textarea name="content" id="editor"><?php echo $p->content; ?></textarea>
 	</label>
-	<label>Technical details: <textarea name="technical_details" style="width: 500px; height: 100px; "><?php echo htmlspecialchars($p->technical_details); ?></textarea></label>
-	<p>Image:
-		<?php
-		if(!empty($p->picture))
-		{
-			?>
-			<p><a href="img/products/large/<?php echo htmlspecialchars($p->picture); ?>" target="_blank"><?php echo htmlspecialchars($p->picture); ?></a></p>
-			<?php
-		}
-		?>
-		<p><a href="javascript:changeProductPicture(); " id="the_picture_link">click here to change the image</a></p>
-		<input type="file" name="picture" disabled style="display: none; width: 250px; " id="the_picture">
-	</p>
+	<label><?php echo translate("Technical details"); ?>: <textarea name="technical_details" style="width: 500px; height: 100px; "><?php echo htmlspecialchars($p->technical_details); ?></textarea></label>
 	<?php
 	if(count($p->images) > 0) {
 		?>
 		<p>
 		<a name="images">
-		<label>Images</label>
+		<label><?php echo translate("Images"); ?></label>
 		<?php
 		foreach($p->images as $pi) {
 			?>
@@ -219,20 +207,20 @@ if(@$_GET["action"] == "edit")
 		<?php
 	}
 	?>
-	<p>New images (click to upload pictures):
+	<p><?php echo translate("New images (click to upload pictures)"); ?>:
 		<input type="file" name="product_image[]" style="display: block; margin: 10px; ">
 		<input type="file" name="product_image[]" style="display: block; margin: 10px; ">
 		<input type="file" name="product_image[]" style="display: block; margin: 10px; ">
 		<input type="file" name="product_image[]" style="display: block; margin: 10px; ">
 		<input type="file" name="product_image[]" style="display: block; margin: 10px; ">
 	</p>
-	<p>Active:
-		<label style="display: inline; "><input type="radio" name="active" value="0" <?php echo $p->active == 1 ? "" : "checked"; ?>> No</label>
-		<label style="display: inline; "><input type="radio" name="active" value="1" <?php echo $p->active == 1 ? "checked" : ""; ?>> Yes</label>
+	<p><?php echo translate("Active"); ?>:
+		<label style="display: inline; "><input type="radio" name="active" value="0" <?php echo $p->active == 1 ? "" : "checked"; ?>> <?php echo translate("No"); ?></label>
+		<label style="display: inline; "><input type="radio" name="active" value="1" <?php echo $p->active == 1 ? "checked" : ""; ?>> <?php echo translate("Yes"); ?></label>
 	</p>
 	<p>
-		<input type="submit" value="Save" class="button">
-		<input type="button" value="Cancel" class="button" onclick="redirect('admin/category.php?id_category=<?php echo intval($p->id_category); ?>'); ">
+		<input type="submit" value="<?php echo translate("Save"); ?>" class="button">
+		<input type="button" value="<?php echo translate("Cancel"); ?>" class="button" onclick="redirect('admin/category.php?id_category=<?php echo intval($p->id_category); ?>'); ">
 	</p>
 	</form>
 	<?php

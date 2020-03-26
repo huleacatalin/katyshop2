@@ -12,13 +12,13 @@ if($productsCount > 0)
 	<table cellspacing="0" id="products_list">
 	<tr>
 	<td></td>
-	<td>Product
+	<td><?php echo translate("Product"); ?>
 		<?php
 		displayOrderBy($id_category, "title", "asc", $page, "products");
 		displayOrderBy($id_category, "title", "desc", $page, "products");
 		?>
 	</td>
-	<td>Price
+	<td><?php echo translate("Price"); ?>
 		<?php
 		displayOrderBy($id_category, "price", "asc", $page, "products");
 		displayOrderBy($id_category, "price", "desc", $page, "products");
@@ -53,7 +53,7 @@ if($productsCount > 0)
 		if(!empty($p->manufacturer))
 		{
 			?>
-			<p class="manufacturer">Manufacturer: <?php echo htmlspecialchars($p->manufacturer); ?></p>
+			<p class="manufacturer"><?php echo translate("Manufacturer"); ?>: <?php echo htmlspecialchars($p->manufacturer); ?></p>
 			<?php
 		}
 		?>
@@ -65,7 +65,7 @@ if($productsCount > 0)
 		<td>
 		<form action="formparser/order.php?action=add_to_cart" method="post">
 		<input type="hidden" name="id_product" value="<?php echo htmlspecialchars(@$p->id); ?>">
-		<input type="submit" value="Add to the cart" class="button">
+		<input type="submit" value="<?php echo translate("Add to the cart"); ?>" class="button">
 		</form>
 		</td>
 		</tr>

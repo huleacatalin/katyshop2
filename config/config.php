@@ -51,7 +51,7 @@ define("WEB_DIR", dirname(dirname(__FILE__)));
 //# LOGGER										#
 //###############################################
 $this->cfg["logger"] = array(
-	"active" => true,
+	"active" => false,
 	"errors_active" => true,
 	"messages_active" => false,
 	"vardump_active" => false,

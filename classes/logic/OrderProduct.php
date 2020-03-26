@@ -48,10 +48,10 @@ class OrderProduct extends LogicObject
 		{
 			$db = Application::getDb();
 			if(!$db->tbProduct->productExists($this->id_product))
-				$errors[] = "Product named {$this->product_name} from the position {$this->line_number} doesn't exist in our database";
+				$errors[] = translate("Product named") . " " . $this->product_name . " " . translate("from the position") . " " . $this->line_number . " " . translate("doesn't exist in our database");
 			$p = $db->tbProduct->getRecordById($this->id_product);
 			if(intval($p->active) != 1)
-				$errors[] = "Product named {$this->product_name} from the position {$this->line_number} from the order cannot be ordered because it is no longer active on the website";
+				$errors[] = translate("Product named") . " " . $this->product_name . " " . translate("from the position") . " " . $this->line_number . " " .  translate("from the order cannot be ordered because it is no longer active on the website");
 		}
 
 		Application::appendErrors($errors);

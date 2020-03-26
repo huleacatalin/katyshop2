@@ -113,7 +113,7 @@ class Visitor extends LogicObject
 	{
 		if($humanReadable)
 		{
-			$s = "Unauthenticated user with IP address {$this->ip}";
+			$s = translate("Unauthenticated user with IP address") . " {$this->ip}";
 			return $s;
 		}
 		else

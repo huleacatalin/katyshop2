@@ -58,7 +58,7 @@ if(empty($_GET["order_direction"]["products"]))
 $category = new Category();
 $id_category = $category->id;
 $arr = array("id_category" => intval($id_category), "active" => 1, "only_current_category" => 1);
-$pageTitle = "Products";
+$pageTitle = translate("Products");
 $page = "index.php";
 
 $productsCount = $db->tbProduct->getCount($arr, @$_GET["start"], @$_GET["rowsPerPage"], @$_GET["order_by"]["products"], @$_GET["order_direction"]["products"]);

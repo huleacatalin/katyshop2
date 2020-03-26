@@ -20,7 +20,7 @@ $category = Application::getCurrentCategory();
 <?php require_once(WEB_DIR . "/includes/header.php"); ?>
 <?php require_once(WEB_DIR . "/admin/includes/left.php"); ?>
 <div id="content">
-<h1>Categories administration</h1>
+<h1><?php echo translate("Categories administration"); ?></h1>
 <?php require_once(WEB_DIR . "/includes/print_messages.php"); ?>
 <?php require_once(WEB_DIR . "/admin/includes/breadcrumb.php"); ?>
 
@@ -73,7 +73,7 @@ $category = Application::getCurrentCategory();
 if($category->id == 0)
 {
 	$category->title = APP_NAME;
-	$category->description = "Root category for products in your store";
+	$category->description = translate("Root category for products in your store");
 }
 ?>
 <h2><?php echo htmlspecialchars($category->title); ?></h2>
@@ -88,27 +88,27 @@ echo nl2br(htmlspecialchars($category->description));
 ?>
 
 <ul class="actions">
-<li class="up"><a href="admin/category.php?id_category=<?php echo intval(@$category->id_parent); ?>">Parent category</a></li>
-<li class="add_category"><a href="admin/category.php?action=edit&id_category=0&id_parent=<?php echo intval(@$category->id); ?>">Add a new category</a></li>
-<li class="add_product"><a href="admin/product.php?action=edit&id_product=0&id_category=<?php echo intval(@$category->id); ?>">Add a new product</a></li>
+<li class="up"><a href="admin/category.php?id_category=<?php echo intval(@$category->id_parent); ?>"><?php echo translate("Parent category"); ?></a></li>
+<li class="add_category"><a href="admin/category.php?action=edit&id_category=0&id_parent=<?php echo intval(@$category->id); ?>"><?php echo translate("Add a new category"); ?></a></li>
+<li class="add_product"><a href="admin/product.php?action=edit&id_product=0&id_category=<?php echo intval(@$category->id); ?>"><?php echo translate("Add a new product"); ?></a></li>
 <?php
 if(intval($category->id) > 0)
 {
 	?>
-	<li class="edit"><a href="admin/category.php?action=edit&id_category=<?php echo intval(@$category->id); ?>">Edit category <?php echo htmlspecialchars($category->title); ?></a></li>
-	<li class="delete"><a href="javascript:deleteCategory('<?php echo intval($category->id); ?>'); " style="color: red; ">Delete category <?php echo htmlspecialchars($category->title); ?></a></li>
+	<li class="edit"><a href="admin/category.php?action=edit&id_category=<?php echo intval(@$category->id); ?>"><?php echo translate("Edit category"); ?> <?php echo htmlspecialchars($category->title); ?></a></li>
+	<li class="delete"><a href="javascript:deleteCategory('<?php echo intval($category->id); ?>'); " style="color: red; "><?php echo translate("Delete category"); ?> <?php echo htmlspecialchars($category->title); ?></a></li>
 	<?php
 	if($category->active == 1)
 	{
 		?>
-		<li><img src="img/icons/bullet_green.gif"> Category is active</a></li>
-		<li><a href="category.php?id_category=<?php echo htmlspecialchars($category->id); ?>">View category on the public site</a></li>
+		<li><img src="img/icons/bullet_green.gif"> <?php echo translate("Category is active"); ?></a></li>
+		<li><a href="category.php?id_category=<?php echo htmlspecialchars($category->id); ?>"><?php echo translate("View category on the public site"); ?></a></li>
 		<?php
 	}
 	else
 	{
 		?>
-		<li><img src="img/icons/bullet_red.gif"> Category is not active</a></li>
+		<li><img src="img/icons/bullet_red.gif"> <?php echo translate("Category is not active"); ?></a></li>
 		<?php
 	}
 }
@@ -138,12 +138,12 @@ if(@$_GET["action"] == "edit")
 		$c->pos = $temp + 1;
 	}
 	?>
-	<h2><?php echo (intval($c->id) > 0) ? "Edit category " . htmlspecialchars($c->title) : "Add a new category"; ?></h2>
+	<h2><?php echo (intval($c->id) > 0) ? translate("Edit category") . " " . htmlspecialchars($c->title) : translate("Add a new category"); ?></h2>
 	<form action="admin/formparser/category.php?action=save" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="MAX_FILE_SIZE" value="8000000">
 	<input type="hidden" name="id" value="<?php echo htmlspecialchars($c->id); ?>">
-	<label>Title: <input type="text" name="title" value="<?php echo htmlspecialchars($c->title); ?>" class="text"></label>
-	<label>Parent category:
+	<label><?php echo translate("Title"); ?>: <input type="text" name="title" value="<?php echo htmlspecialchars($c->title); ?>" class="text"></label>
+	<label><?php echo translate("Parent category"); ?>:
 		<select name="id_parent" class="select">
 		<?php
 		$tree = $db->tbCategory->getTree(false);
@@ -151,9 +151,9 @@ if(@$_GET["action"] == "edit")
 		?>
 		</select>
 	</label>
-	<label>Position: <input type="text" name="pos" value="<?php echo htmlspecialchars($c->pos); ?>" class="text"></label>
-	<label>Description: <textarea name="description" style="height: 100px; "><?php echo htmlspecialchars($c->description); ?></textarea></label>
-	<p>Picture <br>
+	<label><?php echo translate("Position"); ?>: <input type="text" name="pos" value="<?php echo htmlspecialchars($c->pos); ?>" class="text"></label>
+	<label><?php echo translate("Description"); ?>: <textarea name="description" style="height: 100px; "><?php echo htmlspecialchars($c->description); ?></textarea></label>
+	<p><?php echo translate("Picture"); ?> <br>
 		<?php
 		if(!empty($c->picture))
 		{
@@ -163,13 +163,13 @@ if(@$_GET["action"] == "edit")
 			<?php
 		}
 		?>
-		<a href="javascript:changeCategoryPicture(); " id="the_picture_link">click here to change picture</a>
+		<a href="javascript:changeCategoryPicture(); " id="the_picture_link"><?php echo translate("click here to change picture"); ?></a>
 		<br>
 		<input type="file" name="picture" disabled style="display: none; " id="the_picture">
 	</p>
-	<p>Active:
-		<label style="display: inline; "><input type="radio" name="active" value="0" <?php echo $c->active == 1 ? "" : "checked"; ?>> No</label>
-		<label style="display: inline; "><input type="radio" name="active" value="1" <?php echo $c->active == 1 ? "checked" : ""; ?>> Yes</label>
+	<p><?php echo translate("Active"); ?>:
+		<label style="display: inline; "><input type="radio" name="active" value="0" <?php echo $c->active == 1 ? "" : "checked"; ?>> <?php echo translate("No"); ?></label>
+		<label style="display: inline; "><input type="radio" name="active" value="1" <?php echo $c->active == 1 ? "checked" : ""; ?>> <?php echo translate("Yes"); ?></label>
 	</p>
 	<p>
 		<input type="submit" value="Save" class="button">
@@ -190,30 +190,30 @@ else
 	{
 		?>
 		<a name="subcategs"></a>
-		<h3>Subcategories from <?php echo htmlspecialchars($category->title); ?></h3>
+		<h3><?php echo translate("Subcategories from"); ?> <?php echo htmlspecialchars($category->title); ?></h3>
 		<table cellpadding="2" cellspacing="0" class="cuborder">
 		<tr>
-		<th>Position
+		<th><?php echo translate("Position"); ?>
 			<?php
 			displayOrderBy($category->id, "pos", "asc", "admin/category.php", "subcategs");
 			displayOrderBy($category->id, "pos", "desc", "admin/category.php", "subcategs");
 			?>
 		</th>
-		<th>Picture</th>
-		<th>Title
+		<th><?php echo translate("Picture"); ?></th>
+		<th><?php echo translate("Title"); ?>
 			<?php
 			displayOrderBy($category->id, "title", "asc", "admin/category.php", "subcategs");
 			displayOrderBy($category->id, "title", "desc", "admin/category.php", "subcategs");
 			?>
 		</th>
-		<th>Active
+		<th><?php echo translate("Active"); ?>
 			<?php
 			displayOrderBy($category->id, "active", "asc", "admin/category.php", "subcategs");
 			displayOrderBy($category->id, "active", "desc", "admin/category.php", "subcategs");
 			?>
 		</th>
-		<th>Actions</th>
-		<th>Created date
+		<th><?php echo translate("Actions"); ?></th>
+		<th><?php echo translate("Created date"); ?>
 			<?php
 			displayOrderBy($category->id, "date_created", "asc", "admin/category.php", "subcategs");
 			displayOrderBy($category->id, "date_created", "desc", "admin/category.php", "subcategs");
@@ -260,7 +260,7 @@ else
 			{
 				?>
 				<a href="javascript:deactivateCategory('<?php echo intval($c->id); ?>'); " title="deactivate"><img src="img/icons/bullet_red_blur.gif" alt="deactivate"></a>
-				<img src="img/icons/bullet_green.gif" alt="category is active on the public site">
+				<img src="img/icons/bullet_green.gif" alt="<?php echo translate("category is active on the public site"); ?>">
 				<?php
 			}
 			else

@@ -13,36 +13,36 @@
 
 <div id="menu">
 <ul>
-<li><a href="how_to_buy.php">How to buy</a></li>
-<li><a href="payment_and_delivery.php">Payment</a></li>
-<li><a href="contact.php">Contact</a></li>
+<li><a href="how_to_buy.php"><?php echo translate("How to buy"); ?></a></li>
+<li><a href="payment_and_delivery.php"><?php echo translate("Payment"); ?></a></li>
+<li><a href="contact.php"><?php echo translate("Contact"); ?></a></li>
 <?php
 $user = Application::getUser();
 if($user->isAdminLoggedIn())
 {
-	?><li><a href="admin/index.php">Admin</a></li><?php
+	?><li><a href="admin/index.php"><?php echo translate("Admin"); ?></a></li><?php
 }
 if($user->isUserLoggedIn())
 {
 	?>
-	<li><a href="profile.php">Profile</a></li>
+	<li><a href="profile.php"><?php echo translate("Profile"); ?></a></li>
 	<?php
 	if(!$user->isAdminLoggedIn())
 	{
 		?>
-		<li><a href="address.php">My addresses</a></li>
-		<li><a href="orders_list.php">My orders</a></li>
+		<li><a href="address.php"><?php echo translate("My addresses"); ?></a></li>
+		<li><a href="orders_list.php"><?php echo translate("My orders"); ?></a></li>
 		<?php
 	}
 	?>
-	<li><a href="javascript:logout(); " class="right_item">Logout</a></li>
+	<li><a href="javascript:logout(); " class="right_item"><?php echo translate("Logout"); ?></a></li>
 	<?php
 }
 else
 {
 	?>
-	<li><a href="register.php">New account</a></li>
-	<li><a href="login.php" class="right_item">Login</a></li>
+	<li><a href="register.php"><?php echo translate("New account"); ?></a></li>
+	<li><a href="login.php" class="right_item"><?php echo translate("Login"); ?></a></li>
 	<?php
 }
 ?>
@@ -58,7 +58,7 @@ else
 <form action="search.php" method="get">
 <input type="text" name="keywords" value="<?php echo htmlspecialchars(@$_GET["keywords"]); ?>" class="text" onfocus="this.select(); ">
 <input type="submit" value="Search!" class="button">
-<a href="advanced_search.php?<?php echo Tools::http_build_query2($_GET); ?>">advanced &raquo;</a>
+<a href="advanced_search.php?<?php echo Tools::http_build_query2($_GET); ?>"><?php echo translate("advanced"); ?> &raquo;</a>
 </form>
 </div>
 

@@ -75,12 +75,12 @@ class UserPerson extends User
 			else
 			{
 				$s .= "
-Person account with details:
-First name: {$this->first_name}
-Last name: {$this->last_name}
-Gender: {$this->gender}
-Birth date: {$this->birth_date}
-Phone: {$this->phone}
+" . translate("Person account with details") . ":
+" . translate("First name") . ": {$this->first_name}
+" . translate("Last name") . ": {$this->last_name}
+" . translate("Gender") . ": {$this->gender}
+" . translate("Birth date") . ": {$this->birth_date}
+" . translate("Phone") . ": {$this->phone}
 ";
 			}
 			return $s;

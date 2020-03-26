@@ -16,10 +16,10 @@ require_once(dirname(__FILE__) . "/init.php");
 <?php require_once(WEB_DIR . "/includes/header.php"); ?>
 <?php require_once(WEB_DIR . "/includes/left.php"); ?>
 <div id="content">
-<h1>Contact</h1>
+<h1><?php echo translate("Contact"); ?></h1>
 <?php require_once(WEB_DIR . "/includes/print_messages.php"); ?>
 
-<h2>Address</h2>
+<h2><?php echo translate("Address"); ?></h2>
 <p>Our shop offers a lot of products, making sure our customers are satisfied :) Our address is:
 <address>
 Ty Coon<br>
@@ -34,13 +34,13 @@ if(!is_a($m, "ContactMessage"))
 	$m = new ContactMessage();
 ?>
 
-<h2>Send a message</h2>
+<h2><?php echo translate("Send a message"); ?></h2>
 <form action="formparser/contact_message.php?action=send" method="post">
-<label>Name: <input type="text" name="sender_name" value="<?php echo htmlspecialchars($m->sender_name); ?>" class="text"></label>
-<label>Email: <input type="text" name="sender_email" value="<?php echo htmlspecialchars($m->sender_email); ?>" class="text"></label>
-<label>Subject: <input type="text" name="subject" value="<?php echo htmlspecialchars($m->subject); ?>" class="text"></label>
-<label>Message: <textarea name="message" style="height: 100px; "><?php echo htmlspecialchars($m->message); ?></textarea></label>
-<input type="submit" value="Send" class="button">
+<label><?php echo translate("Name"); ?>: <input type="text" name="sender_name" value="<?php echo htmlspecialchars($m->sender_name); ?>" class="text"></label>
+<label><?php echo translate("Email"); ?>: <input type="text" name="sender_email" value="<?php echo htmlspecialchars($m->sender_email); ?>" class="text"></label>
+<label><?php echo translate("Subject"); ?>: <input type="text" name="subject" value="<?php echo htmlspecialchars($m->subject); ?>" class="text"></label>
+<label><?php echo translate("Message"); ?>: <textarea name="message" style="height: 100px; "><?php echo htmlspecialchars($m->message); ?></textarea></label>
+<input type="submit" value="<?php echo translate("Send"); ?>" class="button">
 </form>
 
 </div>

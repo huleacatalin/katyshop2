@@ -15,30 +15,30 @@ if($productsCount > 0)
 {
 	?>
 	<a name="products"></a>
-	<h3>Products from <?php echo htmlspecialchars($category->title); ?></h3>
+	<h3><?php echo translate("Products from"); ?> <?php echo htmlspecialchars($category->title); ?></h3>
 	<table cellpadding="2" cellspacing="0" class="cuborder">
 	<tr>
-	<th>Position
+	<th><?php echo translate("Position"); ?>
 		<?php
 		displayOrderBy($category->id, "pos", "asc", "admin/category.php", "products");
 		displayOrderBy($category->id, "pos", "desc", "admin/category.php", "products");
 		?>
 	</th>
-	<th>Image</th>
-	<th>Title
+	<th><?php echo translate("Image"); ?></th>
+	<th><?php echo translate("Title"); ?>
 		<?php
 		displayOrderBy($category->id, "title", "asc", "admin/category.php", "products");
 		displayOrderBy($category->id, "title", "desc", "admin/category.php", "products");
 		?>
 	</th>
-	<th>Active
+	<th><?php echo translate("Active"); ?>
 		<?php
 		displayOrderBy($category->id, "active", "asc", "admin/category.php", "products");
 		displayOrderBy($category->id, "active", "desc", "admin/category.php", "products");
 		?>
 	</th>
-	<th>Actions</th>
-	<th>Created date
+	<th><?php echo translate("Actions"); ?></th>
+	<th><?php echo translate("Created date"); ?>
 		<?php
 		displayOrderBy($category->id, "date_created", "asc", "admin/category.php", "products");
 		displayOrderBy($category->id, "date_created", "desc", "admin/category.php", "products");
@@ -85,13 +85,13 @@ if($productsCount > 0)
 		{
 			?>
 			<a href="javascript:deactivateProduct('<?php echo intval($p->id); ?>'); " title="deactivate"><img src="img/icons/bullet_red_blur.gif" alt="deactivate"></a>
-			<img src="img/icons/bullet_green.gif" alt="product is active on the public site">
+			<img src="img/icons/bullet_green.gif" alt="<?php echo translate("product is active on the public site"); ?>">
 			<?php
 		}
 		else
 		{
 			?>
-			<img src="img/icons/bullet_red.gif" alt="product is not active on the public site">
+			<img src="img/icons/bullet_red.gif" alt="<?php echo translate("product is not active on the public site"); ?>">
 			<a href="javascript:activateProduct('<?php echo intval($p->id); ?>'); " title="activate"><img src="img/icons/bullet_green_blur.gif" alt="activate"></a>
 			<?php
 		}

@@ -130,7 +130,7 @@ elseif(@$_GET["action"] == "forgot_password")
 	$u = Factory::instantiateUser($u);
 	if($u->id == 0)
 	{
-		Application::addError("This username doesn't exists");
+		Application::addError("This username doesn't exist");
 	}
 	elseif(empty($_POST["email"]))
 	{

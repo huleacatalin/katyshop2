@@ -8,6 +8,19 @@
  * Small simple functions, mainly used for html output.
  * Nothing related to database or other complex logic should stay here.
  */
+ 
+ function translate($str) {
+	 $lang_code = Application::getConfigValue("lang_code");
+	 $lang = Application::getConfigValue("lang");
+	 $arr = array();
+	 if(array_key_exists($lang_code, $lang))
+		$arr = $lang[$lang_code];
+	
+	 if(array_key_exists($str, $arr) && !empty($arr[$str]))
+		 return $arr[$str];
+	 else
+		return $str;
+ }
 
 //#######################################################
 //# PAGINATION											#
@@ -48,7 +61,7 @@ function pagination_columnHead($text, $columnName, $displayArrows = true, $listN
 	$orderDirection = empty($listName) ? @$_GET["order_direction"] : @$_GET["order_direction"][$listName];
 
 	$asc = !($orderBy == $columnName && $orderDirection == "asc");
-	$title = ($asc) ? "order ascending by $text" : "order descending by $text";
+	$title = ($asc) ? translate("order ascending by ") . $text : translate("order descending by ") .$text;
 	$class = ($asc) ? "desc" : "asc"; // at this moment, $asc is reverse of the current option
 	$newDirection = ($asc) ? "asc" : "desc";
 
@@ -85,7 +98,7 @@ function pagination_arrows($text, $columnName, $listName = "", $direction = null
 		$orderBy = empty($listName) ? @$_GET["order_by"] : @$_GET["order_by"][$listName];
 		$orderDirection = empty($listName) ? @$_GET["order_direction"] : @$_GET["order_direction"][$listName];
 		$asc = ($direction == "asc");
-		$title = ($asc) ? "order ascending by $text" : "order descending by $text";
+		$title = ($asc) ? translate("order ascending by ") . $text : translate("order descending by ") . $text;
 
 		$s = '<a href="' . THIS_DIR . THIS_PAGE;
 		$s .= _pagination_composeLink(0, $rowsPerPage, $columnName, $direction, $listName);
@@ -128,10 +141,10 @@ function pagination_listPages($recordsCount, $defaultRowsPerPage = 25, $listName
 	if($next < 0)
 		$next = 0;
 
-	$s = "Page: ";
+	$s = translate("Page: ");
 	$s .= '<a href="' . THIS_DIR . THIS_PAGE;
 	$s .= _pagination_composeLink($previous, $rowsPerPage, $orderBy, $orderDirection, $listName);
-	$s .= '">&laquo; Previous</a> ';
+	$s .= '">&laquo; ' . translate('Previous') . '</a> ';
 
 	$page = 0;
 	for($i = 0; $i < $recordsCount; $i+= $rowsPerPage)
@@ -151,7 +164,7 @@ function pagination_listPages($recordsCount, $defaultRowsPerPage = 25, $listName
 
 	$s .= '<a href="' . THIS_DIR . THIS_PAGE;
 	$s .= _pagination_composeLink($next, $rowsPerPage, $orderBy, $orderDirection, $listName);
-	$s .= '">Next &raquo; </a> ';
+	$s .= '">' . translate("Next") . ' &raquo; </a> ';
 	return $s;
 }
 
@@ -163,7 +176,7 @@ function pagination_rowsPerPage($listName = "")
 	$orderDirection = empty($listName) ? @$_GET["order_direction"] : @$_GET["order_direction"][$listName];
 
 	$options = array(1, 2, 3, 4, 5, 10, 20, 30, 40, 50, 100, 250, 500, 750, 1000);
-	$s = 'Rows per page: <select onchange="changeUrlBySel(this); " style="width: 40px; display: inline; ">';
+	$s = translate('Rows per page') . ': <select onchange="changeUrlBySel(this); " style="width: 40px; display: inline; ">';
 	for($i = 0; $i < count($options); $i++)
 	{
 		$selected = ($rowsPerPage == $options[$i]) ? "selected" : "";
@@ -254,10 +267,10 @@ function getListPages($recordsCount, $defaultRowsPerPage = 25)
 	if($next < 0)
 		$next = 0;
 
-	$s .= "Page: ";
+	$s .= translate("Page: ");
 	$s .= '<a href="' . THIS_DIR . THIS_PAGE;
 	$s .= "?start=$previous&rowsPerPage=$rowsPerPage&" . Tools::http_build_query2($_GET, array("start", "rowsPerPage"));
-	$s .= '">&laquo; Previous</a> ';
+	$s .= '">&laquo; ' . translate("Previous") . '</a> ';
 
 	$page = 0;
 	for($i = 0; $i < $recordsCount; $i+= $rowsPerPage)
@@ -278,7 +291,7 @@ function getListPages($recordsCount, $defaultRowsPerPage = 25)
 
 	$s .= '<a href="' . THIS_DIR . THIS_PAGE;
 	$s .= "?start=$next&rowsPerPage=$rowsPerPage&" . Tools::http_build_query2($_GET, array("start", "rowsPerPage"));
-	$s .= '">Next &raquo; </a> ';
+	$s .= '">' . translate("Next") . ' &raquo; </a> ';
 	return $s;
 }
 

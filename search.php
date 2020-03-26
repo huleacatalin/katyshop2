@@ -29,7 +29,7 @@ $arr = Compat::array_clone($_GET);
 $arr["active"] = 1;
 $arr["min_price"] = readPrice(@$_GET["min_price"]);
 $arr["max_price"] = readPrice(@$_GET["max_price"]);
-$pageTitle = "Search results";
+$pageTitle = translate("Search results");
 $page = "search.php";
 
 $productsCount = $db->tbProduct->advancedGetCount($arr, @$_GET["start"], @$_GET["rowsPerPage"], @$_GET["order_by"]["products"], @$_GET["order_direction"]["products"]);

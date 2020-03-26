@@ -17,15 +17,15 @@ require_once(WEB_DIR . "/includes/req_admin.php");
 <?php require_once(WEB_DIR . "/includes/header.php"); ?>
 <?php require_once(WEB_DIR . "/admin/includes/left.php"); ?>
 <div id="content">
-<h1>Admin</h1>
+<h1><?php echo translate("Admin"); ?></h1>
 <?php require_once(WEB_DIR . "/includes/print_messages.php"); ?>
 <ul>
-<li><a href="admin/index.php">Admin</a></li>
-<li><a href="admin/user.php">Users</a></li>
-<li><a href="admin/order.php">Orders</a></li>
-<li><a href="admin/manufacturer.php">Manufacturers</a></li>
-<li><a href="admin/contact_message.php">Messages</a></li>
-<li><a href="admin/category.php">Categories</a></li>
+<li><a href="admin/index.php"><?php echo translate("Admin"); ?></a></li>
+<li><a href="admin/user.php"><?php echo translate("Users"); ?></a></li>
+<li><a href="admin/order.php"><?php echo translate("Orders"); ?></a></li>
+<li><a href="admin/manufacturer.php"><?php echo translate("Manufacturers"); ?></a></li>
+<li><a href="admin/contact_message.php"><?php echo translate("Messages"); ?></a></li>
+<li><a href="admin/category.php"><?php echo translate("Categories"); ?></a></li>
 </ul>
 
 </div>

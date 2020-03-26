@@ -34,7 +34,7 @@ class Address extends LogicObject
 		if(strlen($this->city) < 3 || strlen($this->city) > 177)
 			$errors[] = "The city must have between 3 and 177 characters";
 		if(strlen($this->address) < 3 || strlen($this->address) > 1000)
-			$errors[] = "The city must have between 3 and 1000 characters";
+			$errors[] = "The address must have between 3 and 1000 characters";
 
 		if($this->id > 0)
 		{
@@ -54,9 +54,9 @@ class Address extends LogicObject
 	{
 		if($humanReadable)
 		{
-			$s = "County: $this->county
-City: $this->city
-Address: $this->address";
+			$s = translate("County") . ": $this->county
+" . translate("City") . ": $this->city
+" . translate("Address") . ": $this->address";
 			return $s;
 		}
 		else

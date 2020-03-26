@@ -89,7 +89,7 @@ class Category extends LogicObject
 				$maxPos++;
 			}
 			if($maxPos < $this->pos)
-				$errors[] = "Maximum possible value for position is $maxPos";
+				$errors[] = translate("Maximum possible value for position is") . " " . $maxPos;
 		}
 
 		Application::appendErrors($errors);

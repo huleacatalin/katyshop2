@@ -13,7 +13,7 @@ if(Application::hasErrors() || Application::hasMessages())
 	while($s = Application::getNextMessage())
 	{
 		?>
-		<p class="message"><?php echo htmlspecialchars($s); ?></p>
+		<p class="message"><?php echo htmlspecialchars(translate($s)); ?></p>
 		<?php
 	}
 	
@@ -21,7 +21,7 @@ if(Application::hasErrors() || Application::hasMessages())
 	while ($s = Application::getNextError())
 	{
 		?>
-		<p class="error"><?php echo htmlspecialchars($s); ?></p>
+		<p class="error"><?php echo htmlspecialchars(translate($s)); ?></p>
 		<?php
 	}
 	?>

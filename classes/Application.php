@@ -314,6 +314,8 @@ class Application extends BaseObject
 	{
 		require_once(dirname(dirname(__FILE__)) . "/config/config.php");
 		require_once(dirname(dirname(__FILE__)) . "/config/counties.php");
+		require_once(dirname(dirname(__FILE__)) . "/config/lang/en.php");
+		require_once(dirname(dirname(__FILE__)) . "/config/lang/ro.php");
 	}
 
 	static function fixCompat()
