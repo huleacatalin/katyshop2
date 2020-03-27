@@ -339,8 +339,9 @@ if(!empty($error)) {
 <label>Default currency: <input type="text" name="default_currency" value="<?php echo htmlspecialchars($default_currency); ?>" class="text"></label>
 <label>Language: 
 	<select name="lang_code">
-	<option value="en" <?php echo ($lang_code == 'en') ? 'selected' : ''; ?>>en</option>
-	<option value="ro" <?php echo ($lang_code == 'ro') ? 'selected' : ''; ?>>ro</option>
+	<option value="en" <?php echo ($lang_code == 'en') ? 'selected' : ''; ?>>English</option>
+	<option value="pt" <?php echo ($lang_code == 'pt') ? 'selected' : ''; ?>>Portuguese</option>
+	<option value="ro" <?php echo ($lang_code == 'ro') ? 'selected' : ''; ?>>Romanian</option>
 	</select>
 </label><label>Shop invoice info: 
 	<textarea name="shop_invoice_info" style="width: 250px; height: 100px; "><?php echo htmlspecialchars($shop_invoice_info); ?></textarea>

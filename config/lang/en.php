@@ -441,7 +441,7 @@ $this->cfg["lang"]["en"] = array(
 	"There is no user having this address" => 'There is no user having this address',
 	"The county must have between 3 and 177 characters" => 'The county must have between 3 and 177 characters',
 	"The city must have between 3 and 177 characters" => 'The city must have between 3 and 177 characters',
-	"The city must have between 3 and 1000 characters" => 'The city must have between 3 and 1000 characters',
+	"The address must have between 3 and 1000 characters" => 'The address must have between 3 and 1000 characters',
 	"Could not find this address to update it" => 'Could not find this address to update it',
 	"This address doesn't belong to you" => "This address doesn't belong to you",
 	

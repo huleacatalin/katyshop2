@@ -2,8 +2,8 @@
 
 /**
  * Product: Katyshop2
- * @version 2.4
- * @author Catalin Hulea - catalinhulea@users.sourceforge.net
+ * @version 2.6
+ * @author Catalin Hulea - tivepar@gmail.com
  * @copyright Copyleft 2020 Catalin Hulea
  * @license GNU General Public License version 3
  * 			You can find a copy of GNU GPL v3 in the main folder
