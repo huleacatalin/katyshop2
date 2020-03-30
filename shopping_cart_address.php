@@ -91,20 +91,26 @@ else
 {
 	if($noAddressText == 'delivery') {
 		?>
+		<form action="formparser/order.php?action=no_address_found" method="post">
+		<input type="hidden" name="address_type" value="delivery">
 		<p>
 		<?php echo translate("No delivery address could be found."); ?>
-		<a href="address.php?detail=true&id=0"><?php echo translate("Click here"); ?></a>
+		<input type="submit" value="<?php echo translate("Click here"); ?>">
 		<?php echo translate("to add a new delivery address in your address book."); ?>
 		</p>
+		</form>
 		<?php
 	}
 	elseif($noAddressText == 'invoicing') {
 		?>
+		<form action="formparser/order.php?action=no_address_found" method="post">
+		<input type="hidden" name="address_type" value="invoice">
 		<p>
 		<?php echo translate("No invoicing address could be found."); ?>
-		<a href="address.php?detail=true&id=0"><?php echo translate("Click here"); ?></a>
+		<input type="submit" value="<?php echo translate("Click here"); ?>">
 		<?php echo translate("to add a new invoicing address in your address book."); ?>
 		</p>
+		</form>
 		<?php
 	}
 }

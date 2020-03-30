@@ -264,7 +264,10 @@ $this->cfg["lang"]["pt"] = array(
 	// includes/right.php
 	"Welcome" => 'Bem-Vindo',
 	"my account" => 'Minha conta',
-	
+
+	// includes/shopping_cart_box.php
+	"View cart" => "View cart",
+		
 	// classes/common/UploadFile.php
 	"There was an error while trying to upload the file" => 'Ocorreu um erro ao tentar fazer upload do arquivo',
 	"Temporary filename must have between 5 and 255 characters" => 'O nome do arquivo temporário deve ter entre 5 e 255 ',

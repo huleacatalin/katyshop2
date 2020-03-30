@@ -76,7 +76,7 @@ if($user->isCompanyLoggedIn() || $user->isPersonLoggedIn())
 		$chkMale = (@$updateUser->gender == "male") ? "checked" : "";
 		?>
 		<label style="display: inline; "><input type="radio" name="gender" value="female" <?php echo $chkFemale; ?>> <?php echo translate("Miss"); ?></label>
-		<label style="display: inline; "><input type="radio" name="gender" value="male" <?php echo $chkMale; ?>> <?php echo tranlsate("Mister"); ?></label>
+		<label style="display: inline; "><input type="radio" name="gender" value="male" <?php echo $chkMale; ?>> <?php echo translate("Mister"); ?></label>
 	</p>
 	<label><?php echo translate("First name"); ?>: <input type="text" name="first_name" value="<?php echo htmlspecialchars(@$updateUser->first_name); ?>" class="text"></label>
 	<label><?php echo translate("Last name"); ?>: <input type="text" name="last_name" value="<?php echo htmlspecialchars(@$updateUser->last_name); ?>" class="text"></label>

@@ -31,7 +31,17 @@ if(@$_GET["action"] == "save")
 	{
 		$db->tbAddress->save($a);
 		Application::addMessage("Address has been saved");
-		Tools::redirect("../address.php");
+		if(SessionWrapper::get("order_no_address_found") == "delivery") {
+			SessionWrapper::set("order_no_address_found", '');
+			Tools::redirect("../shopping_cart_address.php?action=select_delivery_address");
+		}
+		elseif(SessionWrapper::get("order_no_address_found") == "invoice") {
+			SessionWrapper::set("order_no_address_found", '');
+			Tools::redirect("../shopping_cart_address.php?action=select_invoice_address");
+		}
+		else {
+			Tools::redirect("../address.php");
+		}
 	}
 	else
 	{

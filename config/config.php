@@ -2,7 +2,7 @@
 
 /**
  * Product: Katyshop2
- * @version 2.6
+ * @version 2.7 - add new address return to shopping cart
  * @author Catalin Hulea - tivepar@gmail.com
  * @copyright Copyleft 2020 Catalin Hulea
  * @license GNU General Public License version 3

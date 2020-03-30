@@ -33,9 +33,9 @@ if($user->isUserLoggedIn())
 </form>
 
 <ul>
+<li><a href="register.php" style="font-weight: bold; font-size: 1.4em; "><?php echo translate("Register new account"); ?></a></li>
 <li><a href="forgot_password.php"><?php echo translate("Password or activation code forgotten?"); ?></a></li>
 <li><a href="activate.php"><?php echo translate("Activation link"); ?></a></li>
-<li><a href="register.php"><?php echo translate("Register new account"); ?></a></li>
 </ul>
 
 </div>

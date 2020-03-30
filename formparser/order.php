@@ -148,6 +148,10 @@ elseif (@$_GET["action"] == "select_invoice_address")
 		Tools::redirect("../order.php");
 	}
 }
+elseif(@$_GET["action"] == "no_address_found") {
+	SessionWrapper::set("order_no_address_found", @$_POST['address_type']);
+	Tools::redirect("../address.php?detail=true&id=0");
+}
 elseif (@$_GET["action"] == "finalize")
 {
 	$user = Application::getUser();

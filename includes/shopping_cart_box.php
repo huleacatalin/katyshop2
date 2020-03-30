@@ -35,6 +35,7 @@ else
 	?>
 	</ul>
 	<p><?php echo translate("Total to pay"); ?>: <?php echo htmlspecialchars(displayPrice($basket->total)); ?></p>
+	<p><a href="shopping_cart.php" class="button"><?php echo translate("View cart"); ?> &gt;</a></p>
 	<?php
 }
 ?>

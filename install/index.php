@@ -128,6 +128,7 @@ $this->cfg["db"] = array(
 );
 
 $this->cfg["lang_code"] = "' . addslashes($cfg['lang_code']) . '";
+$this->cfg["mail_agent"]["From"] = "' . addslashes($cfg['admin_email']) . '";
 
 define("INSTALL_DONE", true);
 
@@ -242,7 +243,8 @@ elseif($step == 2) {
 			'db_host' => $db_host,
 			'db_user' => $db_user,
 			'db_password' => $db_password,
-			'db_name' => $db_name
+			'db_name' => $db_name,
+			'admin_email' => $admin_email
 		);
 		$error .= write_config_contents($config_filename, $cfg);
 	}

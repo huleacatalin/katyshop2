@@ -263,7 +263,10 @@ $this->cfg["lang"]["ro"] = array(
 	// includes/right.php
 	"Welcome" => 'Bun venit',
 	"my account" => 'contul meu',
-	
+
+	// includes/shopping_cart_box.php
+	"View cart" => "Vezi coșul de cumpărături",
+		
 	// classes/common/UploadFile.php
 	"There was an error while trying to upload the file" => 'A fost o eroare când se încerca uploadul fișierului',
 	"Temporary filename must have between 5 and 255 characters" => 'Numele fișierului temporar trebuie să aibă între 5 și 255 caractere',

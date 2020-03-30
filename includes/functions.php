@@ -13,7 +13,7 @@
 	 $lang_code = Application::getConfigValue("lang_code");
 	 $lang = Application::getConfigValue("lang");
 	 $arr = array();
-	 if(array_key_exists($lang_code, $lang))
+	 if(@array_key_exists($lang_code, $lang))
 		$arr = $lang[$lang_code];
 	
 	 if(array_key_exists($str, $arr) && !empty($arr[$str]))
