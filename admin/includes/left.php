@@ -13,7 +13,7 @@
 <li <?php echo (THIS_PAGE == 'order.php') ? 'class="selected"' : ''; ?>><a href="admin/order.php"><?php echo translate("Orders"); ?></a></li>
 <li <?php echo (THIS_PAGE == 'manufacturer.php') ? 'class="selected"' : ''; ?>><a href="admin/manufacturer.php"><?php echo translate("Manufacturers"); ?></a></li>
 <li <?php echo (THIS_PAGE == 'contact_message.php') ? 'class="selected"' : ''; ?>><a href="admin/contact_message.php"><?php echo translate("Messages"); ?></a></li>
-<li <?php echo (THIS_PAGE == 'category.php' && intval(@$_GET['id_category']) == 0) ? 'class="selected"' : ''; ?>><a href="admin/category.php"><?php echo translate("Categories"); ?></a></li>
+<li <?php echo (THIS_PAGE == 'category.php' && intval(@$_GET['id_category']) == 0) ? 'class="selected"' : ''; ?>><a href="admin/category.php"><?php echo translate("Products"); ?></a></li>
 </ul>
 
 <div id="categories">

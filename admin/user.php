@@ -41,6 +41,7 @@ if(@$_GET["action"] == "detail")
 	<li><?php echo translate("Username"); ?>: <span class="value"><?php echo htmlspecialchars(@$u->username); ?></span></li>
 	<li><?php echo translate("Email"); ?>: <span class="value"><?php echo htmlspecialchars(@$u->email2); ?></span></li>
 	<li><?php echo translate("Account type"); ?>: <span class="value"><?php echo ucfirst($u->acc_type); ?></span></li>
+	<li><?php echo translate("Registered date"); ?>: <span class="value"><?php echo $u->displayDateTime('date_registered'); ?></span></li>
 	<li><?php echo translate("Active"); ?>: <span class="value"><?php echo (@$u->active) ? "Yes" : "No"; ?></span></li>
 	<li>
 		<?php
@@ -167,6 +168,7 @@ else
 		<th><?php echo translate("email"); ?></th>
 		<th><?php echo translate("active"); ?></th>
 		<th><?php echo translate("account type"); ?></th>
+		<th><?php echo translate("registered date"); ?></th>
 		<th><?php echo translate("action"); ?></th>
 		</tr>
 		<?php
@@ -179,6 +181,7 @@ else
 			<td><a href="mailto:<?php echo htmlspecialchars($list[$i]->email2); ?>"><?php echo htmlspecialchars($list[$i]->email2); ?></a>&nbsp;</td>
 			<td><?php echo ($list[$i]->active == "1") ? translate("Yes") : translate("No"); ?>&nbsp;</td>
 			<td><?php echo htmlspecialchars(ucfirst($list[$i]->acc_type)); ?></td>
+			<td><?php echo $list[$i]->displayDateTime('date_registered'); ?></td>
 			<td>
 			<?php
 			$temp = (intval($list[$i]->active) == 1) ? "deactivate" : "activate";
@@ -194,7 +197,7 @@ else
 		}
 		?>
 		<tr>
-		<td colspan="6" align="right">
+		<td colspan="7" align="right">
 		<?php echo getListPages($recordsCount); ?>
 		</td>
 		</tr>

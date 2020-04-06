@@ -82,15 +82,17 @@ function insert_admin($mysqli, $admin_username, $admin_password, $admin_email, $
 		'email' => md5($admin_email),
 		'email2' => tools_encrypt($admin_email, $openssl_key),
 		'acc_type' => "admin",
+		'date_registered' => tools_encrypt(date("Y-m-d H:i:s"), $openssl_key),
 		'active' => 1
 	);
-	$q = "insert into _users(id, username, password, email, email2, acc_type, active) values(
+	$q = "insert into _users(id, username, password, email, email2, acc_type, date_registered, active) values(
 		'" . $mysqli->real_escape_string($user['id']) . "',
 		'" . $mysqli->real_escape_string($user['username']) . "',
 		'" . $mysqli->real_escape_string($user['password']) . "',
 		'" . $mysqli->real_escape_string($user['email']) . "',
 		'" . $mysqli->real_escape_string($user['email2']) . "',
 		'" . $mysqli->real_escape_string($user['acc_type']) . "',
+		'" . $mysqli->real_escape_string($user['date_registered']) . "',
 		'" . $mysqli->real_escape_string($user['active']) . "')";
 	if(!$mysqli->query($q))
 		$error .= 'Could not insert admin account into the database. ' . $mysqli->error . '. ';

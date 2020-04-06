@@ -131,6 +131,10 @@ class BaseObject extends BaseClass
 	function displayDate($propertyName)
 	{
 		$cfgDf = Application::getConfigValue("date_format");
+		$lang_code = Application::getConfigValue("lang_code");
+		if(array_key_exists($lang_code, $cfgDf))
+			$cfgDf = $cfgDf[$lang_code];
+		
 		$df = new DateFormat();
 		$df->readDate($this->$propertyName);
 		$str = $df->validate() ? $df->displayDate($cfgDf["date"], $cfgDf["separator_date"]) : "";
@@ -150,6 +154,10 @@ class BaseObject extends BaseClass
 	function displayDateTime($propertyName)
 	{
 		$cfgDf = Application::getConfigValue("date_format");
+		$lang_code = Application::getConfigValue("lang_code");
+		if(array_key_exists($lang_code, $cfgDf))
+			$cfgDf = $cfgDf[$lang_code];
+		
 		$df = new DateFormat();
 		$df->readDateTime($this->$propertyName);
 		$str = $df->validate() ? $df->display($cfgDf["date_time"], $cfgDf["separator_date"], $cfgDf["separator_date_time"], $cfgDf["separator_time"]) : "";
@@ -167,6 +175,10 @@ class BaseObject extends BaseClass
 	function readDateTime($propertyName, $dateValue)
 	{
 		$cfgDf = Application::getConfigValue("date_format");
+		$lang_code = Application::getConfigValue("lang_code");
+		if(array_key_exists($lang_code, $cfgDf))
+			$cfgDf = $cfgDf[$lang_code];
+	
 		$df = new DateFormat();
 		$df->readDateTime($dateValue, $cfgDf["date"], $cfgDf["separator_date"]);
 		$this->$propertyName = $df->validate() ? $df->display() : "";

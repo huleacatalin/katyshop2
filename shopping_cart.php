@@ -5,6 +5,12 @@
  */
 
 require_once(dirname(__FILE__) . "/init.php");
+
+$user = Visitor::getInstance();
+if($user->isAdminLoggedIn()) {
+	Application::addError('Admin accounts cannot send orders');
+	Tools::redirect('admin');
+}
 ?>
 <html>
 <head>
@@ -34,6 +40,9 @@ else
 	$basket->computeValue();
 	$df = new DateFormat();
 	$cfgDf = Application::getConfigValue("date_format");
+	$lang_code = Application::getConfigValue("lang_code");
+	if(array_key_exists($lang_code, $cfgDf))
+		$cfgDf = $cfgDf[$lang_code];
 	?>
 	<form action="formparser/order.php?action=update_basket" method="post" id="frm_update_basket">
 	<?php echo translate("Date"); ?>: <?php echo htmlspecialchars($df->displayDate($cfgDf["date"], $cfgDf["separator_date"])); ?> <br>

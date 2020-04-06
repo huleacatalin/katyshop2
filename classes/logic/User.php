@@ -19,11 +19,13 @@ class User extends Visitor
 	var $active = 0; // is this account active? if not, it's not allowed to login
 	var $activation_code = ""; // this is sent the first time on mail, and user must use it to activate his account
 	var $login_code = ""; // this is used by "remember my password" feature, sent by cookie and used instead of password
-
+	var $date_registered = "";
+	
 	function __construct()
 	{
 		parent::__construct();
 		$this->activation_code = Tools::getRandomChars(10);
+		$this->date_registered = date("Y-m-d H:i:s");
 	}
 
 	function validateCommonFields()
@@ -165,6 +167,7 @@ class User extends Visitor
 " . translate("Username") . ": {$this->username}
 " . translate("Email") . ": {$this->email2}
 " . translate("Account type") . ": {$this->acc_type}
+" . translate("Registered date") . ": {$this->date_registered}
 " . translate("Active account") . ": {$this->active} (1 = active, 0 = inactive)
 " . translate("Activation code") . ": {$this->activation_code}
 ";
@@ -183,12 +186,19 @@ class User extends Visitor
 			$this->email2 = $this->email;
 			$this->email = md5($this->email);
 		}
-		$this->email2 = Tools::encrypt($this->email2, Application::getConfigValue('openssl_key'));
+		
+		$arr = array('email2', 'date_registered');
+		foreach($arr as $prop) {
+			$this->$prop = Tools::encrypt($this->$prop, Application::getConfigValue('openssl_key'));
+		}
 	}
 	
 	function decrypt()
 	{
-		$this->email2 = Tools::decrypt($this->email2, Application::getConfigValue('openssl_key'));
+		$arr = array('email2', 'date_registered');
+		foreach($arr as $prop) {
+			$this->$prop = Tools::decrypt($this->$prop, Application::getConfigValue('openssl_key'));
+		}
 	}
 }
 

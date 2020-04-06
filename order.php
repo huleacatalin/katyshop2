@@ -49,7 +49,10 @@ else
 	$order->computeValue();
 	$df = new DateFormat();
 	$cfgDf = Application::getConfigValue("date_format");
-
+	$lang_code = Application::getConfigValue("lang_code");
+	if(array_key_exists($lang_code, $cfgDf))
+		$cfgDf = $cfgDf[$lang_code];
+	
 	if($order->id == 0)
 	{
 		?>

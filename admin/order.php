@@ -39,8 +39,6 @@ if(@$_GET["action"] == "detail")
 	else
 	{
 		$order->computeValue();
-		$df = new DateFormat();
-		$cfgDf = Application::getConfigValue("date_format");
 		?>
 		<?php echo translate("Order code"); ?>: <?php echo htmlspecialchars($order->code); ?> <a href="admin/proforma.php?code=<?php echo htmlspecialchars($order->code); ?>" target="_blank"><?php echo translate("click here to see proforma invoice"); ?></a> <br>
 		<?php echo translate("Title"); ?>: <big><b><?php echo $order->title; ?></b></big> <br>

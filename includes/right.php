@@ -20,6 +20,7 @@ if(!$user->isUserLoggedIn())
 	<label><input type="checkbox" name="remember_password" value="1" id="remember_password2"> <?php echo translate("Remember my password"); ?></label>
 	<input type="submit" value="<?php echo translate("Login"); ?>" class="button">
 	</form>
+	<a href="register.php" class="button" style="font-weight: bold; font-size: 1.2em; display: block; "><?php echo translate("Register new account"); ?></a>
 	<?php
 }
 elseif (!$user->isAdminLoggedIn())
@@ -46,6 +47,6 @@ else
 <?php require_once(WEB_DIR . "/includes/shopping_cart_box.php"); ?>
 
 <p><a href="https://www.github.com/huleacatalin/katyshop2" target="_blank"><img src="img/design/octocat.jpg"></a></p>
-<p><a href="http://www.sourceforge.net/p/katyshop2" target="_blank"><img src="img/design/sourceforge.jpg"></a></p>
-<p><a href="http://www.softpedia.com" target="_blank"><img src="img/design/softpedia.jpg"></a></p>
+<p><a href="https://www.sourceforge.net/p/katyshop2" target="_blank"><img src="img/design/sourceforge.jpg"></a></p>
+<p><a href="https://www.softpedia.com" target="_blank"><img src="img/design/softpedia.jpg"></a></p>
 </div>

@@ -59,7 +59,6 @@ elseif($order->id_user != $user->id)
 if($order->getProductsCount() > 0)
 {
 	$order->computeValue();
-	$cfgDf = Application::getConfigValue("date_format");
 	?>
 
 	<table style="text-align: right; " cellpadding="2" cellspacing="0" border="1" width="800">

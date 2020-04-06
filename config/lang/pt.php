@@ -5,6 +5,16 @@
  * License GNU General Public License version 3 http://www.gnu.org/licenses/
  */
 
+// how should dates be displayed on the website?
+$this->cfg["date_format"]['pt'] = array(
+	"date" => "MM/DD/YYYY",
+	"time" => "H:i:s",
+	"date_time" => "MM/DD/YYYY H:i:s",
+	"separator_date" => "/",
+	"separator_time" => ":",
+	"separator_date_time" => " "
+);
+
 $this->cfg["lang"]["pt"] = array(
 	// activate.php
 	"This username could not be found" => 'Usuario nao encontrado',
@@ -135,6 +145,7 @@ $this->cfg["lang"]["pt"] = array(
 	"Confirm password" => 'Confirmar senha',
 	"Change the password" => 'Mudar senha',
 	"Account type" => 'Tipo de conta',
+	"Registered date" => 'Data de registro',
 	"Personal info" => 'Informacao pessoal',
 	"Gender" => 'Genero',
 	"Miss" => 'Senhora',
@@ -266,7 +277,7 @@ $this->cfg["lang"]["pt"] = array(
 	"my account" => 'Minha conta',
 
 	// includes/shopping_cart_box.php
-	"View cart" => "View cart",
+	"View cart" => "Ver carrinho",
 		
 	// classes/common/UploadFile.php
 	"There was an error while trying to upload the file" => 'Ocorreu um erro ao tentar fazer upload do arquivo',
@@ -462,6 +473,7 @@ $this->cfg["lang"]["pt"] = array(
 	"email" => 'email',
 	"active" => 'ativo',
 	"account type" => 'tipo de conta',
+	'registered date' => 'data de registro',
 	"action" => 'açao',
 	"Yes" => 'sim',
 	"No" => 'Nao',

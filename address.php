@@ -5,6 +5,12 @@
  */
 
 require_once(dirname(__FILE__) . "/init.php");
+
+$user = Visitor::getInstance();
+if($user->isAdminLoggedIn()) {
+	Application::addError('Admin accounts cannot have addresses');
+	Tools::redirect('profile.php');
+}
 ?>
 <html>
 <head>

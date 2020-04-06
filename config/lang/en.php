@@ -4,6 +4,16 @@
  * Copyleft https://sourceforge.net/projects/katyshop2
  * License GNU General Public License version 3 http://www.gnu.org/licenses/
  */
+ 
+// how should dates be displayed on the website?
+$this->cfg["date_format"]["en"] = array(
+	"date" => "MM/DD/YYYY",
+	"time" => "H:i:s",
+	"date_time" => "MM/DD/YYYY H:i:s",
+	"separator_date" => "/",
+	"separator_time" => ":",
+	"separator_date_time" => " "
+);
 
 $this->cfg["lang"]["en"] = array(
 	// activate.php
@@ -135,6 +145,7 @@ $this->cfg["lang"]["en"] = array(
 	"Confirm password" => 'Confirm password',
 	"Change the password" => 'Change the password',
 	"Account type" => 'Account type',
+	"Registered date" => 'Registered date',
 	"Personal info" => 'Personal info',
 	"Gender" => 'Gender',
 	"Miss" => 'Miss',
@@ -462,6 +473,7 @@ $this->cfg["lang"]["en"] = array(
 	"email" => 'email',
 	"active" => 'active',
 	"account type" => 'account type',
+	'registered date' => 'registered date',
 	"action" => 'action',
 	"Yes" => 'Yes',
 	"No" => 'No',

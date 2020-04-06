@@ -5,6 +5,16 @@
  * License GNU General Public License version 3 http://www.gnu.org/licenses/
  */
 
+// how should dates be displayed on the website?
+$this->cfg["date_format"]['ro'] = array(
+	"date" => "DD/MM/YYYY",
+	"time" => "H:i:s",
+	"date_time" => "DD/MM/YYYY H:i:s",
+	"separator_date" => "/",
+	"separator_time" => ":",
+	"separator_date_time" => " "
+);
+
 $this->cfg["lang"]["ro"] = array(
 	// activate.php
 	"This username could not be found" => 'Acest username nu a putut fi găsit',
@@ -134,6 +144,7 @@ $this->cfg["lang"]["ro"] = array(
 	"Confirm password" => 'Confirmare parolă',
 	"Change the password" => 'Schimbă parola',
 	"Account type" => 'Tip de cont',
+	"Registered date" => 'Data înregistrării',
 	"Personal info" => 'Informații personale',
 	"Gender" => 'Gen',
 	"Miss" => 'Doamnă',
@@ -460,6 +471,7 @@ $this->cfg["lang"]["ro"] = array(
 	"email" => 'email',
 	"active" => 'activ',
 	"account type" => 'tip cont',
+	'registered date' => 'data înregistrării',
 	"action" => 'acțiune',
 	"Yes" => 'Da',
 	"No" => 'Nu',

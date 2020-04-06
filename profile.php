@@ -52,20 +52,22 @@ if($user->isCompanyLoggedIn() || $user->isPersonLoggedIn())
 }
 ?>
 <div style="width: 350px; float: left; margin-right: 30px; ">
-<h2><?php echo translate("Login info"); ?></h2>
-<p><?php echo translate("Username"); ?>: <?php echo htmlspecialchars(@$updateUser->username); ?></p>
+	<h2><?php echo translate("Login info"); ?></h2>
+	<ul class="properties">
+	<li><?php echo translate("Username"); ?>: <span class="value"><?php echo htmlspecialchars(@$updateUser->username); ?></span></li>
+	<li>
+		<p id="tbl_change_password"><?php echo translate("Password"); ?>: <a href="javascript:changePassword(); "><?php echo translate("Click here to change the password"); ?></a></p>
 
-<p id="tbl_change_password"><?php echo translate("Password"); ?>: <a href="javascript:changePassword(); "><?php echo translate("Click here to change the password"); ?></a></p>
-
-<p id="tbl_new_password" style="display: none; ">
-<label><?php echo translate("Old password"); ?>: <input type="password" name="old_password" class="text"></label>
-<label><?php echo translate("New password"); ?>: <input type="password" name="password" class="text"></label>
-<label><?php echo translate("Confirm password"); ?>: <input type="password" name="confirm_password" class="text"></label>
-<input type="submit" value="<?php echo translate("Change the password"); ?>" class="button">
-</p>
-
-<p><?php echo translate("Email"); ?>: <?php echo htmlspecialchars(@$updateUser->email2); ?></p>
-<p><?php echo translate("Account type"); ?>: <?php echo ucfirst(@$updateUser->acc_type);	?></p>
+		<p id="tbl_new_password" style="display: none; ">
+		<label><?php echo translate("Old password"); ?>: <input type="password" name="old_password" class="text"></label>
+		<label><?php echo translate("New password"); ?>: <input type="password" name="password" class="text"></label>
+		<label><?php echo translate("Confirm password"); ?>: <input type="password" name="confirm_password" class="text"></label>
+		<input type="submit" value="<?php echo translate("Change the password"); ?>" class="button">
+		</p>
+	</li>
+	<li><?php echo translate("Email"); ?>: <span class="value"><?php echo htmlspecialchars(@$updateUser->email2); ?></span></li>
+	<li><?php echo translate("Account type"); ?>: <span class="value"><?php echo ucfirst(@$updateUser->acc_type); ?></span></li>
+	<li><?php echo translate("Registered date"); ?>: <span class="value"><?php echo @$updateUser->displayDateTime('date_registered'); ?></span></li>
 </div>
 
 <div id="div_person" style="display: none; width: 350px; float: left; ">

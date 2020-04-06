@@ -25,7 +25,7 @@ require_once(WEB_DIR . "/includes/req_admin.php");
 <li><a href="admin/order.php"><?php echo translate("Orders"); ?></a></li>
 <li><a href="admin/manufacturer.php"><?php echo translate("Manufacturers"); ?></a></li>
 <li><a href="admin/contact_message.php"><?php echo translate("Messages"); ?></a></li>
-<li><a href="admin/category.php"><?php echo translate("Categories"); ?></a></li>
+<li><a href="admin/category.php"><?php echo translate("Products"); ?></a></li>
 </ul>
 
 </div>

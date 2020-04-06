@@ -99,6 +99,7 @@ create table _users (
 	active int(1) not null default '1',
 	activation_code varchar(10) not null default '',
 	login_code varchar(255) not null default '',
+	date_registered varchar(40) not null default '',
 	constraint unique(username),
 	constraint unique(email)
 );
