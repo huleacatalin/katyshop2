@@ -45,6 +45,11 @@ class Database extends MysqlDatabase
 	 * @var TableProductImage
 	 */
 	var $tbProductImage;
+	
+	/**
+	 * @var TableComment
+	 */
+	var $tbComment;
 
 	/**
 	 * @var TableOrder
@@ -82,6 +87,7 @@ class Database extends MysqlDatabase
 		$this->tbCategory = new TableCategory($this);
 		$this->tbProduct = new TableProduct($this);
 		$this->tbProductImage = new TableProductImage($this);
+		$this->tbComment = new TableComment($this);
 		$this->tbOrder = new TableOrder($this);
 		$this->tbOrderProduct = new TableOrderProduct($this);
 		$this->tbManufacturer = new TableManufacturer($this);

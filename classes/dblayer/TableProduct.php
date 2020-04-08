@@ -311,6 +311,7 @@ class TableProduct extends MysqlTable
 	{
 		$this->removePosition($p->pos, $p->id_category);
 		$p->removeImages();
+		$this->db->tbComment->deleteByProductId($p->id);
 		parent::deleteObj($p);
 	}
 

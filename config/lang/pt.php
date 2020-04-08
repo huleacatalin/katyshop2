@@ -3,6 +3,8 @@
 /**
  * Copyleft https://sourceforge.net/projects/katyshop2
  * License GNU General Public License version 3 http://www.gnu.org/licenses/
+ *
+ * Thanks to Tony Fonseca for the Portuguese translation
  */
 
 // how should dates be displayed on the website?
@@ -132,6 +134,11 @@ $this->cfg["lang"]["pt"] = array(
 	"Add to the cart" => 'Adicionar ao carrinho',
 	"Description" => 'Descricao',
 	"Technical details" => 'Detalhes Tecnicos',
+	'Comments' => 'Comentários',
+	"You must login to post a comment" => 'Você deve fazer login para publicar um comentário',
+	"Post a comment" => 'Publicar um comentário',
+	"Are you sure you want to delete this comment?" => "Tem certeza de que deseja excluir este comentário?",
+	"delete" => "excluir",
 	
 	// profile.php
 	"Profile" => 'Perfil',
@@ -224,7 +231,7 @@ $this->cfg["lang"]["pt"] = array(
 	"You must login to send the order" => 'Voce tem que fazer un login para enviar a ordem',
 	"Order has been sent" => 'A ordem foi enviada',
 	
-	// formparser/user.php
+	// -.php
 	"You may not use the register form because you are logged in" => 'Voce nao nao pode usar a forma de registo porque voce esta logged in',
 	"Please choose a valid account type" => 'Por favor escolha um tipo de conta valida',
 	"Your browser sent a request that our server could not understand" => 'O seu browser enviou uma solicitacao que o nosso server nao entendeu',
@@ -240,6 +247,10 @@ $this->cfg["lang"]["pt"] = array(
 	"A new random password has been generated" => 'Uma senha aleatoria foi generada',
 	"Please check your email address to receive the new password, you will be able to use this new password to authenticate yourself." => 'Por favor verifique o seu email para receber uma nova senha, voce vai ser capaz de fazer uma autenticacao.',
 	"Our mail server doesn't work properly, the mail with random password could not be sent. Please try again later." => "O nosso servidor de email nao esta a funcionar devidamente, a senha aleatoria nao vai poder ser enviada por email. Por favor tente mais tarde.",
+	
+	// formparser/comment.php
+	"Comment sent" => "Comentário enviado",
+	"Comment deleted" => "Comentário deletado",
 	
 	// includes/footer.php
 	"Admin" => 'Administrador',
@@ -382,6 +393,11 @@ $this->cfg["lang"]["pt"] = array(
 	"pieces" => 'peças',
 	"kg" => 'kg',
 	
+	// classes/logic/Comment.php
+	"Comment must have between 3 and 1000 characters" => 'O comentário deve ter entre 3 e 1000 caracteres',
+	'Product of this comment does not exist' => 'O produto deste comentário não existe',
+	'User of this comment does not exist' => 'O usuário deste comentário não existe',
+	
 	// classes/logic/OrderProduct.php
 	"id_order property of OrderProduct object must be positive integer" => 'A propriedade id_order do objeto OrderProduct deve ser um número inteiro positivo',
 	"An order can hold between 1 and 50 products" => 'Um pedido pode conter entre 1 e 50 produtos',
@@ -487,7 +503,7 @@ $this->cfg["lang"]["pt"] = array(
 	"Parent category" => 'Categoria Parental',
 	"Delete product" => 'Excluir produto',
 	"Product is active" => 'O produto está ativo',
-	"See the product on the public site" => 'Veja o produto no site público',
+	"View the product on the public site" => 'Veja o produto no site público',
 	"Product is not active" => 'O produto não está ativo',
 	"Edit product " => 'Modificar produto ',
 	"Add a new product" => 'Adicionar um novo produto',

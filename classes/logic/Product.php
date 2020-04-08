@@ -103,11 +103,15 @@ class Product extends LogicObject
 
 	function removeImages()
 	{
-		if(empty($this->picture))
-			return ;
-		@unlink(WEB_DIR . "/img/products/small/{$this->picture}");
-		@unlink(WEB_DIR . "/img/products/medium/{$this->picture}");
-		@unlink(WEB_DIR . "/img/products/large/{$this->picture}");
+		if(!empty($this->picture)) {
+			@unlink(WEB_DIR . "/img/products/xsmall/{$this->picture}");
+			@unlink(WEB_DIR . "/img/products/small/{$this->picture}");
+			@unlink(WEB_DIR . "/img/products/medium/{$this->picture}");
+			@unlink(WEB_DIR . "/img/products/large/{$this->picture}");
+		}
+		$this->getImagesFromDb();
+		foreach($this->images as $image)
+			$image->deleteFromDb();
 	}
 
 	static function getPossibleMeasuringUnits()

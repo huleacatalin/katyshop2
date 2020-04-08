@@ -131,6 +131,11 @@ $this->cfg["lang"]["ro"] = array(
 	"Add to the cart" => 'Adaugă în coș',
 	"Description" => 'Descriere',
 	"Technical details" => 'Detalii tehnice',
+	'Comments' => 'Comentarii',
+	"You must login to post a comment" => "Trebuie să vă logați pentru a posta un comentariu",
+	"Post a comment" => 'Postați un comentariu',
+	"Are you sure you want to delete this comment?" => "Sunteți sigur că doriți să ștergeți acest comentariu?",
+	"delete" => "ștergere",
 	
 	// profile.php
 	"Profile" => 'Profil',
@@ -239,6 +244,10 @@ $this->cfg["lang"]["ro"] = array(
 	"A new random password has been generated" => 'O nouă parolă aleatorie a fost generată',
 	"Please check your email address to receive the new password, you will be able to use this new password to authenticate yourself." => 'Vă rugăm să vă verificați adresa de email pentru a primi noua parolă, veți putea să folosiți această nouă parolă pentru a vă autentifica',
 	"Our mail server doesn't work properly, the mail with random password could not be sent. Please try again later." => 'Serverul nostru de mail nu funcționează momentan, mailul cu parola aleatorie nu a putut fi trimis. Vă rugăm să încercați din nou mai târziu.',
+	
+	// formparser/comment.php
+	"Comment sent" => "Comentariu trimis",
+	"Comment deleted" => "Comentariu șters",
 	
 	// includes/footer.php
 	"Admin" => 'Admin',
@@ -381,6 +390,11 @@ $this->cfg["lang"]["ro"] = array(
 	"pieces" => 'bucăți',
 	"kg" => 'kg',
 	
+	// classes/logic/Comment.php
+	"Comment must have between 3 and 1000 characters" => 'Comentariul trebuie să aibă între 3 și 1000 caractere',
+	'Product of this comment does not exist' => 'Produsul acestui comentariu nu există',
+	'User of this comment does not exist' => 'Utilizatorul acestui comentariu nu există',
+	
 	// classes/logic/OrderProduct.php
 	"id_order property of OrderProduct object must be positive integer" => 'proprietatea id_order a obiectului de tip OrderProduct trebuie să fie număr întreg pozitiv',
 	"An order can hold between 1 and 50 products" => 'O comandă poate conține între 1 și 50 de produse',
@@ -485,7 +499,7 @@ $this->cfg["lang"]["ro"] = array(
 	"Parent category" => 'Categoria părinte',
 	"Delete product" => 'Șterge produs',
 	"Product is active" => 'Produsul este activ',
-	"See the product on the public site" => 'Vezi produsul pe siteul public',
+	"View the product on the public site" => 'Vezi produsul pe siteul public',
 	"Product is not active" => 'Produsul nu este activ',
 	"Edit product " => 'Editează produs',
 	"Add a new product" => 'Adaugă un nou produs',

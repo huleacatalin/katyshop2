@@ -2,8 +2,8 @@
 
 /**
  * Product: Katyshop2
- * @version 2.8 - user registration date
- * @author Catalin Hulea - tivepar@gmail.com
+ * @version 2.9 - comments
+ * @author Catalin Hulea - catalinhulea@users.sourceforge.net
  * @copyright Copyleft 2020 Catalin Hulea
  * @license GNU General Public License version 3
  * 			You can find a copy of GNU GPL v3 in the main folder
@@ -20,7 +20,7 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  * 
  * THIRD PARTY
  * classes/common/date http://pear.php.net/package/Date

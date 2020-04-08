@@ -36,6 +36,10 @@ textarea {
 	font-size: larger;
 }
 
+textarea.comment {
+	height: 100px;
+}
+
 input.text {
 	width: 250px;
 	padding: 5px;
@@ -304,6 +308,36 @@ ul.properties span.value {
 	padding: 5px;
 	display: block;
 	background-color: #dddddd;
+}
+
+div.comment {
+	border: 1px solid #aaaaaa;
+	margin-bottom: 1em;
+	padding: 10px;
+}
+
+div.comment span.username {
+	float: left;
+	font-weight: bold;
+}
+
+div.comment span.date {
+	float: right;
+	background-color: #dddddd;
+}
+
+div.comment span.delete {
+	float: right;
+}
+
+div.comment span.delete a {
+	color: red;
+}
+
+div.comment p {
+	margin: 0;
+	padding: 0;
+	margin-left: 100px;
 }
 
 div#right {

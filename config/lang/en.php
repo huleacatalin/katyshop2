@@ -132,6 +132,11 @@ $this->cfg["lang"]["en"] = array(
 	"Add to the cart" => 'Add to the cart',
 	"Description" => 'Description',
 	"Technical details" => 'Technical details',
+	'Comments' => 'Comments',
+	"You must login to post a comment" => "You must login to post a comment",
+	"Post a comment" => "Post a comment",
+	"Are you sure you want to delete this comment?" => "Are you sure you want to delete this comment?",
+	"delete" => "delete",
 	
 	// profile.php
 	"Profile" => 'Profile',
@@ -240,6 +245,10 @@ $this->cfg["lang"]["en"] = array(
 	"A new random password has been generated" => 'A new random password has been generated',
 	"Please check your email address to receive the new password, you will be able to use this new password to authenticate yourself." => 'Please check your email address to receive the new password, you will be able to use this new password to authenticate yourself.',
 	"Our mail server doesn't work properly, the mail with random password could not be sent. Please try again later." => "Our mail server doesn't work properly, the mail with random password could not be sent. Please try again later.",
+	
+	// formparser/comment.php
+	"Comment sent" => "Comment sent",
+	"Comment deleted" => "Comment deleted",
 	
 	// includes/footer.php
 	"Admin" => 'Admin',
@@ -382,6 +391,11 @@ $this->cfg["lang"]["en"] = array(
 	"pieces" => 'pieces',
 	"kg" => 'kg',
 	
+	// classes/logic/Comment.php
+	"Comment must have between 3 and 1000 characters" => 'Comment must have between 3 and 1000 characters',
+	'Product of this comment does not exist' => 'Product of this comment does not exist',
+	'User of this comment does not exist' => 'User of this comment does not exist',
+	
 	// classes/logic/OrderProduct.php
 	"id_order property of OrderProduct object must be positive integer" => 'id_order property of OrderProduct object must be positive integer',
 	"An order can hold between 1 and 50 products" => 'An order can hold between 1 and 50 products',
@@ -487,7 +501,7 @@ $this->cfg["lang"]["en"] = array(
 	"Parent category" => 'Parent category',
 	"Delete product" => 'Delete product',
 	"Product is active" => 'Product is active',
-	"See the product on the public site" => 'See the product on the public site',
+	"View the product on the public site" => 'View the product on the public site',
 	"Product is not active" => 'Product is not active',
 	"Edit product " => 'Edit product ',
 	"Add a new product" => 'Add a new product',
