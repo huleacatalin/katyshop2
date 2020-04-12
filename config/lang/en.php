@@ -157,7 +157,7 @@ $this->cfg["lang"]["en"] = array(
 	"Mister" => 'Mister',
 	"First name" => 'First name',
 	"Last name" => 'Last name',
-	"Birth date (mm/dd/yyyy)" => 'Birth date (mm/dd/yyyy)',
+	"Birth date" => 'Birth date',
 	"Phone" => 'Phone',
 	"Company info" => 'Company info',
 	"Company name" => 'Company name',
@@ -337,7 +337,7 @@ $this->cfg["lang"]["en"] = array(
 	"Please choose a valid gender" => 'Please choose a valid gender',
 	"First name must have between 3 and 20 characters" => 'First name must have between 3 and 20 characters',
 	"Name must have between 3 and 20 characters" => 'Name must have between 3 and 20 characters',
-	"Phone must have at most 20 characters" => 'Phone must have at most 20 characters',
+	"Phone must have maximum 20 characters" => 'Phone must have maximum 20 characters',
 	"Last name must have between 3 and 20 characters" => 'Last name must have between 3 and 20 characters',
 	"Phone must have between 3 and 20 characters" => 'Phone must have between 3 and 20 characters',
 	"Person account with details" => 'Person account with details',
@@ -348,6 +348,7 @@ $this->cfg["lang"]["en"] = array(
 	"Company email" => 'Company email',
 	"Company account with details" => 'Company account with details',
 	"Company fax" => 'Company fax',
+	"must have maximum 177 characters" => "must have maximum 177 characters",
 	
 	// classes/logic/User.php
 	"Username must only have letters, numbers or underscore characters" => 'Username must only have letters, numbers or underscore characters',

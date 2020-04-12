@@ -33,6 +33,8 @@ if($productsCount > 0)
 		if(!$p->canBeDisplayed())
 			continue;
 		?>
+		<article>
+		<header>
 		<tr valign="top" class="border_top">
 		<td align="center">
 		<?php
@@ -69,6 +71,8 @@ if($productsCount > 0)
 		</form>
 		</td>
 		</tr>
+		</header>
+		</article>
 		<?php
 	}
 	?>

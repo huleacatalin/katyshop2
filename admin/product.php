@@ -30,9 +30,8 @@ HTMLArea.init();
 
 <body>
 <?php require_once(WEB_DIR . "/includes/header.php"); ?>
-
 <?php require_once(WEB_DIR . "/admin/includes/left.php"); ?>
-<div id="content">
+<main>
 <h1><?php echo translate("Products admin"); ?></h1>
 <?php require_once(WEB_DIR . "/includes/print_messages.php"); ?>
 <?php require_once(WEB_DIR . "/admin/includes/breadcrumb.php"); ?>
@@ -50,6 +49,7 @@ HTMLArea.init();
 <input type="hidden" name="direction" value="up">
 </form>
 
+<article>
 <?php
 $p = Application::getCurrentProduct();
 if($p->id > 0)
@@ -135,10 +135,10 @@ if(@$_GET["action"] == "edit")
 	<form action="admin/formparser/product.php?action=save" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="MAX_FILE_SIZE" value="8000000">
 	<input type="hidden" name="id" value="<?php echo htmlspecialchars($p->id); ?>">
-	<label><?php echo translate("Title"); ?>: <input type="text" name="title" value="<?php echo htmlspecialchars($p->title); ?>" class="text"></label>
-	<label><?php echo translate("Price"); ?>: <input type="text" name="price" value="<?php echo displayPrice($p->price); ?>" class="text"></label>
+	<label><?php echo translate("Title"); ?>: <input type="text" name="title" required minlength="3" maxlength="255" value="<?php echo htmlspecialchars($p->title); ?>" class="text"></label>
+	<label><?php echo translate("Price"); ?>: <input type="number" name="price" required min="0" step="0.01" value="<?php echo $p->price; ?>" class="text"></label>
 	<label><?php echo translate("Measuring unit"); ?>:
-		<select name="measuring_unit" class="select">
+		<select name="measuring_unit" required class="select">
 		<option value="">-- <?php echo translate("Choose"); ?> --</option>
 		<?php
 		$list = Product::getPossibleMeasuringUnits();
@@ -175,12 +175,12 @@ if(@$_GET["action"] == "edit")
 	?>
 	</select>
 	</label>
-	<label><?php echo translate("Position"); ?>: <input type="text" name="pos" value="<?php echo htmlspecialchars($p->pos); ?>" class="text"></label>
-	<label><?php echo translate("Short description (appeares to the list of products)"); ?>: <textarea name="description" style="width: 500px; height: 100px; "><?php echo htmlspecialchars($p->description); ?></textarea></label>
+	<label><?php echo translate("Position"); ?>: <input type="number" name="pos" required min="1" value="<?php echo htmlspecialchars($p->pos); ?>" class="text"></label>
+	<label><?php echo translate("Short description (appeares to the list of products)"); ?>: <textarea name="description" maxlength="1000" style="width: 500px; height: 100px; "><?php echo htmlspecialchars($p->description); ?></textarea></label>
 	<label><?php echo translate("Content (detailed description, appeares to the product details page)"); ?>:
-		<textarea name="content" id="editor"><?php echo $p->content; ?></textarea>
+		<textarea name="content" maxlength="1000000" id="editor"><?php echo $p->content; ?></textarea>
 	</label>
-	<label><?php echo translate("Technical details"); ?>: <textarea name="technical_details" style="width: 500px; height: 100px; "><?php echo htmlspecialchars($p->technical_details); ?></textarea></label>
+	<label><?php echo translate("Technical details"); ?>: <textarea name="technical_details" maxlength="1000" style="width: 500px; height: 100px; "><?php echo htmlspecialchars($p->technical_details); ?></textarea></label>
 	<?php
 	if(count($p->images) > 0) {
 		?>
@@ -226,10 +226,12 @@ if(@$_GET["action"] == "edit")
 		<input type="button" value="<?php echo translate("Cancel"); ?>" class="button" onclick="redirect('admin/category.php?id_category=<?php echo intval($p->id_category); ?>'); ">
 	</p>
 	</form>
+	</article>
 	<?php
 }
 elseif(@$_GET['action'] == 'view_comments') {
 	?>
+	</article>
 	<h3><?php echo translate('Comments'); ?></h3>
 	<?php
 	$db = Application::getDb();
@@ -245,7 +247,7 @@ elseif(@$_GET['action'] == 'view_comments') {
 		<a href="javascript:if(confirm('<?php echo htmlspecialchars(translate('Are you sure you want to delete this comment?')) ?>')) {document.getElementById('frm_del_comment_<?php echo intval($comment->id); ?>').submit()} " title="<?php echo translate('delete'); ?>"><img src="img/icons/delete.png" alt="<?php echo translate('delete'); ?>"><?php echo translate('delete'); ?></a>
 		</form>
 		</span>
-		<span class="date"><?php echo htmlspecialchars($comment->displayDateTime('date_created')); ?></span>
+		<span class="date"><time datetime="<?php echo htmlspecialchars($comment->date_created); ?>"><?php echo htmlspecialchars($comment->displayDateTime('date_created')); ?></time></span>
 		<p><?php echo nl2br(htmlspecialchars($comment->content)); ?></p>
 		</div>
 		<?php
@@ -254,7 +256,7 @@ elseif(@$_GET['action'] == 'view_comments') {
 }
 ?>
 
-</div>
+</main>
 <?php require_once(WEB_DIR . "/includes/right.php"); ?>
 <?php require_once(WEB_DIR . "/includes/footer.php"); ?>
 

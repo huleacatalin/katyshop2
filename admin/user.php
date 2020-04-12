@@ -16,9 +16,8 @@ require_once(WEB_DIR . "/includes/req_admin.php");
 <body>
 
 <?php require_once(WEB_DIR . "/includes/header.php"); ?>
-
 <?php require_once(WEB_DIR . "/admin/includes/left.php"); ?>
-<div id="content">
+<main>
 <h1><?php echo translate("Users admin"); ?></h1>
 <?php require_once(WEB_DIR . "/includes/print_messages.php"); ?>
 
@@ -41,7 +40,7 @@ if(@$_GET["action"] == "detail")
 	<li><?php echo translate("Username"); ?>: <span class="value"><?php echo htmlspecialchars(@$u->username); ?></span></li>
 	<li><?php echo translate("Email"); ?>: <span class="value"><?php echo htmlspecialchars(@$u->email2); ?></span></li>
 	<li><?php echo translate("Account type"); ?>: <span class="value"><?php echo ucfirst($u->acc_type); ?></span></li>
-	<li><?php echo translate("Registered date"); ?>: <span class="value"><?php echo $u->displayDateTime('date_registered'); ?></span></li>
+	<li><?php echo translate("Registered date"); ?>: <span class="value"><time datetime="<?php echo htmlspecialchars($u->date_registered); ?>"><?php echo $u->displayDateTime('date_registered'); ?></time></span></li>
 	<li><?php echo translate("Active"); ?>: <span class="value"><?php echo (@$u->active) ? "Yes" : "No"; ?></span></li>
 	<li>
 		<?php
@@ -140,10 +139,10 @@ elseif (@$_GET["action"] == "create_admin")
 	<?php require_once(WEB_DIR . "/includes/print_messages.php"); ?>
 
 	<h3><?php echo translate("Login info"); ?></h3>
-	<label><?php echo translate("Username"); ?>: <input type="text" name="username" value="<?php echo htmlspecialchars(@$registerAdmin->username); ?>" class="text"></label>
-	<label><?php echo translate("Password"); ?>: <input type="password" name="password" class="text"></label>
-	<label><?php echo translate("Confirm password"); ?>: <input type="password" name="confirm_password" class="text"></label>
-	<label><?php echo translate("Email"); ?>: <input type="text" name="email" value="<?php echo htmlspecialchars(@$registerAdmin->email); ?>" class="text"></label>
+	<label><?php echo translate("Username"); ?>: <input type="text" name="username" required minlength="5" maxlength="255" value="<?php echo htmlspecialchars(@$registerAdmin->username); ?>" class="text"></label>
+	<label><?php echo translate("Password"); ?>: <input type="password" name="password" minlength="5" maxlength="255" required class="text"></label>
+	<label><?php echo translate("Confirm password"); ?>: <input type="password" minlength="5" maxlength="255" name="confirm_password" required class="text"></label>
+	<label><?php echo translate("Email"); ?>: <input type="email" name="email" required value="<?php echo htmlspecialchars(@$registerAdmin->email); ?>" class="text"></label>
 	<input type="submit" value="<?php echo translate("New account"); ?>" class="button">
 	</form>
 	<?php
@@ -181,7 +180,7 @@ else
 			<td><a href="mailto:<?php echo htmlspecialchars($list[$i]->email2); ?>"><?php echo htmlspecialchars($list[$i]->email2); ?></a>&nbsp;</td>
 			<td><?php echo ($list[$i]->active == "1") ? translate("Yes") : translate("No"); ?>&nbsp;</td>
 			<td><?php echo htmlspecialchars(ucfirst($list[$i]->acc_type)); ?></td>
-			<td><?php echo $list[$i]->displayDateTime('date_registered'); ?></td>
+			<td><time datetime="<?php echo htmlspecialchars($list[$i]->date_registered); ?>"><?php echo $list[$i]->displayDateTime('date_registered'); ?></time></td>
 			<td>
 			<?php
 			$temp = (intval($list[$i]->active) == 1) ? "deactivate" : "activate";
@@ -213,7 +212,7 @@ else
 }
 ?>
 
-</div>
+</main>
 <?php require_once(WEB_DIR . "/includes/right.php"); ?>
 <?php require_once(WEB_DIR . "/includes/footer.php"); ?>
 

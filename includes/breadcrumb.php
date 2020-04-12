@@ -5,7 +5,7 @@
  */
 
 ?>
-<p id="admin_breadcrumb">
+<nav id="breadcrumb">
 <a href="category.php"><?php echo htmlspecialchars(APP_NAME); ?></a>
 <?php
 $db = Application::getDb();
@@ -27,4 +27,4 @@ if(!empty($_GET["id_product"]))
 	<?php
 }
 ?>
-</p>
+</nav>

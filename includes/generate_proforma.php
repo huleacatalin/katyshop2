@@ -44,7 +44,7 @@ elseif($order->id_user != $user->id)
 	<tr>
 	<td style="border: 1px solid #000000; ">
 	<?php echo translate("Proforma code"); ?>: <?php echo htmlspecialchars($order->code); ?> <br>
-	<?php echo translate("Date issued"); ?>: <?php echo htmlspecialchars($order->displayDateTime("date_ordered")); ?> <br>
+	<?php echo translate("Date issued"); ?>: <time datetime="<?php echo htmlspecialchars($order->date_ordered); ?>"><?php echo htmlspecialchars($order->displayDateTime("date_ordered")); ?></time> <br>
 	</td>
 	</tr>
 	</table>

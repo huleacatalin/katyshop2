@@ -13,15 +13,12 @@ require_once(dirname(__FILE__) . "/init.php");
 </head>
 
 <body>
-<div id="container">
 <?php require_once(WEB_DIR . "/includes/header.php"); ?>
-<div id="middle">
-<div id="left_vertical_line">
 <?php require_once(WEB_DIR . "/includes/left.php"); ?>
-<div id="content">
+<main>
 <h1><?php echo translate("Terms and conditions"); ?></h1>
 <?php require_once(WEB_DIR . "/includes/print_messages.php"); ?>
-
+<article>
 <h2>1. Introductions</h2>
 
 <p>Add here your introductory paragraph about terms and conditions.</p>
@@ -54,11 +51,9 @@ require_once(dirname(__FILE__) . "/init.php");
 
 <p>oh no no no...</p>
 
-</div>
+</article>
+</main>
 <?php require_once(WEB_DIR . "/includes/right.php"); ?>
 <?php require_once(WEB_DIR . "/includes/footer.php"); ?>
-</div>
-</div>
-</div>
 </body>
 </html>

@@ -16,7 +16,7 @@ require_once(WEB_DIR . "/includes/req_person_company.php");
 <body>
 <?php require_once(WEB_DIR . "/includes/header.php"); ?>
 <?php require_once(WEB_DIR . "/includes/left.php"); ?>
-<div id="content">
+<main>
 <?php
 $db = Application::getDb();
 $user = Application::getUser();
@@ -169,7 +169,7 @@ if($order->id == 0)
 }
 ?>
 
-</div>
+</main>
 <?php require_once(WEB_DIR . "/includes/right.php"); ?>
 <?php require_once(WEB_DIR . "/includes/footer.php"); ?>
 </body>

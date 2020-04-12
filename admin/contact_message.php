@@ -16,7 +16,7 @@ require_once(WEB_DIR . "/includes/req_admin.php");
 <body>
 <?php require_once(WEB_DIR . "/includes/header.php"); ?>
 <?php require_once(WEB_DIR . "/admin/includes/left.php"); ?>
-<div id="content">
+<main>
 <h1><?php echo translate("Messages received from visitors"); ?></h1>
 <?php require_once(WEB_DIR . "/includes/print_messages.php"); ?>
 
@@ -41,7 +41,7 @@ if(@$_GET["action"] == "detail")
 		<ul class="properties">
 		<li><?php echo translate("Visitor name"); ?>: <span class="value"><?php echo htmlspecialchars($m->sender_name); ?></span></li>
 		<li><?php echo translate("Visitor email"); ?>: <span class="value"><a href="mailto:<?php echo htmlspecialchars($m->sender_email); ?>"><?php echo htmlspecialchars($m->sender_email); ?></a></span></li>
-		<li><?php echo translate("Date sent"); ?>: <span class="value"><?php echo htmlspecialchars($m->displayDateTime('date_sent')); ?></span></li>
+		<li><?php echo translate("Date sent"); ?>: <span class="value"><time datetime="<?php echo htmlspecialchars($m->date_sent); ?>"><?php echo htmlspecialchars($m->displayDateTime('date_sent')); ?></time></span></li>
 		<li><?php echo translate("Subject"); ?>: <span class="value"><?php echo htmlspecialchars($m->subject); ?></span></li>
 		<li><?php echo translate("Message"); ?>: <span class="value" style="width: 500px; "><?php echo htmlspecialchars($m->message); ?></span></li>
 		</ul>
@@ -64,7 +64,7 @@ else
 	<?php echo Tools::http_build_hidden_inputs($_GET, array("subject")); ?>
 	<label style="float: left; margin-right: 20px; "><?php echo translate("Subject"); ?>: <input type="text" name="subject" value="<?php echo htmlspecialchars(@$_GET["subject"]); ?>" class="text"></label>
 	<br>
-	<input type="submit" value="Search" class="button">
+	<input type="submit" value="<?php echo translate("Search"); ?>" class="button">
 	<br clear="all">
 	</form>
 
@@ -101,7 +101,7 @@ else
 				<a href="admin/contact_message.php?action=detail&id=<?php echo htmlspecialchars($m->id); ?>"><?php echo htmlspecialchars($m->subject); ?></a>
 				&nbsp;
 			</td>
-			<td><?php echo htmlspecialchars($m->displayDateTime('date_sent')); ?></td>
+			<td><time datetime="<?php echo htmlspecialchars($m->date_sent); ?>"><?php echo htmlspecialchars($m->displayDateTime('date_sent')); ?></time></td>
 			</tr>
 			<?php
 		}
@@ -126,7 +126,7 @@ else
 }
 ?>
 
-</div>
+</main>
 <?php require_once(WEB_DIR . "/includes/right.php"); ?>
 <?php require_once(WEB_DIR . "/includes/footer.php"); ?>
 </body>

@@ -21,13 +21,13 @@ if($user->isUserLoggedIn())
 
 <?php require_once(WEB_DIR . "/includes/left.php"); ?>
 
-<div id="content">
+<main>
 <h1><?php echo translate("Login"); ?></h1>
 <?php require_once(WEB_DIR . "/includes/print_messages.php"); ?>
 
 <form action="formparser/user.php?action=login" method="post">
-<label><?php echo translate("Username"); ?>: <input type="text" name="username" class="text"></label>
-<label><?php echo translate("Password"); ?>: <input type="password" name="password" class="text"></label>
+<label><?php echo translate("Username"); ?>: <input type="text" name="username" required class="text"></label>
+<label><?php echo translate("Password"); ?>: <input type="password" name="password" required class="text"></label>
 <label><input type="checkbox" name="remember_password" value="1"> <?php echo translate("Remember my password"); ?></label>
 <input type="submit" value="<?php echo translate("Login"); ?>" class="button">
 </form>
@@ -38,7 +38,7 @@ if($user->isUserLoggedIn())
 <li><a href="activate.php"><?php echo translate("Activation link"); ?></a></li>
 </ul>
 
-</div>
+</main>
 <?php require_once(WEB_DIR . "/includes/right.php"); ?>
 <?php require_once(WEB_DIR . "/includes/footer.php"); ?>
 </body>

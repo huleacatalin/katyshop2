@@ -15,9 +15,8 @@ require_once(WEB_DIR . "/includes/req_admin.php");
 
 <body>
 <?php require_once(WEB_DIR . "/includes/header.php"); ?>
-
 <?php require_once(WEB_DIR . "/admin/includes/left.php"); ?>
-<div id="content">
+<main>
 <h1><?php echo translate("Orders admin"); ?></h1>
 <?php require_once(WEB_DIR . "/includes/print_messages.php"); ?>
 
@@ -42,12 +41,12 @@ if(@$_GET["action"] == "detail")
 		?>
 		<?php echo translate("Order code"); ?>: <?php echo htmlspecialchars($order->code); ?> <a href="admin/proforma.php?code=<?php echo htmlspecialchars($order->code); ?>" target="_blank"><?php echo translate("click here to see proforma invoice"); ?></a> <br>
 		<?php echo translate("Title"); ?>: <big><b><?php echo $order->title; ?></b></big> <br>
-		<?php echo translate("Date sent"); ?>: <?php echo htmlspecialchars($order->displayDateTime("date_ordered")); ?> <br>
-		<?php echo translate("Date updated"); ?>: <?php echo htmlspecialchars($order->displayDateTime("date_updated")); ?> <br>
+		<?php echo translate("Date sent"); ?>: <time datetime="<?php echo htmlspecialchars($order->date_ordered); ?>"><?php echo htmlspecialchars($order->displayDateTime("date_ordered")); ?></time> <br>
+		<?php echo translate("Date updated"); ?>: <time datetime="<?php echo htmlspecialchars($order->date_updated); ?>"><?php echo htmlspecialchars($order->displayDateTime("date_updated")); ?></time> <br>
 		<?php echo translate("Status"); ?>: <big><b><?php echo htmlspecialchars($order->status); ?></b></big> <a href="javascript:showHide('change_status_container'); "><?php echo translate("click here to change status"); ?></a> <br>
 		<form action="admin/formparser/order.php?action=change_status" method="post" id="change_status_container" style="display: none; ">
 		<input type="hidden" name="id_order" value="<?php echo htmlspecialchars($order->id); ?>">
-		<select name="status" class="select">
+		<select name="status" required class="select">
 		<option value="">-- <?php echo translate("Choose"); ?> --</option>
 		<?php
 		$list = Order::getPossibleStatuses();
@@ -191,7 +190,7 @@ else
 			</td>
 			<td><?php echo htmlspecialchars($o->username); ?></td>
 			<td><?php echo htmlspecialchars($o->status); ?></td>
-			<td><?php echo htmlspecialchars($o->displayDateTime('date_ordered')); ?></td>
+			<td><time datetime="<?php echo htmlspecialchars($o->date_ordered); ?>"><?php echo htmlspecialchars($o->displayDateTime('date_ordered')); ?></time></td>
 			<td align="right" style="font-weight: bold; "><?php echo htmlspecialchars(displayPrice($o->total)); ?></td>
 			</tr>
 			<?php
@@ -216,7 +215,7 @@ else
 	}
 }
 ?>
-</div>
+</main>
 <?php require_once(WEB_DIR . "/includes/right.php"); ?>
 <?php require_once(WEB_DIR . "/includes/footer.php"); ?>
 </body>

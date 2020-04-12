@@ -16,7 +16,7 @@ require_once(WEB_DIR . "/includes/req_admin.php");
 <body>
 <?php require_once(WEB_DIR . "/includes/header.php"); ?>
 <?php require_once(WEB_DIR . "/admin/includes/left.php"); ?>
-<div id="content">
+<main>
 <h1><?php echo translate("Manufacturers admin"); ?></h1>
 
 <form action="admin/formparser/manufacturer.php?action=delete" method="post" id="frm_delete_manufacturer">
@@ -45,8 +45,8 @@ if(@$_GET["action"] == "detail")
 	<form action="admin/formparser/manufacturer.php?action=save" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="MAX_FILE_SIZE" value="8000000">
 	<input type="hidden" name="id" value="<?php echo htmlspecialchars($m->id); ?>">
-	<label><?php echo translate("Title"); ?>: <input type="text" name="title" value="<?php echo htmlspecialchars($m->title); ?>" class="text"></label>
-	<label><?php echo translate("Description"); ?>: <textarea name="description" style="height: 100px; "><?php echo htmlspecialchars($m->description); ?></textarea></label>
+	<label><?php echo translate("Title"); ?>: <input type="text" name="title" required minlength="3" maxlength="255" value="<?php echo htmlspecialchars($m->title); ?>" class="text"></label>
+	<label><?php echo translate("Description"); ?>: <textarea name="description" maxlength="1000" style="height: 100px; "><?php echo htmlspecialchars($m->description); ?></textarea></label>
 	<p><?php echo translate("Image"); ?> <br>
 		<?php
 		if(!empty($m->picture))
@@ -133,7 +133,7 @@ else
 	}
 }
 ?>
-</div>
+</main>
 <?php require_once(WEB_DIR . "/includes/right.php"); ?>
 <?php require_once(WEB_DIR . "/includes/footer.php"); ?>
 </body>

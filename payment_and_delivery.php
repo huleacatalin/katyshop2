@@ -15,10 +15,10 @@ require_once(dirname(__FILE__) . "/init.php");
 <body>
 <?php require_once(WEB_DIR . "/includes/header.php"); ?>
 <?php require_once(WEB_DIR . "/includes/left.php"); ?>
-<div id="content">
+<main>
 <h1><?php echo translate("Payment and delivery"); ?></h1>
 <?php require_once(WEB_DIR . "/includes/print_messages.php"); ?>
-
+<article>
 <h2><?php echo translate("How do I pay?"); ?></h2>
 <p>You can pay:
 <ul>
@@ -53,7 +53,8 @@ and they are under assurance on the route to delivery.</p>
 </ul>
 </p>
 
-</div>
+</article>
+</main>
 <?php require_once(WEB_DIR . "/includes/right.php"); ?>
 <?php require_once(WEB_DIR . "/includes/footer.php"); ?>
 </body>

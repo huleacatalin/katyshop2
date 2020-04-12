@@ -25,38 +25,21 @@ class UserCompany extends UserPerson
 	}
 	
 	function validateCommonFields() {
-		$errors = array();
+		$errors = parent::validateCommonFields();
+		
+		if(strlen($this->company_name) < 3)
+			$errors[] = "Company name must have at least 3 characters";
 	
 		$fields = array('company_name', 'tax_code', 'bank', 'iban', 'comp_phone', 'comp_fax', 'comp_email');
 		$fieldNames = array('Company name', 'Tax code', 'Bank', 'IBAN', 'Company phone', 'Fax', 'Company email');
 		for($i = 0; $i < count($fields); $i++) {
 			$field = $fields[$i];
-			if(strlen($this->$field) < 3 || strlen($this->$field) > 177)
-				$errors[] = translate($fieldNames[$i]) . " must have between 3 and 177 characters";
+			if(strlen($this->$field) > 177)
+				$errors[] = translate($fieldNames[$i]) . " " . translate("must have maximum 177 characters");
 		}
 		return $errors;
 	}
-
-	function validateRegister($confirmPassword)
-	{
-		if(!parent::validateRegister($confirmPassword))
-			return false;
-		$errors = $this->validateCommonFields();
-
-		Application::appendErrors($errors);
-		return (count($errors) == 0);
-	}
-
-	function validateUpdate($oldPassword, $newPassword, $confirmPassword)
-	{
-		if(!parent::validateUpdate($oldPassword, $newPassword, $confirmPassword))
-			return false;
-		$errors = $this->validateCommonFields();
-
-		Application::appendErrors($errors);
-		return (count($errors) == 0);
-	}
-
+	
 	function toStr($humanReadable = false, $brief = false)
 	{
 		if($humanReadable)

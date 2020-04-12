@@ -159,7 +159,7 @@ $this->cfg["lang"]["pt"] = array(
 	"Mister" => 'Senhor',
 	"First name" => 'Nome',
 	"Last name" => 'Apelido',
-	"Birth date (mm/dd/yyyy)" => 'Data nascimento (mm/dd/yyyy)',
+	"Birth date" => 'Data nascimento',
 	"Phone" => 'Telefone',
 	"Company info" => 'Informacao da companhia',
 	"Company name" => 'Nome da companhia',
@@ -339,7 +339,7 @@ $this->cfg["lang"]["pt"] = array(
 	"Please choose a valid gender" => 'Por favor, escolha um genero válido',
 	"First name must have between 3 and 20 characters" => 'O primeiro nome deve ter entre 3 e 20 caracteres',
 	"Name must have between 3 and 20 characters" => 'O nome deve ter entre 3 e 20 caracteres',
-	"Phone must have at most 20 characters" => 'O telefone deve ter no máximo 20 caracteres',
+	"Phone must have maximum 20 characters" => 'O telefone deve ter no máximo 20 caracteres',
 	"Last name must have between 3 and 20 characters" => 'O sobrenome deve ter entre 3 e 20 caracteres',
 	"Phone must have between 3 and 20 characters" => 'O telefone deve ter entre 3 e 20 caracteres',
 	"Person account with details" => 'Conta pessoal com detalhes',
@@ -350,6 +350,7 @@ $this->cfg["lang"]["pt"] = array(
 	"Company email" => 'E-mail da empresa',
 	"Company account with details" => 'Conta corporativa com detalhes',
 	"Company fax" => 'Fax da empresa',
+	"must have maximum 177 characters" => "deve ter no máximo 177 caracteres",
 	
 	// classes/logic/User.php
 	"Username must only have letters, numbers or underscore characters" => 'O nome de usuário deve ter apenas letras, números ou caracteres sublinhados',

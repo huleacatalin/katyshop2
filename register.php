@@ -23,7 +23,7 @@ if(!is_a($registerUser, "User"))
 <body>
 <?php require_once(WEB_DIR . "/includes/header.php"); ?>
 <?php require_once(WEB_DIR . "/includes/left.php"); ?>
-<div id="content">
+<main>
 
 <form action="formparser/user.php?action=register" method="post">
 
@@ -33,16 +33,16 @@ if(!is_a($registerUser, "User"))
 
 <div style="width: 350px; float: left; margin-right: 30px;">
 <h2><?php echo translate("Login info"); ?></h2>
-<label><span style="color:red">*</span> <?php echo translate("Username"); ?>: <input type="text" name="username" value="<?php echo htmlspecialchars(@$registerUser->username); ?>" class="text"></label>
-<label><span style="color:red">*</span> <?php echo translate("Password"); ?>: <input type="password" name="password" class="text"></label>
-<label><span style="color:red">*</span> <?php echo translate("Confirm password"); ?>: <input type="password" name="confirm_password" class="text"></label>
-<label><span style="color:red">*</span> <?php echo translate("Email"); ?>: <input type="text" name="email" value="<?php echo htmlspecialchars(@$registerUser->email2); ?>" class="text"></label>
+<label><span style="color:red">*</span> <?php echo translate("Username"); ?>: <input type="text" name="username" minlength="5" maxlength="20" value="<?php echo htmlspecialchars(@$registerUser->username); ?>" required class="text"></label>
+<label><span style="color:red">*</span> <?php echo translate("Password"); ?>: <input type="password" name="password" required minlength="5" maxlength="255" class="text"></label>
+<label><span style="color:red">*</span> <?php echo translate("Confirm password"); ?>: <input type="password" name="confirm_password" required minlength="5" maxlength="255" class="text"></label>
+<label><span style="color:red">*</span> <?php echo translate("Email"); ?>: <input type="email" name="email" value="<?php echo htmlspecialchars(@$registerUser->email2); ?>" required maxlength="255" class="text"></label>
 <p><span style="color:red">*</span> <?php echo translate("Account type"); ?>: 
 	<?php
 	$chkPerson = (in_array(@$registerUser->acc_type, array("person", ""))) ? "checked" : "";
 	$chkCompany = (@$registerUser->acc_type == "company") ? "checked" : "";
 	?>
-	<label style="display: inline; "><input type="radio" name="acc_type" value="person" onclick="hideCompanyForm(); " <?php echo $chkPerson; ?>> <?php echo translate("Person"); ?></label>
+	<label style="display: inline; "><input type="radio" name="acc_type" value="person" onclick="hideCompanyForm(); " required <?php echo $chkPerson; ?>> <?php echo translate("Person"); ?></label>
 	<label style="display: inline; "><input type="radio" name="acc_type" value="company" onclick="showCompanyForm(); " <?php echo $chkCompany; ?>> <?php echo translate("Company"); ?></label>
 </p>
 </div>
@@ -54,27 +54,27 @@ if(!is_a($registerUser, "User"))
 	$chkFemale = (@$registerUser->gender == "female") ? "checked" : "";
 	$chkMale = (@$registerUser->gender == "female") ? "" : "checked";
 	?>
-	<label style="display: inline; "><input type="radio" name="gender" value="female" <?php echo $chkFemale; ?>> <?php echo translate("Miss"); ?></label>
+	<label style="display: inline; "><input type="radio" name="gender" value="female" required <?php echo $chkFemale; ?>> <?php echo translate("Miss"); ?></label>
 	<label style="display: inline; "><input type="radio" name="gender" value="male" <?php echo $chkMale; ?>> <?php echo translate("Mister"); ?></label>
 </p>
 
-<label><span style="color:red">*</span> <?php echo translate("First name"); ?>: <input type="text" name="first_name" value="<?php echo htmlspecialchars(@$registerUser->first_name); ?>" class="text"></label>
-<label><span style="color:red">*</span> <?php echo translate("Last name"); ?>: <input type="text" name="last_name" value="<?php echo htmlspecialchars(@$registerUser->last_name); ?>" class="text"></label>
-<label><?php echo translate("Birth date (mm/dd/yyyy)"); ?>: <input type="text" name="birth_date" value="<?php echo htmlspecialchars(@$registerUser->displayDate("birth_date")); ?>" class="text"></label>
-<label><?php echo translate("Phone"); ?>: <input type="text" name="phone" value="<?php echo htmlspecialchars(@$registerUser->phone); ?>" class="text"></label>
+<label><span style="color:red">*</span> <?php echo translate("First name"); ?>: <input type="text" name="first_name" required minlength="3" maxlength="20" value="<?php echo htmlspecialchars(@$registerUser->first_name); ?>" class="text"></label>
+<label><span style="color:red">*</span> <?php echo translate("Last name"); ?>: <input type="text" name="last_name" required minlength="3" maxlength="20" value="<?php echo htmlspecialchars(@$registerUser->last_name); ?>" class="text"></label>
+<label><?php echo translate("Birth date"); ?>: <input type="date" name="birth_date" value="<?php echo htmlspecialchars(@$registerUser->displayDate("birth_date")); ?>" class="text"></label>
+<label><?php echo translate("Phone"); ?>: <input type="tel" name="phone" maxlength="20" value="<?php echo htmlspecialchars(@$registerUser->phone); ?>" class="text"></label>
 </div>
 
 <br clear="all">
 
 <div id="div_company" style="display: none; ">
 	<h2><?php echo translate("Company info"); ?></h2>
-	<label><span style="color:red">*</span> <?php echo translate("Company name"); ?>: <input type="text" name="company_name" value="<?php echo htmlspecialchars(@$registerUser->company_name); ?>" class="text"></label>
-	<label><?php echo translate("Tax code"); ?>: <input type="text" name="tax_code" value="<?php echo htmlspecialchars(@$registerUser->tax_code); ?>" class="text"></label>
-	<label><?php echo translate("Bank"); ?>: <input type="text" name="bank" value="<?php echo htmlspecialchars(@$registerUser->bank); ?>" class="text"></label>
-	<label><?php echo translate("IBAN"); ?>: <input type="text" name="iban" value="<?php echo htmlspecialchars(@$registerUser->iban); ?>" class="text"></label>
-	<label><?php echo translate("Phone"); ?>: <input type="text" name="comp_phone" value="<?php echo htmlspecialchars(@$registerUser->comp_phone); ?>" class="text"></label>
-	<label><?php echo translate("Fax"); ?>: <input type="text" name="comp_fax" value="<?php echo htmlspecialchars(@$registerUser->comp_fax); ?>" class="text"></label>
-	<label><?php echo translate("Email"); ?>: <input type="text" name="comp_email" value="<?php echo htmlspecialchars(@$registerUser->comp_email); ?>" class="text"></label>
+	<label><span style="color:red">*</span> <?php echo translate("Company name"); ?>: <input type="text" id="company_name" name="company_name" maxlength="177" value="<?php echo htmlspecialchars(@$registerUser->company_name); ?>" class="text"></label>
+	<label><?php echo translate("Tax code"); ?>: <input type="text" name="tax_code" maxlength="177" value="<?php echo htmlspecialchars(@$registerUser->tax_code); ?>" class="text"></label>
+	<label><?php echo translate("Bank"); ?>: <input type="text" name="bank" maxlength="177" value="<?php echo htmlspecialchars(@$registerUser->bank); ?>" class="text"></label>
+	<label><?php echo translate("IBAN"); ?>: <input type="text" name="iban" maxlength="177" value="<?php echo htmlspecialchars(@$registerUser->iban); ?>" class="text"></label>
+	<label><?php echo translate("Phone"); ?>: <input type="tel" name="comp_phone" maxlength="177" value="<?php echo htmlspecialchars(@$registerUser->comp_phone); ?>" class="text"></label>
+	<label><?php echo translate("Fax"); ?>: <input type="tel" name="comp_fax" maxlength="177" value="<?php echo htmlspecialchars(@$registerUser->comp_fax); ?>" class="text"></label>
+	<label><?php echo translate("Email"); ?>: <input type="email" name="comp_email" maxlength="177" value="<?php echo htmlspecialchars(@$registerUser->comp_email); ?>" class="text"></label>
 </div>
 
 <?php
@@ -98,7 +98,7 @@ elseif (is_a($registerUser, "UserCompany"))
 <input type="submit" value="<?php echo translate("Register"); ?>" class="button">
 </form>
 
-</div>
+</main>
 <?php require_once(WEB_DIR . "/includes/right.php"); ?>
 <?php require_once(WEB_DIR . "/includes/footer.php"); ?>
 </body>

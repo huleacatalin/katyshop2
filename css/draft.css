@@ -110,7 +110,7 @@ div#print_messages p.error
 	margin: 5px;
 }
 
-div#header {
+header#HEADER {
 	background-color: #dddddd;
 }
 
@@ -120,7 +120,7 @@ img#logo {
 	float: left;
 }
 
-div#menu ul li {
+header nav ul li {
 	float: left;
 	list-style-type: none;
 	margin: 10px;
@@ -131,7 +131,7 @@ div#search_box {
 	float: right;
 }
 
-div#search_box input.text {
+div#search_box input.search {
 	width: 400px;
 	font-size: 1.4em;
 	padding: 0px;
@@ -146,26 +146,26 @@ div#search_box input.button {
 	vertical-align: bottom;
 }
 
-div#left {
+aside#left {
 	float: left;
 	width: 250px;
 	overflow-x: scroll;
 }
 
-div#categories ul {
+nav#categories ul {
 	list-style-type: none;
 	padding-left: 30px;
 }
 
-div#categories ul li.nest_level_0 {
+nav#categories ul li.nest_level_0 {
 	font-size: 1.4em;
 }
 
-div#categories ul li.nest_level_1 {
+nav#categories ul li.nest_level_1 {
 	font-size: 1.2em;
 }
 
-div#left ul li a {
+aside#left ul li a {
 	display: block;
 	padding: 5px;
 }
@@ -175,12 +175,7 @@ li.selected
 	background-color: #dddddd;
 }
 
-div.categories ul li a.active
-{
-	background-color: #dddddd;
-}
-
-div#content {
+main {
 	float: left;
 	width: 800px;
 	margin-left: 20px;
@@ -222,7 +217,7 @@ table#products_list p.description {
 	padding: 0px;
 }
 
-div#product_image_box {
+figure#product_image_box {
 	width: 400px;
 	float: left;
 }
@@ -340,12 +335,12 @@ div.comment p {
 	margin-left: 100px;
 }
 
-div#right {
+aside#right {
 	float: right;
 	font-size: 0.9em;
 }
 
-div#right h3 {
+aside#right h3 {
 	background-color: #dddddd;
 }
 
@@ -353,11 +348,11 @@ div#shopping_cart_box ul {
 	list-style-type: none;
 }
 
-div#footer {
+footer {
 	background-color: #aaaaaa;
 }
 
-div#footer_menu li {
+footer nav li {
 	float: left;
 	list-style-type: none;
 	margin: 10px;

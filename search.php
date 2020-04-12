@@ -15,7 +15,7 @@ require_once(dirname(__FILE__) . "/init.php");
 <body>
 <?php require_once(WEB_DIR . "/includes/header.php"); ?>
 <?php require_once(WEB_DIR . "/includes/left.php"); ?>
-<div id="content">
+<main>
 <?php require_once(WEB_DIR . "/includes/print_messages.php"); ?>
 
 <?php
@@ -38,7 +38,7 @@ $list = $db->tbProduct->advancedSearch($arr, @$_GET["start"], @$_GET["rowsPerPag
 require_once(WEB_DIR . "/includes/products_list.php");
 ?>
 
-</div>
+</main>
 <?php require_once(WEB_DIR . "/includes/right.php"); ?>
 <?php require_once(WEB_DIR . "/includes/footer.php"); ?>
 </body>

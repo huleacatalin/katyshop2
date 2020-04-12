@@ -7,11 +7,13 @@
 function showCompanyForm()
 {
 	document.getElementById("div_company").style.display = "block";
+	document.getElementById("company_name").required = true;
 }
 
 function hideCompanyForm()
 {
 	document.getElementById("div_company").style.display = "none";
+	document.getElementById("company_name").required = false;
 }
 
 function showPersonForm()

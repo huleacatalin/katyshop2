@@ -15,7 +15,7 @@ require_once(dirname(__FILE__) . "/init.php");
 <body>
 <?php require_once(WEB_DIR . "/includes/header.php"); ?>
 <?php require_once(WEB_DIR . "/includes/left.php"); ?>
-<div id="content">
+<main>
 <h1><?php echo translate("Advanced search"); ?></h1>
 <?php require_once(WEB_DIR . "/includes/print_messages.php"); ?>
 
@@ -23,7 +23,7 @@ require_once(dirname(__FILE__) . "/init.php");
 
 <form action="search.php" method="get">
 <?php echo Tools::http_build_hidden_inputs($_GET, array("keywords", "min_price", "max_price", "id_manufacturer", "only_current_category")); ?>
-<label><?php echo translate("Keywords"); ?>: <input type="text" name="keywords" value="<?php echo htmlspecialchars(@$_GET["keywords"]) ?>" class="text"></label>
+<label><?php echo translate("Keywords"); ?>: <input type="text" name="keywords" required value="<?php echo htmlspecialchars(@$_GET["keywords"]) ?>" class="text"></label>
 <label><?php echo translate("Manufacturer"); ?>: 
 	<select name="id_manufacturer" class="select">
 	<option value="0">-- <?php echo translate("Choose"); ?> --</option>
@@ -40,13 +40,13 @@ require_once(dirname(__FILE__) . "/init.php");
 	?>
 	</select>
 </label>
-<label><?php echo translate("Minimal price"); ?>: <input type="text" name="min_price" value="<?php echo htmlspecialchars(@$_GET["min_price"]); ?>" class="text"></label>
-<label><?php echo translate("Maximum price"); ?>: <input type="text" name="max_price" value="<?php echo htmlspecialchars(@$_GET["max_price"]); ?>" class="text"></label>
+<label><?php echo translate("Minimal price"); ?>: <input type="number" name="min_price" min="0" step="0.01" value="<?php echo htmlspecialchars(@$_GET["min_price"]); ?>" class="text"></label>
+<label><?php echo translate("Maximum price"); ?>: <input type="number" name="max_price" min="0" step="0.01" value="<?php echo htmlspecialchars(@$_GET["max_price"]); ?>" class="text"></label>
 <label><input type="checkbox" name="only_current_category" value="1" style="display: inline; " <?php echo (@$_GET["only_current_category"] == "1") ? "checked" : ""; ?>> <?php echo translate("Search only in current category and all subcategories"); ?></label>
 <input type="submit" value="<?php echo translate("Search"); ?>!" class="button">
 </form>
 
-</div>
+</main>
 <?php require_once(WEB_DIR . "/includes/right.php"); ?>
 <?php require_once(WEB_DIR . "/includes/footer.php"); ?>
 </body>

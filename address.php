@@ -21,7 +21,7 @@ if($user->isAdminLoggedIn()) {
 <body>
 <?php require_once(WEB_DIR . "/includes/header.php"); ?>
 <?php require_once(WEB_DIR . "/includes/left.php"); ?>
-<div id="content">
+<main>
 <h1><?php echo translate("My addresses"); ?></h1>
 <ul id="my_addresses_actions">
 <li><a href="address.php"><?php echo translate("All addresses"); ?></a></li>
@@ -58,7 +58,7 @@ if(@$_GET["detail"] == "true")
 	<label style="margin: 0px; "><input type="checkbox" name="delivery" value="1" <?php echo ($a->delivery == 1) ? "checked" : ""; ?>> <?php echo translate("Delivery"); ?></label>
 	<label><input type="checkbox" name="invoicing" value="1" <?php echo ($a->invoicing == 1) ? "checked" : ""; ?>> <?php echo translate("Invoicing"); ?></label>
 	<label> <?php echo translate("County"); ?>:
-	<select name="county" class="select">
+	<select name="county" class="select" required>
 	<option value="">-- <?php echo translate("Please choose"); ?> --</option>
 	<?php
 	$list = Application::getConfigValue("counties");
@@ -72,8 +72,8 @@ if(@$_GET["detail"] == "true")
 	?>
 	</select></label>
 
-	<label><?php echo translate("City"); ?>: <input type="text" name="city" value="<?php echo htmlspecialchars($a->city); ?>" class="text"></label>
-	<label><?php echo translate("Address"); ?>: <textarea name="address" style="height: 100px; "><?php echo htmlspecialchars($a->address); ?></textarea></label>
+	<label><?php echo translate("City"); ?>: <input type="text" name="city" value="<?php echo htmlspecialchars($a->city); ?>" required minlength="3" maxlength="177" class="text"></label>
+	<label><?php echo translate("Address"); ?>: <textarea name="address" style="height: 100px; " required minlength="3" maxlength="1000"><?php echo htmlspecialchars($a->address); ?></textarea></label>
 
 	<input type="submit" value="<?php echo translate("Save"); ?>" class="button">
 	<?php
@@ -140,7 +140,7 @@ else
 	}
 }
 ?>
-</div>
+</main>
 <?php require_once(WEB_DIR . "/includes/right.php"); ?>
 <?php require_once(WEB_DIR . "/includes/footer.php"); ?>
 </body>

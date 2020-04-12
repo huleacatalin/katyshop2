@@ -16,9 +16,10 @@ require_once(WEB_DIR . "/includes/req_admin.php");
 <body>
 <?php require_once(WEB_DIR . "/includes/header.php"); ?>
 <?php require_once(WEB_DIR . "/admin/includes/left.php"); ?>
-<div id="content">
+<main>
 <h1><?php echo translate("Admin"); ?></h1>
 <?php require_once(WEB_DIR . "/includes/print_messages.php"); ?>
+<nav>
 <ul>
 <li><a href="admin/index.php"><?php echo translate("Admin"); ?></a></li>
 <li><a href="admin/user.php"><?php echo translate("Users"); ?></a></li>
@@ -27,8 +28,9 @@ require_once(WEB_DIR . "/includes/req_admin.php");
 <li><a href="admin/contact_message.php"><?php echo translate("Messages"); ?></a></li>
 <li><a href="admin/category.php"><?php echo translate("Products"); ?></a></li>
 </ul>
+</nav>
 
-</div>
+</main>
 <?php require_once(WEB_DIR . "/includes/right.php"); ?>
 <?php require_once(WEB_DIR . "/includes/footer.php"); ?>
 </body>

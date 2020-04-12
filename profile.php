@@ -24,7 +24,7 @@ if(!is_a($updateUser, "User"))
 <body>
 <?php require_once(WEB_DIR . "/includes/header.php"); ?>
 <?php require_once(WEB_DIR . "/includes/left.php"); ?>
-<div id="content">
+<main>
 
 <form action="formparser/user.php?action=profile" method="post">
 
@@ -60,14 +60,14 @@ if($user->isCompanyLoggedIn() || $user->isPersonLoggedIn())
 
 		<p id="tbl_new_password" style="display: none; ">
 		<label><?php echo translate("Old password"); ?>: <input type="password" name="old_password" class="text"></label>
-		<label><?php echo translate("New password"); ?>: <input type="password" name="password" class="text"></label>
-		<label><?php echo translate("Confirm password"); ?>: <input type="password" name="confirm_password" class="text"></label>
+		<label><?php echo translate("New password"); ?>: <input type="password" name="password" minlength="5" maxlength="255" class="text"></label>
+		<label><?php echo translate("Confirm password"); ?>: <input type="password" name="confirm_password" minlength="5" maxlength="255" class="text"></label>
 		<input type="submit" value="<?php echo translate("Change the password"); ?>" class="button">
 		</p>
 	</li>
 	<li><?php echo translate("Email"); ?>: <span class="value"><?php echo htmlspecialchars(@$updateUser->email2); ?></span></li>
 	<li><?php echo translate("Account type"); ?>: <span class="value"><?php echo ucfirst(@$updateUser->acc_type); ?></span></li>
-	<li><?php echo translate("Registered date"); ?>: <span class="value"><?php echo @$updateUser->displayDateTime('date_registered'); ?></span></li>
+	<li><?php echo translate("Registered date"); ?>: <span class="value"><time datetime="<?php echo htmlspecialchars($updateUser->date_registered); ?>"><?php echo @$updateUser->displayDateTime('date_registered'); ?></time></span></li>
 </div>
 
 <div id="div_person" style="display: none; width: 350px; float: left; ">
@@ -77,26 +77,26 @@ if($user->isCompanyLoggedIn() || $user->isPersonLoggedIn())
 		$chkFemale = (@$updateUser->gender == "female") ? "checked" : "";
 		$chkMale = (@$updateUser->gender == "male") ? "checked" : "";
 		?>
-		<label style="display: inline; "><input type="radio" name="gender" value="female" <?php echo $chkFemale; ?>> <?php echo translate("Miss"); ?></label>
+		<label style="display: inline; "><input type="radio" name="gender" value="female" required <?php echo $chkFemale; ?>> <?php echo translate("Miss"); ?></label>
 		<label style="display: inline; "><input type="radio" name="gender" value="male" <?php echo $chkMale; ?>> <?php echo translate("Mister"); ?></label>
 	</p>
-	<label><?php echo translate("First name"); ?>: <input type="text" name="first_name" value="<?php echo htmlspecialchars(@$updateUser->first_name); ?>" class="text"></label>
-	<label><?php echo translate("Last name"); ?>: <input type="text" name="last_name" value="<?php echo htmlspecialchars(@$updateUser->last_name); ?>" class="text"></label>
-	<label><?php echo translate("Birth date (mm/dd/yyyy)"); ?>: <input type="text" name="birth_date" value="<?php echo htmlspecialchars(@$updateUser->displayDate("birth_date")); ?>" class="text"></label>
-	<label><?php echo translate("Phone"); ?>: <input type="text" name="phone" value="<?php echo htmlspecialchars(@$updateUser->phone); ?>" class="text"></label>
+	<label><?php echo translate("First name"); ?>: <input type="text" name="first_name" required minlength="3" maxlength="20" value="<?php echo htmlspecialchars(@$updateUser->first_name); ?>" class="text"></label>
+	<label><?php echo translate("Last name"); ?>: <input type="text" name="last_name" required minlength="3" maxlength="20" value="<?php echo htmlspecialchars(@$updateUser->last_name); ?>" class="text"></label>
+	<label><?php echo translate("Birth date"); ?>: <input type="date" name="birth_date" value="<?php echo htmlspecialchars(@$updateUser->birth_date); ?>" class="text"></label>
+	<label><?php echo translate("Phone"); ?>: <input type="tel" name="phone" maxlength="20" value="<?php echo htmlspecialchars(@$updateUser->phone); ?>" class="text"></label>
 </div>
 
 <br clear="all">
 
 <div id="div_company" style="display: none; ">
 	<h2><?php echo translate("Company info"); ?></h2>
-	<label><?php echo translate("Company name"); ?>: <input type="text" name="company_name" value="<?php echo htmlspecialchars(@$updateUser->company_name); ?>" class="text"></label>
-	<label><?php echo translate("Tax code"); ?>: <input type="text" name="tax_code" value="<?php echo htmlspecialchars(@$updateUser->tax_code); ?>" class="text"></label>
-	<label><?php echo translate("Bank"); ?>: <input type="text" name="bank" value="<?php echo htmlspecialchars(@$updateUser->bank); ?>" class="text"></label>
-	<label><?php echo translate("IBAN"); ?>: <input type="text" name="iban" value="<?php echo htmlspecialchars(@$updateUser->iban); ?>" class="text"></label>
-	<label><?php echo translate("Phone"); ?>: <input type="text" name="comp_phone" value="<?php echo htmlspecialchars(@$updateUser->comp_phone); ?>" class="text"></label>
-	<label><?php echo translate("Fax"); ?>: <input type="text" name="comp_fax" value="<?php echo htmlspecialchars(@$updateUser->comp_fax); ?>" class="text"></label>
-	<label><?php echo translate("Email"); ?>: <input type="text" name="comp_email" value="<?php echo htmlspecialchars(@$updateUser->comp_email); ?>" class="text"></label>
+	<label><?php echo translate("Company name"); ?>: <input type="text" id="company_name" name="company_name" maxlength="177" value="<?php echo htmlspecialchars(@$updateUser->company_name); ?>" class="text"></label>
+	<label><?php echo translate("Tax code"); ?>: <input type="text" name="tax_code" maxlength="177" value="<?php echo htmlspecialchars(@$updateUser->tax_code); ?>" class="text"></label>
+	<label><?php echo translate("Bank"); ?>: <input type="text" name="bank" maxlength="177" value="<?php echo htmlspecialchars(@$updateUser->bank); ?>" class="text"></label>
+	<label><?php echo translate("IBAN"); ?>: <input type="text" name="iban" maxlength="177" value="<?php echo htmlspecialchars(@$updateUser->iban); ?>" class="text"></label>
+	<label><?php echo translate("Phone"); ?>: <input type="tel" name="comp_phone" maxlength="177" value="<?php echo htmlspecialchars(@$updateUser->comp_phone); ?>" class="text"></label>
+	<label><?php echo translate("Fax"); ?>: <input type="tel" name="comp_fax" maxlength="177" value="<?php echo htmlspecialchars(@$updateUser->comp_fax); ?>" class="text"></label>
+	<label><?php echo translate("Email"); ?>: <input type="email" name="comp_email" maxlength="177" value="<?php echo htmlspecialchars(@$updateUser->comp_email); ?>" class="text"></label>
 </div>
 <?php
 if(is_a($updateUser, "UserPerson"))
@@ -119,7 +119,7 @@ if (is_a($updateUser, "UserCompany"))
 <input type="submit" value="<?php echo translate("Update"); ?>" class="button">
 </form>
 
-</div>
+</main>
 <?php require_once(WEB_DIR . "/includes/right.php"); ?>
 <?php require_once(WEB_DIR . "/includes/footer.php"); ?>
 </body>

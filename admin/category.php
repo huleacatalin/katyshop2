@@ -19,7 +19,7 @@ $category = Application::getCurrentCategory();
 <body>
 <?php require_once(WEB_DIR . "/includes/header.php"); ?>
 <?php require_once(WEB_DIR . "/admin/includes/left.php"); ?>
-<div id="content">
+<main>
 <h1><?php echo translate("Categories administration"); ?></h1>
 <?php require_once(WEB_DIR . "/includes/print_messages.php"); ?>
 <?php require_once(WEB_DIR . "/admin/includes/breadcrumb.php"); ?>
@@ -142,7 +142,7 @@ if(@$_GET["action"] == "edit")
 	<form action="admin/formparser/category.php?action=save" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="MAX_FILE_SIZE" value="8000000">
 	<input type="hidden" name="id" value="<?php echo htmlspecialchars($c->id); ?>">
-	<label><?php echo translate("Title"); ?>: <input type="text" name="title" value="<?php echo htmlspecialchars($c->title); ?>" class="text"></label>
+	<label><?php echo translate("Title"); ?>: <input type="text" name="title" required minlength="3" maxlength="255" value="<?php echo htmlspecialchars($c->title); ?>" class="text"></label>
 	<label><?php echo translate("Parent category"); ?>:
 		<select name="id_parent" class="select">
 		<?php
@@ -151,8 +151,8 @@ if(@$_GET["action"] == "edit")
 		?>
 		</select>
 	</label>
-	<label><?php echo translate("Position"); ?>: <input type="text" name="pos" value="<?php echo htmlspecialchars($c->pos); ?>" class="text"></label>
-	<label><?php echo translate("Description"); ?>: <textarea name="description" style="height: 100px; "><?php echo htmlspecialchars($c->description); ?></textarea></label>
+	<label><?php echo translate("Position"); ?>: <input type="number" name="pos" required min="1" value="<?php echo htmlspecialchars($c->pos); ?>" class="text"></label>
+	<label><?php echo translate("Description"); ?>: <textarea name="description" maxlength="1000" style="height: 100px; "><?php echo htmlspecialchars($c->description); ?></textarea></label>
 	<p><?php echo translate("Picture"); ?> <br>
 		<?php
 		if(!empty($c->picture))
@@ -277,7 +277,7 @@ else
 			<a href="javascript:deleteCategory('<?php echo intval($c->id); ?>'); " title="delete"><img src="img/icons/delete.png" alt="delete"></a>
 			</td>
 			<td>
-			<?php echo htmlspecialchars($c->displayDateTime('date_created')); ?>
+			<time datetime="<?php echo htmlspecialchars($c->date_created); ?>"><?php echo htmlspecialchars($c->displayDateTime('date_created')); ?></time>
 			</td>
 			</tr>
 			<?php
@@ -290,7 +290,7 @@ else
 }
 ?>
 
-</div>
+</main>
 <?php require_once(WEB_DIR . "/includes/right.php"); ?>
 <?php require_once(WEB_DIR . "/includes/footer.php"); ?>
 </body>

@@ -20,7 +20,7 @@ if($category->id == 0 || !$category->canBeDisplayed())
 <body>
 <?php require_once(WEB_DIR . "/includes/header.php"); ?>
 <?php require_once(WEB_DIR . "/includes/left.php"); ?>
-<div id="content">
+<main>
 <?php
 $category = Application::getCurrentCategory();
 $hasImage = (!empty($category->picture) && is_file(WEB_DIR . "/img/categories/{$category->picture}"));
@@ -43,7 +43,7 @@ $user = Application::getUser();
 if($user->isAdminLoggedIn())
 {
 	?>
-	<p><a href="admin/category.php?action=edit&id_category=<?php echo htmlspecialchars($category->id); ?>" style="font-size: 12pt; display: block; ">&raquo; <?php echo translate("Edit category"); ?> <?php echo htmlspecialchars($category->title); ?></a></p>
+	<p><a href="admin/category.php?action=edit&id_category=<?php echo htmlspecialchars($category->id); ?>" style="font-size: 12pt; "><img src="img/icons/edit.gif"> <?php echo translate("Edit category"); ?> <?php echo htmlspecialchars($category->title); ?></a></p>
 	<?php
 }
 ?>
@@ -95,7 +95,7 @@ $list = $db->tbProduct->search($arr, @$_GET["start"], @$_GET["rowsPerPage"], @$_
 require_once(WEB_DIR . "/includes/products_list.php");
 ?>
 
-</div>
+</main>
 <?php require_once(WEB_DIR . "/includes/right.php"); ?>
 <?php require_once(WEB_DIR . "/includes/footer.php"); ?>
 </body>

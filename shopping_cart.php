@@ -21,7 +21,7 @@ if($user->isAdminLoggedIn()) {
 <body>
 <?php require_once(WEB_DIR . "/includes/header.php"); ?>
 <?php require_once(WEB_DIR . "/includes/left.php"); ?>
-<div id="content">
+<main>
 <h1><?php echo translate("Processing order: step 1"); ?></h1>
 <?php require_once(WEB_DIR . "/includes/print_messages.php"); ?>
 
@@ -46,7 +46,7 @@ else
 	?>
 	<form action="formparser/order.php?action=update_basket" method="post" id="frm_update_basket">
 	<?php echo translate("Date"); ?>: <?php echo htmlspecialchars($df->displayDate($cfgDf["date"], $cfgDf["separator_date"])); ?> <br>
-	<?php echo translate("Title"); ?>: <input type="text" name="title" value="<?php echo htmlspecialchars($basket->title); ?>" class="text">
+	<?php echo translate("Title"); ?>: <input type="text" name="title" required minlength="3" maxlength="255" value="<?php echo htmlspecialchars($basket->title); ?>" class="text">
 
 	<table style="text-align: right; " cellpadding="2" cellspacing="0" class="cuborder">
 	<tr align="center">
@@ -74,7 +74,7 @@ else
 			<a href="product.php?id_product=<?php echo htmlspecialchars($op->id_product); ?>"><?php echo htmlspecialchars($op->product_name); ?></a>
 		</td>
 		<td><?php echo htmlspecialchars(translate($op->measuring_unit)); ?>&nbsp;</td>
-		<td><input type="text" name="quantity[]" value="<?php echo htmlspecialchars(displayPrice($op->quantity)); ?>" style="width: 50px; text-align: right; " onfocus="this.select(); "></td>
+		<td><input type="number" name="quantity[]" min="0.01" step="0.01" value="<?php echo htmlspecialchars(displayPrice($op->quantity)); ?>" style="width: 50px; text-align: right; " onfocus="this.select(); "></td>
 		<td><?php echo htmlspecialchars(displayPrice($op->price)); ?></td>
 		<td><?php echo htmlspecialchars(displayPrice($op->total)); ?></td>
 		</tr>
@@ -99,7 +99,7 @@ else
 }
 ?>
 
-</div>
+</main>
 <?php require_once(WEB_DIR . "/includes/right.php"); ?>
 <?php require_once(WEB_DIR . "/includes/footer.php"); ?>
 </body>

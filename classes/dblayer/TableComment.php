@@ -9,7 +9,7 @@ class TableComment extends MysqlTable
 {
 	function __construct(&$database)
 	{
-		parent::__construct($database, 'comments');
+		parent::__construct($database, '_comments');
 	}
 
 	function createLogicObject()

@@ -38,7 +38,7 @@ class BaseObject extends BaseClass
 	function reset()
 	{
 		$asoc = get_class_vars(get_class($this));
-		foreach ($asoc as $key => $value)
+		foreach($asoc as $key => $value)
 		{
 			$this->$key = $value;
 		}

@@ -5,15 +5,15 @@
  */
 
 ?>
-<div id="left">
+<aside id="left">
 
-<div id="categories">
+<nav id="categories">
 <?php
 $db = Application::getDb();
 $c = Application::getCurrentCategory();
 $tree = $db->tbCategory->getTree();
 displayCategoriesTree($tree, 'category.php', $c);
 ?>
-</div>
+</nav>
 
-</div>
+</aside>

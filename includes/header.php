@@ -5,13 +5,13 @@
  */
 
 ?>
-<div id="header">
+<header id="HEADER">
 <a href="index.php"><img src="img/design/logo.jpg" id="logo"></a>
 <form id="logout_form" action="formparser/user.php?action=logout" method="post" style="display: none; ">
 <input type="hidden" name="logout" value="1">
 </form>
 
-<div id="menu">
+<nav>
 <ul>
 <li><a href="how_to_buy.php"><?php echo translate("How to buy"); ?></a></li>
 <li><a href="payment_and_delivery.php"><?php echo translate("Payment"); ?></a></li>
@@ -47,20 +47,19 @@ else
 }
 ?>
 </ul>
+</nav>
 
 <form action="formparser/order.php?action=remove_product" method="post" id="frm_remove_product">
 <input type="hidden" name="line_number" value="0">
 </form>
 
-</div>
-
 <div id="search_box">
 <form action="search.php" method="get">
-<input type="text" name="keywords" value="<?php echo htmlspecialchars(@$_GET["keywords"]); ?>" class="text" onfocus="this.select(); ">
+<input type="search" name="keywords" value="<?php echo htmlspecialchars(@$_GET["keywords"]); ?>" class="search" onfocus="this.select(); ">
 <input type="submit" value="Search!" class="button">
 <a href="advanced_search.php?<?php echo Tools::http_build_query2($_GET); ?>"><?php echo translate("advanced"); ?> &raquo;</a>
 </form>
 </div>
 
 <br clear="all">
-</div>
+</header>

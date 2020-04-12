@@ -50,6 +50,8 @@ if($productsCount > 0)
 	{
 		$p = $list[$i];
 		?>
+		<article>
+		<header>
 		<tr valign="top">
 		<td>
 			<table cellpadding="0" cellspacing="0" style="margin: 0px;">
@@ -102,9 +104,11 @@ if($productsCount > 0)
 			<a href="javascript:deleteProduct('<?php echo intval($p->id); ?>'); " title="delete"><img src="img/icons/delete.png" alt="delete"></a>
 		</td>
 		<td>
-			<?php echo htmlspecialchars($p->displayDateTime('date_created')); ?>
+			<time datetime="<?php echo htmlspecialchars($p->date_created); ?>"><?php echo htmlspecialchars($p->displayDateTime('date_created')); ?></time>
 		</td>
 		</tr>
+		</header>
+		</article>
 		<?php
 	}
 	?>

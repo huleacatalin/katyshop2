@@ -89,16 +89,6 @@ create table product_image (
 	constraint foreign key(id_product) references product(id)
 );
 
-create table comments (
-	id int(11) not null primary key auto_increment,
-	id_product int(11) not null,
-	id_user int(11) not null,
-	content text not null,
-	date_created datetime not null default now(),
-	constraint foreign key(id_product) references product(id),
-	constraint foreign key(id_user) references _users(id)
-);
-
 create table _users (
 	id int(11) not null primary key auto_increment,
 	username varchar(20) not null default '',
@@ -132,6 +122,16 @@ create table user_person (
 	gender varchar(255) not null default '',
 	birth_date varchar(255) not null default '',
 	phone varchar(255) not null default ''
+);
+
+create table _comments (
+	id int(11) not null primary key auto_increment,
+	id_product int(11) not null,
+	id_user int(11) not null,
+	content text not null,
+	date_created datetime not null default now(),
+	constraint foreign key(id_product) references product(id),
+	constraint foreign key(id_user) references _users(id)
 );
 
 create table manufacturer (

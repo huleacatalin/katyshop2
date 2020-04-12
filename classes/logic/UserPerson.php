@@ -21,45 +21,30 @@ class UserPerson extends User
 	{
 		parent::__construct();
 	}
-
-	function validateRegister($confirmPassword)
-	{
-		if(!parent::validateRegister($confirmPassword))
-			return false;
-		$errors = array();
-
-		if(!in_array($this->gender, array("female", "male")))
-			$errors[] = "Please choose a valid gender";
+	
+	function validateCommonFields() {
+		$errors = parent::validateCommonFields();
+		
 		if(strlen($this->first_name) < 3 || strlen($this->first_name) > 20)
 			$errors[] = "First name must have between 3 and 20 characters";
 		if(strlen($this->last_name) < 3 || strlen($this->last_name) > 20)
 			$errors[] = "Name must have between 3 and 20 characters";
-		if(strlen($this->phone) > 20)
-			$errors[] = "Phone must have at most 20 characters";
-
-		Application::appendErrors($errors);
-		return (count($errors) == 0);
-	}
-
-	function validateUpdate($oldPassword, $newPassword, $confirmPassword)
-	{
-		if(!parent::validateUpdate($oldPassword, $newPassword, $confirmPassword))
-			return false;
-		$errors = array();
-
 		if(!in_array($this->gender, array("female", "male")))
 			$errors[] = "Please choose a valid gender";
-		if(strlen($this->first_name) < 3 || strlen($this->first_name) > 20)
-			$errors[] = "First name must have between 3 and 20 characters";
-		if(strlen($this->last_name) < 3 || strlen($this->last_name) > 20)
-			$errors[] = "Last name must have between 3 and 20 characters";
-		if(strlen($this->phone) < 3 || strlen($this->phone) > 20)
-			$errors[] = "Phone must have between 3 and 20 characters";
-			
-		Application::appendErrors($errors);
-		return (count($errors) == 0);
-	}
+		
+		if(!empty($this->birth_date)) {
+			$df = new DateFormat();
+			$df->readDate($this->birth_date);
+			if(!$df->validate(1900))
+				$errors[] = "Birth date is not valid";
+		}
+		
+		if(strlen($this->phone) > 20)
+			$errors[] = "Phone must have maximum 20 characters";
 
+		return $errors;
+	}
+	
 	function toStr($humanReadable = false, $brief = false)
 	{
 		if($humanReadable)

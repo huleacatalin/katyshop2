@@ -15,7 +15,7 @@ class User extends Visitor
 	var $password = ""; // only password can be edited from profile
 	var $email = ""; // unique, md5
 	var $email2 = ""; // openssl
-	var $acc_type = ""; // person, company
+	var $acc_type = ""; // person, company, admin
 	var $active = 0; // is this account active? if not, it's not allowed to login
 	var $activation_code = ""; // this is sent the first time on mail, and user must use it to activate his account
 	var $login_code = ""; // this is used by "remember my password" feature, sent by cookie and used instead of password
@@ -31,6 +31,10 @@ class User extends Visitor
 	function validateCommonFields()
 	{
 		$errors = array();
+		if(!Tools::validateInt($this->id, true))
+			$errors[] = "User id must be positive integer";
+		if(strlen($this->id) > 11)
+			$errors[] = 'User id must have maximum 11 digits';
 		if(!Tools::validateAlphanumeric($this->username))
 			$errors[] = "Username must only have letters, numbers or underscore characters";
 		if(strlen($this->username) < 5 || strlen($this->username) > 20)

@@ -15,7 +15,7 @@ require_once(dirname(__FILE__) . "/init.php");
 <body>
 <?php require_once(WEB_DIR . "/includes/header.php"); ?>
 <?php require_once(WEB_DIR . "/includes/left.php"); ?>
-<div id="content">
+<main>
 <h1><?php echo translate("Contact"); ?></h1>
 <?php require_once(WEB_DIR . "/includes/print_messages.php"); ?>
 
@@ -36,18 +36,15 @@ if(!is_a($m, "ContactMessage"))
 
 <h2><?php echo translate("Send a message"); ?></h2>
 <form action="formparser/contact_message.php?action=send" method="post">
-<label><?php echo translate("Name"); ?>: <input type="text" name="sender_name" value="<?php echo htmlspecialchars($m->sender_name); ?>" class="text"></label>
-<label><?php echo translate("Email"); ?>: <input type="text" name="sender_email" value="<?php echo htmlspecialchars($m->sender_email); ?>" class="text"></label>
-<label><?php echo translate("Subject"); ?>: <input type="text" name="subject" value="<?php echo htmlspecialchars($m->subject); ?>" class="text"></label>
-<label><?php echo translate("Message"); ?>: <textarea name="message" style="height: 100px; "><?php echo htmlspecialchars($m->message); ?></textarea></label>
+<label><?php echo translate("Name"); ?>: <input type="text" name="sender_name" required minlength="3" maxlength="177" value="<?php echo htmlspecialchars($m->sender_name); ?>" class="text"></label>
+<label><?php echo translate("Email"); ?>: <input type="email" name="sender_email" required value="<?php echo htmlspecialchars($m->sender_email); ?>" class="text"></label>
+<label><?php echo translate("Subject"); ?>: <input type="text" name="subject" required minlength="3" maxlength="255" value="<?php echo htmlspecialchars($m->subject); ?>" class="text"></label>
+<label><?php echo translate("Message"); ?>: <textarea name="message" required minlength="3" maxlength="1000" style="height: 100px; "><?php echo htmlspecialchars($m->message); ?></textarea></label>
 <input type="submit" value="<?php echo translate("Send"); ?>" class="button">
 </form>
 
-</div>
+</main>
 <?php require_once(WEB_DIR . "/includes/right.php"); ?>
 <?php require_once(WEB_DIR . "/includes/footer.php"); ?>
-</div>
-</div>
-</div>
 </body>
 </html>

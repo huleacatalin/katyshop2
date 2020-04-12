@@ -46,17 +46,17 @@ if(!empty($_GET["username"]))
 <body>
 <?php require_once(WEB_DIR . "/includes/header.php"); ?>
 <?php require_once(WEB_DIR . "/includes/left.php"); ?>
-<div id="content">
+<main>
 <h1><?php echo translate("User account activation"); ?></h1>
 <?php require_once(WEB_DIR . "/includes/print_messages.php"); ?>
 
 <form method="get" action="activate.php">
-<label><?php echo translate("Username"); ?>: <input type="text" name="username" class="text"></label>
-<label><?php echo translate("Activation code"); ?>: <input type="text" name="activation_code" class="text"></label>
+<label><?php echo translate("Username"); ?>: <input type="text" name="username" required class="text"></label>
+<label><?php echo translate("Activation code"); ?>: <input type="text" name="activation_code" required class="text"></label>
 <input type="submit" value="<?php echo translate("Activate"); ?>" class="button">
 </form>
 
-</div>
+</main>
 <?php require_once(WEB_DIR . "/includes/right.php"); ?>
 <?php require_once(WEB_DIR . "/includes/footer.php"); ?>
 </body>

@@ -3,7 +3,7 @@
  * Copyleft https://sourceforge.net/projects/katyshop2
  * License GNU General Public License version 3 http://www.gnu.org/licenses/
  */
- 
+
 function resizeContent() {
 	leftW = document.getElementById('left').offsetWidth;
 	rightW = document.getElementById('right').offsetWidth;
@@ -11,7 +11,7 @@ function resizeContent() {
 	newW =  bodyW - leftW - rightW - 50;
 	if(newW < 300)
 		newW = 300;
-	document.getElementById('content').style.setProperty('width', newW);
+	document.body.getElementsByTagName('main')[0].style.setProperty('width', newW);
 }
 window.onload = resizeContent;
 window.onresize = resizeContent;

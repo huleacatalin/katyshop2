@@ -16,7 +16,7 @@ require_once(WEB_DIR . "/includes/req_person_company.php");
 <body>
 <?php require_once(WEB_DIR . "/includes/header.php"); ?>
 <?php require_once(WEB_DIR . "/includes/left.php"); ?>
-<div id="content">
+<main>
 <h1><?php echo translate("My orders"); ?></h1>
 <?php require_once(WEB_DIR . "/includes/print_messages.php"); ?>
 
@@ -80,7 +80,7 @@ if($ordersCount > 0)
 			&nbsp;
 		</td>
 		<td><?php echo htmlspecialchars($o->status); ?></td>
-		<td><?php echo htmlspecialchars($o->displayDateTime('date_ordered')); ?></td>
+		<td><time datetime="<?php echo htmlspecialchars($o->date_ordered); ?>"><?php echo htmlspecialchars($o->displayDateTime('date_ordered')); ?></time></td>
 		<td align="right" style="font-weight: bold; "><?php echo htmlspecialchars(displayPrice($o->total)); ?></td>
 		</tr>
 		<?php
@@ -105,7 +105,7 @@ else
 }
 ?>
 
-</div>
+</main>
 <?php require_once(WEB_DIR . "/includes/right.php"); ?>
 <?php require_once(WEB_DIR . "/includes/footer.php"); ?>
 </body>

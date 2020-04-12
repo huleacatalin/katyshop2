@@ -3,10 +3,10 @@
  * Copyleft https://sourceforge.net/projects/katyshop2
  * License GNU General Public License version 3 http://www.gnu.org/licenses/
  */
-
+ 
 function loadScript(filename)
 {
-	document.write('<script type="text/javascript" src="js/' + filename + '"></script>');
+	document.write('<script language="javascript" type="text/javascript" src="js/' + filename + '"></script>');
 }
 
 loadScript("common/compat.js");

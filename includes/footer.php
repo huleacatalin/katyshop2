@@ -7,12 +7,12 @@
 ?>
 <br clear="all">
 
-<div id="footer">
+<footer>
 
-<div id="footer_menu">
+<nav>
 <ul>
 <li><a href="terms.php"><?php echo translate("Terms and conditions"); ?></a></li>
-<li><a href="how_to_buy.php<?php echo translate("How to buy"); ?></a></li>
+<li><a href="how_to_buy.php"><?php echo translate("How to buy"); ?></a></li>
 <li><a href="payment_and_delivery.php"><?php echo translate("Payment and delivery"); ?></a></li>
 <?php
 $user = Application::getUser();
@@ -42,7 +42,7 @@ else
 }
 ?>
 </ul>
-</div>
+</nav>
 
 <div style="float: right; margin-top: 10px; ">
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
@@ -56,7 +56,7 @@ else
 <a href="https://sourceforge.net/projects/katyshop2" target="_blank" id="copyleft">Copyleft 2020 Katyshop2</a>
 
 <br clear="all">
-</div>
+</footer>
 <?php
 $db = Application::getDb();
 $db->close();

@@ -5,7 +5,7 @@
  */
 
 ?>
-<div id="right">
+<aside id="right">
 
 <div id="login_form">
 <?php
@@ -15,8 +15,8 @@ if(!$user->isUserLoggedIn())
 	?>
 	<form action="formparser/user.php?action=login" method="post">
 	<h3><a href="login.php"><?php echo translate("Login"); ?></a></h3>
-	<label><?php echo translate("Username"); ?> <input type="text" name="username" class="text"></label>
-	<label><?php echo translate("Password"); ?> <input type="password" name="password" class="text"></label>
+	<label><?php echo translate("Username"); ?> <input type="text" name="username" required class="text"></label>
+	<label><?php echo translate("Password"); ?> <input type="password" name="password" required class="text"></label>
 	<label><input type="checkbox" name="remember_password" value="1" id="remember_password2"> <?php echo translate("Remember my password"); ?></label>
 	<input type="submit" value="<?php echo translate("Login"); ?>" class="button">
 	</form>
@@ -49,4 +49,4 @@ else
 <p><a href="https://www.github.com/huleacatalin/katyshop2" target="_blank"><img src="img/design/octocat.jpg"></a></p>
 <p><a href="https://www.sourceforge.net/p/katyshop2" target="_blank"><img src="img/design/sourceforge.jpg"></a></p>
 <p><a href="https://www.softpedia.com" target="_blank"><img src="img/design/softpedia.jpg"></a></p>
-</div>
+</aside>

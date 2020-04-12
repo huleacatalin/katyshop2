@@ -23,7 +23,8 @@ if(@$_GET["action"] == "register")
 	if(is_a($registerUser, "User") && !Application::hasErrors())
 	{
 		$registerUser->copyFromArray(@$_POST);
-		$registerUser->readDate("birth_date", @$_POST["birth_date"]);
+		//$registerUser->readDate("birth_date", @$_POST["birth_date"]);
+		$registerUser->birth_date = @$_POST["birth_date"];
 		$registerUser->active = 0;
 		$registerUser->login_code = "";
 		if($registerUser->validateRegister(@$_POST["confirm_password"]))
@@ -94,7 +95,8 @@ elseif (@$_GET["action"] == "profile")
 	// fill $updateUser with all data from $_POST. This is not secure yet,
 	// because bogus data could be sent, such as ip, id, username, active... properties.
 	$updateUser->copyFromArray($_POST);
-	$updateUser->readDate("birth_date", @$_POST["birth_date"]);
+	//$updateUser->readDate("birth_date", @$_POST["birth_date"]);
+	$updateUser->birth_date = @$_POST['birth_date'];
 
 	// protect sensitive data:
 	$userData = new User();

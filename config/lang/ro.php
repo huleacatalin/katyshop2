@@ -156,7 +156,7 @@ $this->cfg["lang"]["ro"] = array(
 	"Mister" => 'Domn',
 	"First name" => 'Prenume',
 	"Last name" => 'Nume de familie',
-	"Birth date (mm/dd/yyyy)" => 'Data nașterii (ll/zz/aaaa)',
+	"Birth date" => 'Data nașterii',
 	"Phone" => 'Telefon',
 	"Company info" => 'Informații companie',
 	"Company name" => 'Numele companiei',
@@ -336,7 +336,7 @@ $this->cfg["lang"]["ro"] = array(
 	"Please choose a valid gender" => 'Vă rugăm să alegeți un gen valid',
 	"First name must have between 3 and 20 characters" => 'Prenumele trebuie să aibă între 3 și 20 caractere',
 	"Name must have between 3 and 20 characters" => 'Numele de familie trebuie să aibă între 3 și 20 caractere',
-	"Phone must have at most 20 characters" => 'Telefonul trebuie să aibă cel mult 20 caractere',
+	"Phone must have maximum 20 characters" => 'Telefonul trebuie să aibă cel mult 20 caractere',
 	"Last name must have between 3 and 20 characters" => 'Numele de familie trebuie sa aibă între 3 și 20 de caractere',
 	"Phone must have between 3 and 20 characters" => 'Telefonul trebuie să aibă între 3 și 20 caractere',
 	"Person account with details" => 'Cont de tip persoana cu detaliile',
@@ -347,6 +347,7 @@ $this->cfg["lang"]["ro"] = array(
 	"Company email" => 'Emailul companiei',
 	"Company account with details" => 'Cont de tip companie cu detaliile',
 	"Company fax" => 'Fax companie',
+	"must have maximum 177 characters" => "trebuie să aibă maxim 177 caractere",
 	
 	// classes/logic/User.php
 	"Username must only have letters, numbers or underscore characters" => 'Username trebuie să aibă doar litere, numere și caractere underscore',
