@@ -5,6 +5,9 @@
  */
 
 require_once(dirname(__FILE__) . "/init.php");
+
+$db = Application::getDb();
+$manufacturers = $db->tbManufacturer->search(array(), 0, 500, "title");
 ?>
 <html>
 <head>
@@ -28,13 +31,11 @@ require_once(dirname(__FILE__) . "/init.php");
 	<select name="id_manufacturer" class="select">
 	<option value="0">-- <?php echo translate("Choose"); ?> --</option>
 	<?php
-	$db = Application::getDb();
-	$list = $db->tbManufacturer->search(array(), 0, 500, "title");
-	for($i = 0; $i < count($list); $i++)
+	for($i = 0; $i < count($manufacturers); $i++)
 	{
-		$selected = ($list[$i]->id == @$_GET["id_manufacturer"]) ? "selected" : "";
+		$selected = ($manufacturers[$i]->id == @$_GET["id_manufacturer"]) ? "selected" : "";
 		?>
-		<option value="<?php echo htmlspecialchars($list[$i]->id); ?>" <?php echo $selected; ?>><?php echo htmlspecialchars($list[$i]->title); ?></option>
+		<option value="<?php echo htmlspecialchars($manufacturers[$i]->id); ?>" <?php echo $selected; ?>><?php echo htmlspecialchars($manufacturers[$i]->title); ?></option>
 		<?php
 	}
 	?>

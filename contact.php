@@ -5,6 +5,11 @@
  */
 
 require_once(dirname(__FILE__) . "/init.php");
+
+$message = SessionWrapper::get("editContactMessage");
+if(!is_a($message, "ContactMessage"))
+	$message = new ContactMessage();
+
 ?>
 <html>
 <head>
@@ -28,18 +33,12 @@ Phone/Fax: 555-555-555
 </address>
 </p>
 
-<?php
-$m = SessionWrapper::get("editContactMessage");
-if(!is_a($m, "ContactMessage"))
-	$m = new ContactMessage();
-?>
-
 <h2><?php echo translate("Send a message"); ?></h2>
 <form action="formparser/contact_message.php?action=send" method="post">
-<label><?php echo translate("Name"); ?>: <input type="text" name="sender_name" required minlength="3" maxlength="177" value="<?php echo htmlspecialchars($m->sender_name); ?>" class="text"></label>
-<label><?php echo translate("Email"); ?>: <input type="email" name="sender_email" required value="<?php echo htmlspecialchars($m->sender_email); ?>" class="text"></label>
-<label><?php echo translate("Subject"); ?>: <input type="text" name="subject" required minlength="3" maxlength="255" value="<?php echo htmlspecialchars($m->subject); ?>" class="text"></label>
-<label><?php echo translate("Message"); ?>: <textarea name="message" required minlength="3" maxlength="1000" style="height: 100px; "><?php echo htmlspecialchars($m->message); ?></textarea></label>
+<label><?php echo translate("Name"); ?>: <input type="text" name="sender_name" required minlength="3" maxlength="177" value="<?php echo htmlspecialchars($message->sender_name); ?>" class="text"></label>
+<label><?php echo translate("Email"); ?>: <input type="email" name="sender_email" required value="<?php echo htmlspecialchars($message->sender_email); ?>" class="text"></label>
+<label><?php echo translate("Subject"); ?>: <input type="text" name="subject" required minlength="3" maxlength="255" value="<?php echo htmlspecialchars($message->subject); ?>" class="text"></label>
+<label><?php echo translate("Message"); ?>: <textarea name="message" required minlength="3" maxlength="1000" style="height: 100px; "><?php echo htmlspecialchars($message->message); ?></textarea></label>
 <input type="submit" value="<?php echo translate("Send"); ?>" class="button">
 </form>
 

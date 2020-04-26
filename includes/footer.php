@@ -4,6 +4,7 @@
  * License GNU General Public License version 3 http://www.gnu.org/licenses/
  */
 
+$user = Application::getUser();
 ?>
 <br clear="all">
 
@@ -15,7 +16,6 @@
 <li><a href="how_to_buy.php"><?php echo translate("How to buy"); ?></a></li>
 <li><a href="payment_and_delivery.php"><?php echo translate("Payment and delivery"); ?></a></li>
 <?php
-$user = Application::getUser();
 if($user->isAdminLoggedIn())
 {
 	?><li><a href="admin/index.php"><?php echo translate("Admin"); ?></a></li><?php
@@ -53,7 +53,7 @@ else
 </form>
 </div>
 
-<a href="https://sourceforge.net/projects/katyshop2" target="_blank" id="copyleft">Copyleft 2020 Katyshop2</a>
+<a href="https://katyshop2.sourceforge.io" target="_blank" id="copyleft">Copyleft 2020 Katyshop2</a>
 
 <br clear="all">
 </footer>

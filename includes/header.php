@@ -4,6 +4,7 @@
  * License GNU General Public License version 3 http://www.gnu.org/licenses/
  */
 
+$user = Application::getUser();
 ?>
 <header id="HEADER">
 <a href="index.php"><img src="img/design/logo.jpg" id="logo"></a>
@@ -17,7 +18,6 @@
 <li><a href="payment_and_delivery.php"><?php echo translate("Payment"); ?></a></li>
 <li><a href="contact.php"><?php echo translate("Contact"); ?></a></li>
 <?php
-$user = Application::getUser();
 if($user->isAdminLoggedIn())
 {
 	?><li><a href="admin/index.php"><?php echo translate("Admin"); ?></a></li><?php

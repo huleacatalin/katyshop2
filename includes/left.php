@@ -4,15 +4,15 @@
  * License GNU General Public License version 3 http://www.gnu.org/licenses/
  */
 
+$db = Application::getDb();
+$currentCategory = Application::getCurrentCategory();
+$categoriesTree = $db->tbCategory->getTree();
 ?>
 <aside id="left">
 
 <nav id="categories">
 <?php
-$db = Application::getDb();
-$c = Application::getCurrentCategory();
-$tree = $db->tbCategory->getTree();
-displayCategoriesTree($tree, 'category.php', $c);
+displayCategoriesTree($categoriesTree, 'category.php', $currentCategory);
 ?>
 </nav>
 

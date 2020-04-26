@@ -5,11 +5,29 @@
  */
 
 require_once(dirname(__FILE__) . "/init.php");
+require_once(WEB_DIR . "/includes/req_person_company.php");
 
-$user = Visitor::getInstance();
-if($user->isAdminLoggedIn()) {
-	Application::addError('Admin accounts cannot have addresses');
-	Tools::redirect('profile.php');
+$user = Application::getUser();
+$db = Application::getDb();
+$counties = Application::getConfigValue("counties");
+
+if(@$_GET["detail"] == "true")
+{
+	if(!array_key_exists("id", $_GET))
+	{
+		$address = SessionWrapper::get("editAddress");
+		if(!is_a($address, "Address"))
+			$address = new Address();
+	}
+	else
+	{
+		$address = $db->tbAddress->getRecordById(@$_GET["id"]);
+		if($address->id_user != $user->id)
+			$address = new Address();
+	}
+}
+else {
+	$addresses = $db->tbAddress->getRecordsByUserId($user->id, @$_GET["condition"]);
 }
 ?>
 <html>
@@ -32,54 +50,41 @@ if($user->isAdminLoggedIn()) {
 </ul>
 <?php require_once(WEB_DIR . "/includes/print_messages.php"); ?>
 <?php
-$user = Application::getUser();
-$db = Application::getDb();
 if(@$_GET["detail"] == "true")
 {
-	if(!array_key_exists("id", $_GET))
-	{
-		$a = SessionWrapper::get("editAddress");
-		if(!is_a($a, "Address"))
-			$a = new Address();
-	}
-	else
-	{
-		$a = $db->tbAddress->getRecordById(@$_GET["id"]);
-	}
 	?>
 	<form id="frm_delete_address" action="formparser/address.php?action=delete" method="post">
-	<input type="hidden" name="id" value="<?php echo intval($a->id); ?>">
+	<input type="hidden" name="id" value="<?php echo intval($address->id); ?>">
 	</form>
 
 	<form action="formparser/address.php?action=save" method="post">
-	<input type="hidden" name="id" value="<?php echo $a->id; ?>">
-	<h2><?php echo ($a->id == 0) ? 'Add new address' : 'Edit address'; ?></h2>
-	<label style="margin: 0px; "><input type="checkbox" name="primary_addr" value="1" <?php echo ($a->primary_addr == 1) ? "checked" : ""; ?>> <?php echo translate("Primary address"); ?></label>
-	<label style="margin: 0px; "><input type="checkbox" name="delivery" value="1" <?php echo ($a->delivery == 1) ? "checked" : ""; ?>> <?php echo translate("Delivery"); ?></label>
-	<label><input type="checkbox" name="invoicing" value="1" <?php echo ($a->invoicing == 1) ? "checked" : ""; ?>> <?php echo translate("Invoicing"); ?></label>
+	<input type="hidden" name="id" value="<?php echo $address->id; ?>">
+	<h2><?php echo ($address->id == 0) ? 'Add new address' : 'Edit address'; ?></h2>
+	<label style="margin: 0px; "><input type="checkbox" name="primary_addr" value="1" <?php echo ($address->primary_addr == 1) ? "checked" : ""; ?>> <?php echo translate("Primary address"); ?></label>
+	<label style="margin: 0px; "><input type="checkbox" name="delivery" value="1" <?php echo ($address->delivery == 1) ? "checked" : ""; ?>> <?php echo translate("Delivery"); ?></label>
+	<label><input type="checkbox" name="invoicing" value="1" <?php echo ($address->invoicing == 1) ? "checked" : ""; ?>> <?php echo translate("Invoicing"); ?></label>
 	<label> <?php echo translate("County"); ?>:
 	<select name="county" class="select" required>
 	<option value="">-- <?php echo translate("Please choose"); ?> --</option>
 	<?php
-	$list = Application::getConfigValue("counties");
-	for($i = 0; $i < count($list); $i++)
+	for($i = 0; $i < count($counties); $i++)
 	{
-		$selected = ($a->county == $list[$i]) ? "selected" : "";
+		$selected = ($address->county == $counties[$i]) ? "selected" : "";
 		?>
-		<option value="<?php echo htmlspecialchars($list[$i]); ?>" <?php echo $selected; ?>><?php echo htmlspecialchars($list[$i]); ?></option>
+		<option value="<?php echo htmlspecialchars($counties[$i]); ?>" <?php echo $selected; ?>><?php echo htmlspecialchars($counties[$i]); ?></option>
 		<?php
 	}
 	?>
 	</select></label>
 
-	<label><?php echo translate("City"); ?>: <input type="text" name="city" value="<?php echo htmlspecialchars($a->city); ?>" required minlength="3" maxlength="177" class="text"></label>
-	<label><?php echo translate("Address"); ?>: <textarea name="address" style="height: 100px; " required minlength="3" maxlength="1000"><?php echo htmlspecialchars($a->address); ?></textarea></label>
+	<label><?php echo translate("City"); ?>: <input type="text" name="city" value="<?php echo htmlspecialchars($address->city); ?>" required minlength="3" maxlength="177" class="text"></label>
+	<label><?php echo translate("Address"); ?>: <textarea name="address" style="height: 100px; " required minlength="3" maxlength="1000"><?php echo htmlspecialchars($address->address); ?></textarea></label>
 
 	<input type="submit" value="<?php echo translate("Save"); ?>" class="button">
 	<?php
-	if($a->id > 0) {
+	if($address->id > 0) {
 		?>
-		<input type="button" value="Delete" style="color: red; " onclick="deleteAddress(); " class="button">
+		<input type="button" value="<?php echo translate('Delete'); ?>" style="color: red; " onclick="deleteAddress(); " class="button">
 		<?php
 	}
 	?>
@@ -89,12 +94,11 @@ if(@$_GET["detail"] == "true")
 else
 {
 	// show list of addresses
-	$list = $db->tbAddress->getRecordsByUserId($user->id, @$_GET["condition"]);
-	if(count($list) > 0)
+	if(count($addresses) > 0)
 	{
-		for($i = 0; $i < count($list); $i++)
+		for($i = 0; $i < count($addresses); $i++)
 		{
-			$a = $list[$i];
+			$a = $addresses[$i];
 			?>
 			<table>
 			<tr valign="top">

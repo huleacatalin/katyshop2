@@ -4,26 +4,28 @@
  * License GNU General Public License version 3 http://www.gnu.org/licenses/
  */
 
+$db = Application::getDb();
+$c = Application::getCurrentCategory();
+$breadcrumb = $db->tbCategory->getBreadcrumb($c->id);
+
+$breadcrumbProduct = new Product();
+if(!empty($_GET['id_product']))
+	$breadcrumbProduct = $db->tbProduct->getRecordById($_GET['id_product']);
 ?>
 <nav id="breadcrumb">
 <a href="category.php"><?php echo htmlspecialchars(APP_NAME); ?></a>
 <?php
-$db = Application::getDb();
-$category = Application::getCurrentCategory();
-$list = $db->tbCategory->getBreadcrumb($category->id);
-
-for($i = 0; $i < count($list); $i++)
+for($i = 0; $i < count($breadcrumb); $i++)
 {
 	?>
-	&raquo; <a href="category.php?id_category=<?php echo htmlspecialchars($list[$i]->id); ?>"><?php echo htmlspecialchars($list[$i]->title); ?></a>
+	&raquo; <a href="category.php?id_category=<?php echo htmlspecialchars($breadcrumb[$i]->id); ?>"><?php echo htmlspecialchars($breadcrumb[$i]->title); ?></a>
 	<?php
 }
 
 if(!empty($_GET["id_product"]))
 {
-	$p = $db->tbProduct->getRecordById($_GET["id_product"]);
 	?>
-	&raquo; <a href="product.php?id_product=<?php echo htmlspecialchars($p->id); ?>"><?php echo htmlspecialchars($p->title); ?></a>
+	&raquo; <a href="product.php?id_product=<?php echo htmlspecialchars($breadcrumbProduct->id); ?>"><?php echo htmlspecialchars($breadcrumbProduct->title); ?></a>
 	<?php
 }
 ?>

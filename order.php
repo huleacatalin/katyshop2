@@ -6,27 +6,11 @@
 
 require_once(dirname(__FILE__) . "/init.php");
 require_once(WEB_DIR . "/includes/req_person_company.php");
-?>
-<html>
-<head>
-<title><?php echo APP_NAME; ?></title>
-<?php require_once(WEB_DIR . "/includes/html_head.php"); ?>
-</head>
 
-<body>
-<?php require_once(WEB_DIR . "/includes/header.php"); ?>
-<?php require_once(WEB_DIR . "/includes/left.php"); ?>
-<main>
-<?php
 $db = Application::getDb();
 $user = Application::getUser();
 $order = $db->tbOrder->getRecordById(@$_GET["id"]);
-?>
-<h1><?php echo ($order->id == 0) ? translate('Step 4: sending the order') : translate('View order'); ?></h1>
-<?php require_once(WEB_DIR . "/includes/print_messages.php"); ?>
 
-<a href="orders_list.php">&laquo; <?php echo translate("Click here to return to the list of orders"); ?></a> <br>
-<?php
 if($order->id == 0)
 {
 	$order = Application::getShoppingCart();
@@ -38,6 +22,24 @@ elseif($order->id_user != $user->id)
 	exit();
 }
 
+$order->computeValue();
+
+?>
+<html>
+<head>
+<title><?php echo APP_NAME; ?></title>
+<?php require_once(WEB_DIR . "/includes/html_head.php"); ?>
+</head>
+
+<body>
+<?php require_once(WEB_DIR . "/includes/header.php"); ?>
+<?php require_once(WEB_DIR . "/includes/left.php"); ?>
+<main>
+<h1><?php echo ($order->id == 0) ? translate('Step 4: sending the order') : translate('View order'); ?></h1>
+<?php require_once(WEB_DIR . "/includes/print_messages.php"); ?>
+
+<a href="orders_list.php">&laquo; <?php echo translate("Click here to return to the list of orders"); ?></a> <br>
+<?php
 if($order->getProductsCount() == 0)
 {
 	?>
@@ -46,13 +48,6 @@ if($order->getProductsCount() == 0)
 }
 else
 {
-	$order->computeValue();
-	$df = new DateFormat();
-	$cfgDf = Application::getConfigValue("date_format");
-	$lang_code = Application::getConfigValue("lang_code");
-	if(array_key_exists($lang_code, $cfgDf))
-		$cfgDf = $cfgDf[$lang_code];
-	
 	if($order->id == 0)
 	{
 		?>
@@ -71,13 +66,12 @@ else
 	?>
 
 	<?php echo translate("Title"); ?>: <big><b><?php echo $order->title; ?></b></big> <br>
-	<?php echo translate("Date ordered"); ?>: <?php echo htmlspecialchars($df->displayDate($cfgDf["date"], $cfgDf["separator_date"])); ?> <br>
+	<?php echo translate("Date ordered"); ?>: <?php echo htmlspecialchars($order->displayDateTime('date_ordered')); ?> <br>
 	<?php
 	if($order->id > 0)
 	{
-		$df->readDateTime($order->date_updated);
 		?>
-		<?php echo translate("Status updated date"); ?>: <?php echo htmlspecialchars($df->displayDate($cfgDf["date"], $cfgDf["separator_date"])); ?> <br>
+		<?php echo translate("Status updated date"); ?>: <?php echo htmlspecialchars($order->displayDateTime('date_updated')); ?> <br>
 		<?php
 	}
 	?>

@@ -6,6 +6,15 @@
 
 require_once(dirname(__FILE__) . "/init.php");
 require_once(WEB_DIR . "/includes/req_person_company.php");
+
+$orderStatuses = Order::getPossibleStatuses();
+
+$db = Application::getDb();
+$user = Application::getUser();
+$arr = Compat::array_clone(@$_GET);
+$arr["id_user"] = $user->id;
+$orders = $db->tbOrder->search($arr, @$_GET["start"], @$_GET["rowsPerPage"], @$_GET["order_by"], @$_GET["order_direction"]);
+$ordersCount = $db->tbOrder->getCount($arr, @$_GET["start"], @$_GET["rowsPerPage"], @$_GET["order_by"], @$_GET["order_direction"]);
 ?>
 <html>
 <head>
@@ -24,13 +33,12 @@ require_once(WEB_DIR . "/includes/req_person_company.php");
 <?php echo translate("Select by status"); ?>:
 <a href="orders_list.php"><?php echo translate("All"); ?></a>
 <?php
-$list = Order::getPossibleStatuses();
-for($i = 0; $i < count($list); $i++)
+for($i = 0; $i < count($orderStatuses); $i++)
 {
-	if($list[$i] != "in cart")
+	if($orderStatuses[$i] != "in cart")
 	{
 		?>
-		| <a href="orders_list.php?status=<?php echo rawurlencode($list[$i]); ?>"><?php echo htmlspecialchars(translate($list[$i])); ?></a>
+		| <a href="orders_list.php?status=<?php echo rawurlencode($orderStatuses[$i]); ?>"><?php echo htmlspecialchars(translate($orderStatuses[$i])); ?></a>
 		<?php
 	}
 }
@@ -38,12 +46,6 @@ for($i = 0; $i < count($list); $i++)
 </p>
 <?php
 
-$db = Application::getDb();
-$user = Application::getUser();
-$arr = Compat::array_clone(@$_GET);
-$arr["id_user"] = $user->id;
-$list = $db->tbOrder->search($arr, @$_GET["start"], @$_GET["rowsPerPage"], @$_GET["order_by"], @$_GET["order_direction"]);
-$ordersCount = $db->tbOrder->getCount($arr, @$_GET["start"], @$_GET["rowsPerPage"], @$_GET["order_by"], @$_GET["order_direction"]);
 if($ordersCount > 0)
 {
 	?>
@@ -65,9 +67,9 @@ if($ordersCount > 0)
 	<th nowrap><?php echo pagination_columnHead(translate("Total value"), "total"); ?></th>
 	</tr>
 	<?php
-	for($i = 0; $i < count($list); $i++)
+	for($i = 0; $i < count($orders); $i++)
 	{
-		$o = $list[$i];
+		$o = $orders[$i];
 		?>
 		<tr onmouseover="this.style.backgroundColor='#ddeeff'; " onmouseout="this.style.backgroundColor='#ffffff'; ">
 		<td><?php echo htmlspecialchars($o->id); ?></td>

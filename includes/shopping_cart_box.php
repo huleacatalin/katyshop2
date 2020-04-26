@@ -5,12 +5,14 @@
  */
 
 $user = Visitor::getInstance();
+$basket = Application::getShoppingCart();
+$basket->computeValue();
+
 if (!$user->isAdminLoggedIn()) {
 	?>
 	<div id="shopping_cart_box">
 	<h3><a href="shopping_cart.php"><?php echo translate("Shopping cart"); ?></a></h3>
 	<?php
-	$basket = Application::getShoppingCart();
 	if($basket->getProductsCount() == 0)
 	{
 		?>
@@ -19,7 +21,6 @@ if (!$user->isAdminLoggedIn()) {
 	}
 	else
 	{
-		$basket->computeValue();
 		?>
 		<ul>
 		<?php

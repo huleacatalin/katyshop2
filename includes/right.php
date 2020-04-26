@@ -4,12 +4,12 @@
  * License GNU General Public License version 3 http://www.gnu.org/licenses/
  */
 
+$user = Visitor::getInstance();
 ?>
 <aside id="right">
 
 <div id="login_form">
 <?php
-$user = Visitor::getInstance();
 if(!$user->isUserLoggedIn())
 {
 	?>

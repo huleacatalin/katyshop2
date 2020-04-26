@@ -27,9 +27,9 @@ if($productsCount > 0)
 	<td></td>
 	</tr>
 	<?php
-	for($i = 0; $i < count($list); $i++)
+	for($i = 0; $i < count($products); $i++)
 	{
-		$p = $list[$i];
+		$p = $products[$i];
 		if(!$p->canBeDisplayed())
 			continue;
 		?>

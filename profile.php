@@ -14,6 +14,8 @@ if(!is_a($updateUser, "User"))
 {
 	$updateUser = Factory::instantiateUser($user);
 }
+$db = Application::getDb();
+$addressesCount = $db->tbAddress->getCount(array("id_user" => $user->id));
 ?>
 <html>
 <head>
@@ -33,11 +35,9 @@ if(!is_a($updateUser, "User"))
 <?php
 require_once(WEB_DIR . "/includes/print_messages.php");
 
-$db = Application::getDb();
 if($user->isCompanyLoggedIn() || $user->isPersonLoggedIn())
 {
-	$x = $db->tbAddress->getCount(array("id_user" => $user->id));
-	if($x == 0)
+	if($addressesCount == 0)
 	{
 		?>
 		<p><?php echo translate("You have no addresses."); ?> <a href="address.php?detail=true&id=0"><?php echo translate("Click here to add a new address"); ?></a></p>

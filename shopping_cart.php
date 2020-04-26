@@ -11,6 +11,7 @@ if($user->isAdminLoggedIn()) {
 	Application::addError('Admin accounts cannot send orders');
 	Tools::redirect('admin');
 }
+$basket = Application::getShoppingCart();
 ?>
 <html>
 <head>
@@ -28,7 +29,6 @@ if($user->isAdminLoggedIn()) {
 <h2><?php echo translate("Shopping cart"); ?></h2>
 
 <?php
-$basket = Application::getShoppingCart();
 if($basket->getProductsCount() == 0)
 {
 	?>

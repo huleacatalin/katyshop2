@@ -5,6 +5,23 @@
  */
 
 require_once(dirname(__FILE__) . "/init.php");
+$db = Application::getDb();
+$childCategories = $db->tbCategory->getChildCategories(0, "pos", "asc", true);
+
+if(empty($_GET["order_by"]["products"]))
+	$_GET["order_by"]["products"] = "pos";
+if(empty($_GET["order_direction"]["products"]))
+	$_GET["order_direction"]["products"] = "asc";
+
+$category = new Category();
+$id_category = $category->id;
+$arr = array("id_category" => intval($id_category), "active" => 1, "only_current_category" => 1);
+$pageTitle = translate("Products");
+$page = "index.php";
+
+$productsCount = $db->tbProduct->getCount($arr, @$_GET["start"], @$_GET["rowsPerPage"], @$_GET["order_by"]["products"], @$_GET["order_direction"]["products"]);
+$products = $db->tbProduct->search($arr, @$_GET["start"], @$_GET["rowsPerPage"], @$_GET["order_by"]["products"], @$_GET["order_direction"]["products"]);
+
 ?>
 <html>
 <head>
@@ -21,11 +38,9 @@ require_once(dirname(__FILE__) . "/init.php");
 
 <div id="first_page">
 <?php
-$db = Application::getDb();
-$list = $db->tbCategory->getChildCategories(0, "pos", "asc", true);
-for($i = 0; $i < count($list); $i++)
+for($i = 0; $i < count($childCategories); $i++)
 {
-	$c = $list[$i];
+	$c = $childCategories[$i];
 	?>
 	<div class="category_box">
 	<h2><a href="category.php?id_category=<?php echo intval($c->id); ?>"><?php echo htmlspecialchars($c->title); ?></a></h2>
@@ -49,23 +64,7 @@ for($i = 0; $i < count($list); $i++)
 <br clear="all">
 </div>
 
-<?php
-if(empty($_GET["order_by"]["products"]))
-	$_GET["order_by"]["products"] = "pos";
-if(empty($_GET["order_direction"]["products"]))
-	$_GET["order_direction"]["products"] = "asc";
-
-$category = new Category();
-$id_category = $category->id;
-$arr = array("id_category" => intval($id_category), "active" => 1, "only_current_category" => 1);
-$pageTitle = translate("Products");
-$page = "index.php";
-
-$productsCount = $db->tbProduct->getCount($arr, @$_GET["start"], @$_GET["rowsPerPage"], @$_GET["order_by"]["products"], @$_GET["order_direction"]["products"]);
-$list = $db->tbProduct->search($arr, @$_GET["start"], @$_GET["rowsPerPage"], @$_GET["order_by"]["products"], @$_GET["order_direction"]["products"]);
-
-require_once(WEB_DIR . "/includes/products_list.php");
-?>
+<?php require_once(WEB_DIR . "/includes/products_list.php"); ?>
 
 </main>
 <?php require_once(WEB_DIR . "/includes/right.php"); ?>

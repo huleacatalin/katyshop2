@@ -7,9 +7,26 @@
 require_once(dirname(__FILE__) . "/init.php");
 
 $db = Application::getDb();
+$user = Application::getUser();
 $category = Application::getCurrentCategory();
 if($category->id == 0 || !$category->canBeDisplayed())
 	Tools::redirect("index.php");
+$hasImage = (!empty($category->picture) && is_file(WEB_DIR . "/img/categories/{$category->picture}"));
+$childCategories = $db->tbCategory->getChildCategories($category->id, "pos", "asc", true);
+
+if(empty($_GET["order_by"]["products"]))
+	$_GET["order_by"]["products"] = "pos";
+if(empty($_GET["order_direction"]["products"]))
+	$_GET["order_direction"]["products"] = "asc";
+
+$id_category = $category->id;
+$arr = array("id_category" => intval($id_category), "active" => 1, "only_current_category" => 1);
+$pageTitle = "Products from " . htmlspecialchars($category->title);
+$page = "category.php";
+
+$productsCount = $db->tbProduct->getCount($arr, @$_GET["start"], @$_GET["rowsPerPage"], @$_GET["order_by"]["products"], @$_GET["order_direction"]["products"]);
+$products = $db->tbProduct->search($arr, @$_GET["start"], @$_GET["rowsPerPage"], @$_GET["order_by"]["products"], @$_GET["order_direction"]["products"]);
+
 ?>
 <html>
 <head>
@@ -21,10 +38,6 @@ if($category->id == 0 || !$category->canBeDisplayed())
 <?php require_once(WEB_DIR . "/includes/header.php"); ?>
 <?php require_once(WEB_DIR . "/includes/left.php"); ?>
 <main>
-<?php
-$category = Application::getCurrentCategory();
-$hasImage = (!empty($category->picture) && is_file(WEB_DIR . "/img/categories/{$category->picture}"));
-?>
 <h1><?php echo htmlspecialchars($category->title); ?></h1>
 <?php 
 require_once(WEB_DIR . "/includes/print_messages.php");
@@ -39,7 +52,6 @@ if($hasImage)
 ?>
 <p><?php echo nl2br(htmlspecialchars($category->description)); ?></p>
 <?php
-$user = Application::getUser();
 if($user->isAdminLoggedIn())
 {
 	?>
@@ -49,13 +61,11 @@ if($user->isAdminLoggedIn())
 ?>
 <br clear="all">
 <?php
-$list = $db->tbCategory->getChildCategories($category->id, "pos", "asc", true);
 
-for($i = 0; $i < count($list); $i++)
+for($i = 0; $i < count($childCategories); $i++)
 {
-	$c = $list[$i];
+	$c = $childCategories[$i];
 	?>
-	
 	<div class="category_box">
 	<h2><a href="category.php?id_category=<?php echo intval($c->id); ?>"><?php echo htmlspecialchars($c->title); ?></a></h2>
 	<p class="pic">
@@ -77,24 +87,7 @@ for($i = 0; $i < count($list); $i++)
 
 ?>
 <br clear="all">
-<?php
-
-if(empty($_GET["order_by"]["products"]))
-	$_GET["order_by"]["products"] = "pos";
-if(empty($_GET["order_direction"]["products"]))
-	$_GET["order_direction"]["products"] = "asc";
-
-$id_category = $category->id;
-$arr = array("id_category" => intval($id_category), "active" => 1, "only_current_category" => 1);
-$pageTitle = "Products from " . htmlspecialchars($category->title);
-$page = "category.php";
-
-$productsCount = $db->tbProduct->getCount($arr, @$_GET["start"], @$_GET["rowsPerPage"], @$_GET["order_by"]["products"], @$_GET["order_direction"]["products"]);
-$list = $db->tbProduct->search($arr, @$_GET["start"], @$_GET["rowsPerPage"], @$_GET["order_by"]["products"], @$_GET["order_direction"]["products"]);
-
-require_once(WEB_DIR . "/includes/products_list.php");
-?>
-
+<?php require_once(WEB_DIR . "/includes/products_list.php"); ?>
 </main>
 <?php require_once(WEB_DIR . "/includes/right.php"); ?>
 <?php require_once(WEB_DIR . "/includes/footer.php"); ?>

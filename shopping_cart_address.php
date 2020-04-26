@@ -6,6 +6,25 @@
 
 require_once(dirname(__FILE__) . "/init.php");
 require_once(WEB_DIR . "/includes/req_person_company.php");
+
+$db = Application::getDb();
+$user = Application::getUser();
+$pageTitle = "";
+$noAddressText = "";
+$addresses = array();
+if(@$_GET["action"] == "select_delivery_address")
+{
+	$pageTitle = translate("Select delivery address");
+	$noAddressText = "delivery";
+	$addresses = $db->tbAddress->getRecordsByUserId($user->id, "delivery");
+}
+elseif(@$_GET["action"] == "select_invoice_address")
+{
+	$pageTitle = translate("Select invoicing address");
+	$noAddressText = "invoicing";
+	$addresses = $db->tbAddress->getRecordsByUserId($user->id, "invoicing");
+}
+
 ?>
 <html>
 <head>
@@ -20,38 +39,19 @@ require_once(WEB_DIR . "/includes/req_person_company.php");
 <h1><?php echo translate("Step"); ?> <?php echo (@$_GET['action'] == 'select_delivery_address') ? 2 : 3; ?></h1>
 <?php require_once(WEB_DIR . "/includes/print_messages.php"); ?>
 
-<?php
-$db = Application::getDb();
-$user = Application::getUser();
-$pageTitle = "";
-$noAddressText = "";
-$list = array();
-if(@$_GET["action"] == "select_delivery_address")
-{
-	$pageTitle = translate("Select delivery address");
-	$noAddressText = "delivery";
-	$list = $db->tbAddress->getRecordsByUserId($user->id, "delivery");
-}
-elseif(@$_GET["action"] == "select_invoice_address")
-{
-	$pageTitle = translate("Select invoicing address");
-	$noAddressText = "invoicing";
-	$list = $db->tbAddress->getRecordsByUserId($user->id, "invoicing");
-}
-?>
 <h2><?php echo $pageTitle; ?>:</h2>
 <?php
 
-if(count($list) > 0)
+if(count($addresses) > 0)
 {
 	?>
 	<form action="formparser/order.php?action=<?php echo htmlspecialchars(@$_GET["action"]); ?>" method="post" id="frm_select_address">
 	<input type="hidden" name="id_address" value="0">
 	</form>
 	<?php
-	for($i = 0; $i < count($list); $i++)
+	for($i = 0; $i < count($addresses); $i++)
 	{
-		$a = $list[$i];
+		$a = $addresses[$i];
 		?>
 		<table>
 		<tr valign="top">
