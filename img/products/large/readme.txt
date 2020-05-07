@@ -1,0 +1,1 @@
+don't delete this folder, it's used to handle image uploads.
