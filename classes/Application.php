@@ -169,6 +169,7 @@ class Application extends BaseObject
 	static function getShoppingCart()
 	{
 		global $Application;
+		$Application->shopping_cart->computeValue();
 		return $Application->shopping_cart;
 	}
 
@@ -295,6 +296,7 @@ class Application extends BaseObject
 		if(defined('INSTALL_DONE')) {
 			Logger::request();
 			SessionWrapper::start();
+			SessionWrapper::set('html_theme', 'default');
 
 			$this->fixCompat();
 			$this->createDatabase();

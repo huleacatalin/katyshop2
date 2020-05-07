@@ -4,21 +4,21 @@
  * License GNU General Public License version 3 http://www.gnu.org/licenses/
  */
 
-require_once(dirname(dirname(__FILE__)) . "/init.php");
-require_once(WEB_DIR . "/includes/req_admin.php");
+require_once(dirname(__FILE__) . "/init.php");
+require_once(dirname(__FILE__) . "/includes/req_admin.php");
 ?>
 <html>
 <head>
-<title><?php echo APP_NAME; ?></title>
-<?php require_once(WEB_DIR . "/includes/html_head.php"); ?>
+<title><?php echo htmlspecialchars(APP_NAME); ?></title>
+<?php require_once(dirname(__FILE__) . "/includes/html_head.php"); ?>
 </head>
 
 <body>
-<?php require_once(WEB_DIR . "/includes/header.php"); ?>
-<?php require_once(WEB_DIR . "/admin/includes/left.php"); ?>
+<?php require_once(dirname(__FILE__) . "/includes/header.php"); ?>
+<?php require_once(dirname(__FILE__) . "/includes/left.php"); ?>
 <main>
-<h1><?php echo translate("View users addresses"); ?></h1>
-<?php require_once(WEB_DIR . "/includes/print_messages.php"); ?>
+<h1><?php echo htmlspecialchars(translate("View users addresses")); ?></h1>
+<?php require_once(dirname(__FILE__) . "/includes/print_messages.php"); ?>
 
 <?php
 // show list of addresses
@@ -41,14 +41,14 @@ if(count($list) > 0)
 		<table style="border-bottom: 1px solid #000000; width: 375px; ">
 		<tr valign="top">
 		<td width="150">
-			<input type="checkbox" <?php echo ($a->primary_addr == 1) ? "checked" : ""; ?> onclick="this.form.submit(); "> <?php echo translate("Primary address"); ?><br>
-			<input type="checkbox" <?php echo ($a->delivery == 1) ? "checked" : ""; ?> onclick="this.form.submit(); "> <?php echo translate("Delivery"); ?><br>
-			<input type="checkbox" <?php echo ($a->invoicing == 1) ? "checked" : ""; ?> onclick="this.form.submit(); "><?php echo translate("Invoicing"); ?><br>
+			<input type="checkbox" <?php echo ($a->primary_addr == 1) ? "checked" : ""; ?> onclick="this.form.submit(); "> <?php echo htmlspecialchars(translate("Primary address")); ?><br>
+			<input type="checkbox" <?php echo ($a->delivery == 1) ? "checked" : ""; ?> onclick="this.form.submit(); "> <?php echo htmlspecialchars(translate("Delivery")); ?><br>
+			<input type="checkbox" <?php echo ($a->invoicing == 1) ? "checked" : ""; ?> onclick="this.form.submit(); "><?php echo htmlspecialchars(translate("Invoicing")); ?><br>
 		</td>
 		<td>
-			<?php echo translate("County"); ?> <?php echo $a->county; ?><br>
-			<?php echo translate("City"); ?> <?php echo $a->city; ?><br>
-			<?php echo $a->address; ?>
+			<?php echo htmlspecialchars(translate("County")); ?> <?php echo htmlspecialchars($a->county); ?><br>
+			<?php echo htmlspecialchars(translate("City")); ?> <?php echo htmlspecialchars($a->city); ?><br>
+			<?php echo htmlspecialchars($a->address); ?>
 		</td>
 		</tr>
 		</table>
@@ -58,12 +58,12 @@ if(count($list) > 0)
 else
 {
 	?>
-	<p><?php echo translate("No address has been found"); ?></p>
+	<p><?php echo htmlspecialchars(translate("No address has been found")); ?></p>
 	<?php
 }
 ?>
 </main>
-<?php require_once(WEB_DIR . "/includes/right.php"); ?>
-<?php require_once(WEB_DIR . "/includes/footer.php"); ?>
+<?php require_once(dirname(__FILE__) . "/includes/right.php"); ?>
+<?php require_once(dirname(__FILE__) . "/includes/footer.php"); ?>
 </body>
 </html>

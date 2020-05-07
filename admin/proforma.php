@@ -4,13 +4,13 @@
  * License GNU General Public License version 3 http://www.gnu.org/licenses/
  */
 
-require_once(dirname(dirname(__FILE__)) . "/init.php");
+require_once(dirname(__FILE__) . "/init.php");
 require_once(WEB_DIR . "/includes/req_admin.php");
 
 $filename = DATA_DIR . "/orders/{$_GET["code"]}.html";
 if (!is_file($filename))
 {
-	die(translate("Could not find the file that contains proforma invoice"));
+	die(htmlspecialchars(translate("Could not find the file that contains proforma invoice")));
 }
 else
 {

@@ -23,25 +23,6 @@ $page = "search.php";
 $productsCount = $db->tbProduct->advancedGetCount($arr, @$_GET["start"], @$_GET["rowsPerPage"], @$_GET["order_by"]["products"], @$_GET["order_direction"]["products"]);
 $products = $db->tbProduct->advancedSearch($arr, @$_GET["start"], @$_GET["rowsPerPage"], @$_GET["order_by"]["products"], @$_GET["order_direction"]["products"]);
 
+$theme = SessionWrapper::get('html_theme');
+require_once(dirname(__FILE__) . "/html/$theme/search.php");
 ?>
-<html>
-<head>
-<title><?php echo APP_NAME; ?></title>
-<?php require_once(WEB_DIR . "/includes/html_head.php"); ?>
-</head>
-
-<body>
-<?php require_once(WEB_DIR . "/includes/header.php"); ?>
-<?php require_once(WEB_DIR . "/includes/left.php"); ?>
-<main>
-<?php require_once(WEB_DIR . "/includes/print_messages.php"); ?>
-
-<?php
-require_once(WEB_DIR . "/includes/products_list.php");
-?>
-
-</main>
-<?php require_once(WEB_DIR . "/includes/right.php"); ?>
-<?php require_once(WEB_DIR . "/includes/footer.php"); ?>
-</body>
-</html>

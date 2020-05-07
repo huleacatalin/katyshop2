@@ -13,11 +13,11 @@ $user = Application::getUser();
 $order = $db->tbOrder->getRecordByCode(@$_GET["code"]);
 if($order->id_user != $user->id)
 {
-	die(translate("Proforma invoice cannot be displayed because it doesn't belong to you"));
+	die(htmlspecialchars(translate("Proforma invoice cannot be displayed because it doesn't belong to you")));
 }
 elseif (!is_file($filename))
 {
-	die(translate("Could not find the file that contains proforma invoice informations"));
+	die(htmlspecialchars(translate("Could not find the file that contains proforma invoice informations")));
 }
 else
 {

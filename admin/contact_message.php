@@ -4,21 +4,21 @@
  * License GNU General Public License version 3 http://www.gnu.org/licenses/
  */
 
-require_once(dirname(dirname(__FILE__)) . "/init.php");
-require_once(WEB_DIR . "/includes/req_admin.php");
+require_once(dirname(__FILE__) . "/init.php");
+require_once(dirname(__FILE__) . "/includes/req_admin.php");
 ?>
 <html>
 <head>
-<title><?php echo APP_NAME; ?></title>
-<?php require_once(WEB_DIR . "/includes/html_head.php"); ?>
+<title><?php echo htmlspecialchars(APP_NAME); ?></title>
+<?php require_once(dirname(__FILE__) . "/includes/html_head.php"); ?>
 </head>
 
 <body>
-<?php require_once(WEB_DIR . "/includes/header.php"); ?>
-<?php require_once(WEB_DIR . "/admin/includes/left.php"); ?>
+<?php require_once(dirname(__FILE__) . "/includes/header.php"); ?>
+<?php require_once(dirname(__FILE__) . "/includes/left.php"); ?>
 <main>
-<h1><?php echo translate("Messages received from visitors"); ?></h1>
-<?php require_once(WEB_DIR . "/includes/print_messages.php"); ?>
+<h1><?php echo htmlspecialchars(translate("Messages received from visitors")); ?></h1>
+<?php require_once(dirname(__FILE__) . "/includes/print_messages.php"); ?>
 
 <?php
 if(@$_GET["action"] == "detail")
@@ -29,30 +29,30 @@ if(@$_GET["action"] == "detail")
 	if($m->id == 0)
 	{
 		?>
-		<p><?php echo translate("Message could not be found"); ?></p>
+		<p><?php echo htmlspecialchars(translate("Message could not be found")); ?></p>
 		<?php
 	}
 	else
 	{
 		?>
-		<h2><?php echo translate("View message"); ?></h2>
-		<p><a href="admin/contact_message.php">&laquo; <?php echo translate("Back to the list of messages"); ?></a></p>
+		<h2><?php echo htmlspecialchars(translate("View message")); ?></h2>
+		<p><a href="admin/contact_message.php">&laquo; <?php echo htmlspecialchars(translate("Back to the list of messages")); ?></a></p>
 
 		<ul class="properties">
-		<li><?php echo translate("Visitor name"); ?>: <span class="value"><?php echo htmlspecialchars($m->sender_name); ?></span></li>
-		<li><?php echo translate("Visitor email"); ?>: <span class="value"><a href="mailto:<?php echo htmlspecialchars($m->sender_email); ?>"><?php echo htmlspecialchars($m->sender_email); ?></a></span></li>
-		<li><?php echo translate("Date sent"); ?>: <span class="value"><time datetime="<?php echo htmlspecialchars($m->date_sent); ?>"><?php echo htmlspecialchars($m->displayDateTime('date_sent')); ?></time></span></li>
-		<li><?php echo translate("Subject"); ?>: <span class="value"><?php echo htmlspecialchars($m->subject); ?></span></li>
-		<li><?php echo translate("Message"); ?>: <span class="value" style="width: 500px; "><?php echo htmlspecialchars($m->message); ?></span></li>
+		<li><?php echo htmlspecialchars(translate("Visitor name")); ?>: <span class="value"><?php echo htmlspecialchars($m->sender_name); ?></span></li>
+		<li><?php echo htmlspecialchars(translate("Visitor email")); ?>: <span class="value"><a href="mailto:<?php echo htmlspecialchars($m->sender_email); ?>"><?php echo htmlspecialchars($m->sender_email); ?></a></span></li>
+		<li><?php echo htmlspecialchars(translate("Date sent")); ?>: <span class="value"><time datetime="<?php echo htmlspecialchars($m->date_sent); ?>"><?php echo htmlspecialchars($m->displayDateTime('date_sent')); ?></time></span></li>
+		<li><?php echo htmlspecialchars(translate("Subject")); ?>: <span class="value"><?php echo htmlspecialchars($m->subject); ?></span></li>
+		<li><?php echo htmlspecialchars(translate("Message")); ?>: <span class="value" style="width: 500px; "><?php echo htmlspecialchars($m->message); ?></span></li>
 		</ul>
 
 		<div>
-		<p><?php echo translate("Warning! User details have been registered at the moment when the message has been sent. It is possible that in the mean time he changed these informations using the profile form."); ?></p>
+		<p><?php echo htmlspecialchars(translate("Warning! User details have been registered at the moment when the message has been sent. It is possible that in the mean time he changed these informations using the profile form.")); ?></p>
 
-		<p><?php echo translate("However, even he changed these data, these are the original informations we knew about him at the moment he sent the message."); ?></p>
+		<p><?php echo htmlspecialchars(translate("However, even he changed these data, these are the original informations we knew about him at the moment he sent the message.")); ?></p>
 		</div>
 
-		<h3><?php echo translate("User details"); ?></h3>
+		<h3><?php echo htmlspecialchars(translate("User details")); ?></h3>
 		<?php
 		echo nl2br(htmlspecialchars($m->user_details));
 	}
@@ -62,9 +62,9 @@ else
 	?>
 	<form action="admin/contact_message.php" method="get">
 	<?php echo Tools::http_build_hidden_inputs($_GET, array("subject")); ?>
-	<label style="float: left; margin-right: 20px; "><?php echo translate("Subject"); ?>: <input type="text" name="subject" value="<?php echo htmlspecialchars(@$_GET["subject"]); ?>" class="text"></label>
+	<label style="float: left; margin-right: 20px; "><?php echo htmlspecialchars(translate("Subject")); ?>: <input type="text" name="subject" value="<?php echo htmlspecialchars(@$_GET["subject"]); ?>" class="text"></label>
 	<br>
-	<input type="submit" value="<?php echo translate("Search"); ?>" class="button">
+	<input type="submit" value="<?php echo htmlspecialchars(translate("Search")); ?>" class="button">
 	<br clear="all">
 	</form>
 
@@ -83,8 +83,8 @@ else
 		<table class="cuborder" cellpadding="2" cellspacing="0">
 		<tr>
 		<th nowrap><?php echo pagination_columnHead("ID", "id"); ?></th>
-		<th nowrap><?php echo translate("Visitor"); ?></th>
-		<th nowrap><?php echo translate("Email"); ?></th>
+		<th nowrap><?php echo htmlspecialchars(translate("Visitor")); ?></th>
+		<th nowrap><?php echo htmlspecialchars(translate("Email")); ?></th>
 		<th nowrap><?php echo pagination_columnHead(translate("Subject"), "subject"); ?></th>
 		<th nowrap><?php echo pagination_columnHead(translate("Date"), "date_sent"); ?></th>
 		</tr>
@@ -120,14 +120,14 @@ else
 	else
 	{
 		?>
-		<p><?php echo translate("No message has been found for your search criteria."); ?></p>
+		<p><?php echo htmlspecialchars(translate("No message has been found for your search criteria.")); ?></p>
 		<?php
 	}
 }
 ?>
 
 </main>
-<?php require_once(WEB_DIR . "/includes/right.php"); ?>
-<?php require_once(WEB_DIR . "/includes/footer.php"); ?>
+<?php require_once(dirname(__FILE__) . "/includes/right.php"); ?>
+<?php require_once(dirname(__FILE__) . "/includes/footer.php"); ?>
 </body>
 </html>

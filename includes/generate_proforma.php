@@ -24,7 +24,7 @@ elseif($order->id_user != $user->id)
 ?>
 <html>
 <head>
-<title><?php echo APP_NAME; ?> - <?php echo translate("proforma invoice"); ?> <?php echo htmlspecialchars($order->code); ?></title>
+<title><?php echo htmlspecialchars(APP_NAME); ?> - <?php echo htmlspecialchars(translate("proforma invoice")); ?> <?php echo htmlspecialchars($order->code); ?></title>
 </head>
 
 <body>
@@ -37,20 +37,20 @@ elseif($order->id_user != $user->id)
 	<table>
 	<tr>
 	<td>
-	<?php echo translate("Invoicing address"); ?>: <br>
+	<?php echo htmlspecialchars(translate("Invoicing address")); ?>: <br>
 	<?php echo nl2br(htmlspecialchars($order->invoice_address)); ?>
 	</td>
 	</tr>
 	<tr>
 	<td style="border: 1px solid #000000; ">
-	<?php echo translate("Proforma code"); ?>: <?php echo htmlspecialchars($order->code); ?> <br>
-	<?php echo translate("Date issued"); ?>: <time datetime="<?php echo htmlspecialchars($order->date_ordered); ?>"><?php echo htmlspecialchars($order->displayDateTime("date_ordered")); ?></time> <br>
+	<?php echo htmlspecialchars(translate("Proforma code")); ?>: <?php echo htmlspecialchars($order->code); ?> <br>
+	<?php echo htmlspecialchars(translate("Date issued")); ?>: <time datetime="<?php echo htmlspecialchars($order->date_ordered); ?>"><?php echo htmlspecialchars($order->displayDateTime("date_ordered")); ?></time> <br>
 	</td>
 	</tr>
 	</table>
 </td>
 <td width="30%">
-	<?php echo translate("Customer informations"); ?>:
+	<?php echo htmlspecialchars(translate("Customer informations")); ?>:
 	<?php echo nl2br(htmlspecialchars($order->user_short_description)); ?>
 </td>
 </tr>
@@ -63,12 +63,12 @@ if($order->getProductsCount() > 0)
 
 	<table style="text-align: right; " cellpadding="2" cellspacing="0" border="1" width="800">
 	<tr align="center">
-	<th><?php echo translate("No."); ?></th>
-	<th><?php echo translate("Product"); ?></th>
-	<th><?php echo translate("M. U."); ?></th>
-	<th><?php echo translate("Quantity"); ?></th>
-	<th><nobr><?php echo translate("Unit price"); ?><nobr><br><nobr>- <?php echo htmlspecialchars(Application::getConfigValue("default_currency")); ?> -</nobr></th>
-	<th><nobr><?php echo translate("Value"); ?><nobr><br><nobr>- <?php echo htmlspecialchars(Application::getConfigValue("default_currency")); ?> -</nobr></th>
+	<th><?php echo htmlspecialchars(translate("No.")); ?></th>
+	<th><?php echo htmlspecialchars(translate("Product")); ?></th>
+	<th><?php echo htmlspecialchars(translate("M. U.")); ?></th>
+	<th><?php echo htmlspecialchars(translate("Quantity")); ?></th>
+	<th><nobr><?php echo htmlspecialchars(translate("Unit price")); ?><nobr><br><nobr>- <?php echo htmlspecialchars(Application::getConfigValue("default_currency")); ?> -</nobr></th>
+	<th><nobr><?php echo htmlspecialchars(translate("Value")); ?><nobr><br><nobr>- <?php echo htmlspecialchars(Application::getConfigValue("default_currency")); ?> -</nobr></th>
 	</tr>
 	<?php
 	for($i = 0; $i < $order->getProductsCount(); $i++)
@@ -92,7 +92,7 @@ if($order->getProductsCount() > 0)
 	?>
 	<tr align="center" style="font-weight: bold; ">
 	<td colspan="4" align="right">&nbsp;</td>
-	<th><?php echo translate("TOTAL"); ?>: </th>
+	<th><?php echo htmlspecialchars(translate("TOTAL")); ?>: </th>
 	<td><?php echo htmlspecialchars(displayPrice($order->total)); ?></td>
 	</tr>
 
@@ -104,7 +104,7 @@ if($order->getProductsCount() > 0)
 <table width="800">
 <tr>
 <td width="50%">
-	<?php echo translate("Delivery address"); ?>: <br>
+	<?php echo htmlspecialchars(translate("Delivery address")); ?>: <br>
 	<?php echo nl2br(htmlspecialchars($order->delivery_address)); ?>
 </td>
 <td width="50%">
@@ -112,10 +112,10 @@ if($order->getProductsCount() > 0)
 	$u = $db->tbUser->getUserById($order->id_user);
 	$u = Factory::instantiateUser($u);
 	?>
-	<?php echo translate("Customer"); ?>: <?php echo htmlspecialchars($u->first_name . " " . $u->last_name); ?> <br>
-	<?php echo translate("Customer ID"); ?>: <?php echo htmlspecialchars($u->id); ?> <br>
-	<?php echo translate("Proforma code"); ?>: <?php echo htmlspecialchars($order->code); ?> <br>
-	<?php echo translate("Total to pay"); ?>: <?php echo htmlspecialchars($order->total); ?>
+	<?php echo htmlspecialchars(translate("Customer")); ?>: <?php echo htmlspecialchars($u->first_name . " " . $u->last_name); ?> <br>
+	<?php echo htmlspecialchars(translate("Customer ID")); ?>: <?php echo htmlspecialchars($u->id); ?> <br>
+	<?php echo htmlspecialchars(translate("Proforma code")); ?>: <?php echo htmlspecialchars($order->code); ?> <br>
+	<?php echo htmlspecialchars(translate("Total to pay")); ?>: <?php echo htmlspecialchars($order->total); ?>
 </td>
 </tr>
 </table>

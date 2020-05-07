@@ -4,27 +4,27 @@
  * License GNU General Public License version 3 http://www.gnu.org/licenses/
  */
 
-require_once(dirname(dirname(__FILE__)) . "/init.php");
-require_once(WEB_DIR . "/includes/req_admin.php");
+require_once(dirname(__FILE__) . "/init.php");
+require_once(dirname(__FILE__) . "/includes/req_admin.php");
 ?>
 <html>
 <head>
-<title><?php echo APP_NAME; ?></title>
-<?php require_once(WEB_DIR . "/includes/html_head.php"); ?>
+<title><?php echo htmlspecialchars(APP_NAME); ?></title>
+<?php require_once(dirname(__FILE__) . "/includes/html_head.php"); ?>
 </head>
 
 <body>
-<?php require_once(WEB_DIR . "/includes/header.php"); ?>
-<?php require_once(WEB_DIR . "/admin/includes/left.php"); ?>
+<?php require_once(dirname(__FILE__) . "/includes/header.php"); ?>
+<?php require_once(dirname(__FILE__) . "/includes/left.php"); ?>
 <main>
-<h1><?php echo translate("Orders admin"); ?></h1>
-<?php require_once(WEB_DIR . "/includes/print_messages.php"); ?>
+<h1><?php echo htmlspecialchars(translate("Orders admin")); ?></h1>
+<?php require_once(dirname(__FILE__) . "/includes/print_messages.php"); ?>
 
 <?php
 if(@$_GET["action"] == "detail")
 {
 	?>
-	<a href="admin/order.php">&laquo; <?php echo translate("Click here to return to the list of orders"); ?></a> <br>
+	<a href="admin/order.php">&laquo; <?php echo htmlspecialchars(translate("Click here to return to the list of orders")); ?></a> <br>
 	<?php
 	$db = Application::getDb();
 	$order = $db->tbOrder->getRecordById(@$_GET["id"]);
@@ -32,22 +32,22 @@ if(@$_GET["action"] == "detail")
 	if($order->getProductsCount() == 0)
 	{
 		?>
-		<p><?php echo translate("Order is empty"); ?></p>
+		<p><?php echo htmlspecialchars(translate("Order is empty")); ?></p>
 		<?php
 	}
 	else
 	{
 		$order->computeValue();
 		?>
-		<?php echo translate("Order code"); ?>: <?php echo htmlspecialchars($order->code); ?> <a href="admin/proforma.php?code=<?php echo htmlspecialchars($order->code); ?>" target="_blank"><?php echo translate("click here to see proforma invoice"); ?></a> <br>
-		<?php echo translate("Title"); ?>: <big><b><?php echo $order->title; ?></b></big> <br>
-		<?php echo translate("Date sent"); ?>: <time datetime="<?php echo htmlspecialchars($order->date_ordered); ?>"><?php echo htmlspecialchars($order->displayDateTime("date_ordered")); ?></time> <br>
-		<?php echo translate("Date updated"); ?>: <time datetime="<?php echo htmlspecialchars($order->date_updated); ?>"><?php echo htmlspecialchars($order->displayDateTime("date_updated")); ?></time> <br>
-		<?php echo translate("Status"); ?>: <big><b><?php echo htmlspecialchars($order->status); ?></b></big> <a href="javascript:showHide('change_status_container'); "><?php echo translate("click here to change status"); ?></a> <br>
+		<?php echo htmlspecialchars(translate("Order code")); ?>: <?php echo htmlspecialchars($order->code); ?> <a href="admin/proforma.php?code=<?php echo htmlspecialchars($order->code); ?>" target="_blank"><?php echo htmlspecialchars(translate("click here to see proforma invoice")); ?></a> <br>
+		<?php echo htmlspecialchars(translate("Title")); ?>: <big><b><?php echo htmlspecialchars($order->title); ?></b></big> <br>
+		<?php echo htmlspecialchars(translate("Date sent")); ?>: <time datetime="<?php echo htmlspecialchars($order->date_ordered); ?>"><?php echo htmlspecialchars($order->displayDateTime("date_ordered")); ?></time> <br>
+		<?php echo htmlspecialchars(translate("Date updated")); ?>: <time datetime="<?php echo htmlspecialchars($order->date_updated); ?>"><?php echo htmlspecialchars($order->displayDateTime("date_updated")); ?></time> <br>
+		<?php echo htmlspecialchars(translate("Status")); ?>: <big><b><?php echo htmlspecialchars($order->status); ?></b></big> <a href="javascript:showHide('change_status_container'); "><?php echo htmlspecialchars(translate("click here to change status")); ?></a> <br>
 		<form action="admin/formparser/order.php?action=change_status" method="post" id="change_status_container" style="display: none; ">
 		<input type="hidden" name="id_order" value="<?php echo htmlspecialchars($order->id); ?>">
 		<select name="status" required class="select">
-		<option value="">-- <?php echo translate("Choose"); ?> --</option>
+		<option value="">-- <?php echo htmlspecialchars(translate("Choose")); ?> --</option>
 		<?php
 		$list = Order::getPossibleStatuses();
 		for($i = 0; $i < count($list); $i++)
@@ -64,15 +64,15 @@ if(@$_GET["action"] == "detail")
 		<input type="submit" value="Change" class="button">
 		</form>
 
-		<h2><?php echo translate("Order products"); ?></h2>
+		<h2><?php echo htmlspecialchars(translate("Order products")); ?></h2>
 		<table style="text-align: right; " cellpadding="2" cellspacing="0" class="cuborder">
 		<tr align="center">
-		<th><?php echo translate("No."); ?></th>
-		<th><?php echo translate("Product"); ?></th>
-		<th><?php echo translate("M. U."); ?></th>
-		<th><?php echo translate("Quantity"); ?></th>
-		<th><nobr><?php echo translate("Unit price"); ?><nobr><br><nobr>- <?php echo htmlspecialchars(Application::getConfigValue("default_currency")); ?> -</nobr></th>
-		<th><nobr><?php echo translate("Value"); ?><nobr><br><nobr>- <?php echo htmlspecialchars(Application::getConfigValue("default_currency")); ?> -</nobr></th>
+		<th><?php echo htmlspecialchars(translate("No.")); ?></th>
+		<th><?php echo htmlspecialchars(translate("Product")); ?></th>
+		<th><?php echo htmlspecialchars(translate("M. U.")); ?></th>
+		<th><?php echo htmlspecialchars(translate("Quantity")); ?></th>
+		<th><nobr><?php echo htmlspecialchars(translate("Unit price")); ?><nobr><br><nobr>- <?php echo htmlspecialchars(Application::getConfigValue("default_currency")); ?> -</nobr></th>
+		<th><nobr><?php echo htmlspecialchars(translate("Value")); ?><nobr><br><nobr>- <?php echo htmlspecialchars(Application::getConfigValue("default_currency")); ?> -</nobr></th>
 		</tr>
 		<?php
 		for($i = 0; $i < $order->getProductsCount(); $i++)
@@ -96,7 +96,7 @@ if(@$_GET["action"] == "detail")
 		?>
 		<tr align="center" style="font-weight: bold; ">
 		<td colspan="4" align="right">&nbsp;</td>
-		<th><?php echo translate("TOTAL"); ?>: </th>
+		<th><?php echo htmlspecialchars(translate("TOTAL")); ?>: </th>
 		<td><?php echo htmlspecialchars(displayPrice($order->total)); ?></td>
 		</tr>
 
@@ -106,20 +106,20 @@ if(@$_GET["action"] == "detail")
 	?>
 
 	<div>
-	<p><?php echo translate("Warning! Delivery address, invoicing address and users details have been registered at the moment when he sent the order. It is possible that in the mean time he changed his addresses or his users details using the profile page."); ?></p>
+	<p><?php echo htmlspecialchars(translate("Warning! Delivery address, invoicing address and users details have been registered at the moment when he sent the order. It is possible that in the mean time he changed his addresses or his users details using the profile page.")); ?></p>
 
-	<p><?php echo translate("However, even he changed his data, these are the original informations we knew about him at the moment he sent the order."); ?></p>
+	<p><?php echo htmlspecialchars(translate("However, even he changed his data, these are the original informations we knew about him at the moment he sent the order.")); ?></p>
 	</div>
 
 	<div id="first_page">
-		<h2><?php echo translate("Delivery address"); ?></h2>
+		<h2><?php echo htmlspecialchars(translate("Delivery address")); ?></h2>
 		<?php echo nl2br(htmlspecialchars($order->delivery_address)); ?>
 
-		<h2><?php echo translate("Invoicing address"); ?></h2>
+		<h2><?php echo htmlspecialchars(translate("Invoicing address")); ?></h2>
 		<?php echo nl2br(htmlspecialchars($order->invoice_address)); ?>
 	</div>
 
-	<h2><?php echo translate("User details"); ?></h2>
+	<h2><?php echo htmlspecialchars(translate("User details")); ?></h2>
 	<p><?php echo nl2br(htmlspecialchars($order->user_details)); ?></p>
 	<?php
 }
@@ -128,20 +128,20 @@ else
 	?>
 	<form action="admin/order.php" method="get">
 	<?php echo Tools::http_build_hidden_inputs($_GET, array("title", "username")); ?>
-	<label style="float: left; margin-right: 20px; "><?php echo translate("ID"); ?>: <input type="text" name="id" value="<?php echo htmlspecialchars(@$_GET["id"]); ?>" class="text"></label>
-	<label style="float: left; margin-right: 20px; "><?php echo translate("Code"); ?>: <input type="text" name="code" value="<?php echo htmlspecialchars(@$_GET["code"]); ?>" class="text"></label>
-	<label style="float: left; margin-right: 20px; "><?php echo translate("Title"); ?>: <input type="text" name="title" value="<?php echo htmlspecialchars(@$_GET["title"]); ?>" class="text"></label>
-	<label style="float: left; margin-right: 20px; "><?php echo translate("Username"); ?>: <input type="text" name="username" value="<?php echo htmlspecialchars(@$_GET["username"]); ?>" class="text"></label>
-	<label style="float: left; margin-right: 20px; "><?php echo translate("Status"); ?>: <input type="text" name="status" value="<?php echo htmlspecialchars(@$_GET["status"]); ?>" class="text"></label>
+	<label style="float: left; margin-right: 20px; "><?php echo htmlspecialchars(translate("ID")); ?>: <input type="text" name="id" value="<?php echo htmlspecialchars(@$_GET["id"]); ?>" class="text"></label>
+	<label style="float: left; margin-right: 20px; "><?php echo htmlspecialchars(translate("Code")); ?>: <input type="text" name="code" value="<?php echo htmlspecialchars(@$_GET["code"]); ?>" class="text"></label>
+	<label style="float: left; margin-right: 20px; "><?php echo htmlspecialchars(translate("Title")); ?>: <input type="text" name="title" value="<?php echo htmlspecialchars(@$_GET["title"]); ?>" class="text"></label>
+	<label style="float: left; margin-right: 20px; "><?php echo htmlspecialchars(translate("Username")); ?>: <input type="text" name="username" value="<?php echo htmlspecialchars(@$_GET["username"]); ?>" class="text"></label>
+	<label style="float: left; margin-right: 20px; "><?php echo htmlspecialchars(translate("Status")); ?>: <input type="text" name="status" value="<?php echo htmlspecialchars(@$_GET["status"]); ?>" class="text"></label>
 	<br>
 	<input type="submit" value="Search" class="button">
 	<br clear="all">
 	</form>
 
-	<h2><?php echo translate("Orders list"); ?></h2>
+	<h2><?php echo htmlspecialchars(translate("Orders list")); ?></h2>
 	<p>
-	<?php echo translate("Select by status"); ?>:
-	<a href="admin/order.php"><?php echo translate("All"); ?></a>
+	<?php echo htmlspecialchars(translate("Select by status")); ?>:
+	<a href="admin/order.php"><?php echo htmlspecialchars(translate("All")); ?></a>
 	<?php
 	$list = Order::getPossibleStatuses();
 	for($i = 0; $i < count($list); $i++)
@@ -210,13 +210,13 @@ else
 	else
 	{
 		?>
-		<p><?php echo translate("Could not find any order for your search criteria."); ?></p>
+		<p><?php echo htmlspecialchars(translate("Could not find any order for your search criteria.")); ?></p>
 		<?php
 	}
 }
 ?>
 </main>
-<?php require_once(WEB_DIR . "/includes/right.php"); ?>
-<?php require_once(WEB_DIR . "/includes/footer.php"); ?>
+<?php require_once(dirname(__FILE__) . "/includes/right.php"); ?>
+<?php require_once(dirname(__FILE__) . "/includes/footer.php"); ?>
 </body>
 </html>

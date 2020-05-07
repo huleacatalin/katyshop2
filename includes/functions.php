@@ -9,7 +9,7 @@
  * Nothing related to database or other complex logic should stay here.
  */
  
- function translate($str) {
+function translate($str) {
 	 $lang_code = Application::getConfigValue("lang_code");
 	 $lang = Application::getConfigValue("lang");
 	 $arr = array();
@@ -20,7 +20,17 @@
 		 return $arr[$str];
 	 else
 		return $str;
- }
+}
+
+function getImgDir() {
+	if(defined('IN_ADMIN') && IN_ADMIN == true) {
+		return 'admin/img';
+	}
+	else {
+		$theme = SessionWrapper::get('html_theme');
+		return "html/$theme/img";
+	}
+}
 
 //#######################################################
 //# PAGINATION											#
@@ -108,16 +118,16 @@ function pagination_arrows($text, $columnName, $listName = "", $direction = null
 		if($orderBy == $columnName && $direction == $orderDirection)
 		{
 			if($direction == "desc")
-				$s .= '<img src="img/icons/bullet_arrow_down_orange.gif" alt="' . htmlspecialchars($title) . '">';
+				$s .= '<img src="' . getImgDir() . '/icons/bullet_arrow_down_orange.gif" alt="' . htmlspecialchars($title) . '">';
 			else
-				$s .= '<img src="img/icons/bullet_arrow_up_orange.gif" alt="' . htmlspecialchars($title) . '">';
+				$s .= '<img src="' . getImgDir() . '/icons/bullet_arrow_up_orange.gif" alt="' . htmlspecialchars($title) . '">';
 		}
 		else
 		{
 			if($direction == "desc")
-				$s .= '<img src="img/icons/bullet_arrow_down.gif" alt="' . htmlspecialchars($title) . '">';
+				$s .= '<img src="' . getImgDir() . '/icons/bullet_arrow_down.gif" alt="' . htmlspecialchars($title) . '">';
 			else
-				$s .= '<img src="img/icons/bullet_arrow_up.gif" alt="' . htmlspecialchars($title) . '">';
+				$s .= '<img src="' . getImgDir() . '/icons/bullet_arrow_up.gif" alt="' . htmlspecialchars($title) . '">';
 		}
 
 		$s .= '</a>';
@@ -400,22 +410,22 @@ function displayOrderBy($id_category, $field, $direction, $file, $object)
 	{
 		if($direction == "desc")
 		{
-			?><img src="img/icons/bullet_arrow_down_orange.gif" alt="order descending by <?php echo htmlspecialchars($field); ?>"><?php
+			?><img src="<?php echo getImgDir(); ?>/icons/bullet_arrow_down_orange.gif" alt="order descending by <?php echo htmlspecialchars($field); ?>"><?php
 		}
 		else
 		{
-			?><img src="img/icons/bullet_arrow_up_orange.gif" alt="order ascending by <?php echo htmlspecialchars($field); ?>"><?php
+			?><img src="<?php echo getImgDir(); ?>/icons/bullet_arrow_up_orange.gif" alt="order ascending by <?php echo htmlspecialchars($field); ?>"><?php
 		}
 	}
 	else
 	{
 		if($direction == "desc")
 		{
-			?><img src="img/icons/bullet_arrow_down.gif" alt="order descending by <?php echo htmlspecialchars($field); ?>"><?php
+			?><img src="<?php echo getImgDir(); ?>/icons/bullet_arrow_down.gif" alt="order descending by <?php echo htmlspecialchars($field); ?>"><?php
 		}
 		else
 		{
-			?><img src="img/icons/bullet_arrow_up.gif" alt="order ascending by <?php echo htmlspecialchars($field); ?>"><?php
+			?><img src="<?php echo getImgDir(); ?>/icons/bullet_arrow_up.gif" alt="order ascending by <?php echo htmlspecialchars($field); ?>"><?php
 		}
 	}
 	?></a><?php

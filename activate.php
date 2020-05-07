@@ -22,7 +22,7 @@ if(!empty($_GET["username"]))
 	}
 	elseif($u->isDeactivated())
 	{
-		$errors[] = "This user has been deactivated by an admin and cannot be used for login. Please contact the support department";
+		Application::addError("This user has been deactivated by an admin and cannot be used for login. Please contact the support department");
 	}
 	elseif($u->activation_code == @$_GET["activation_code"])
 	{
@@ -36,6 +36,6 @@ if(!empty($_GET["username"]))
 		Application::addError("Wrong activation code");
 	}
 }
-
-require_once(dirname(__FILE__) . '/html/default/activate.php');
+$theme = SessionWrapper::get('html_theme');
+require_once(dirname(__FILE__) . "/html/$theme/activate.php");
 ?>
