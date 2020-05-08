@@ -2,7 +2,7 @@
 
 /**
  * Product: Katyshop2
- * @version 2.12 - security bug fix htmlspecialchars
+ * @version 2.13 - security bug fix include tinymce and HTMLPurifier
  * @author Catalin Hulea - catalinhulea@users.sourceforge.net
  * @copyright Copyleft 2020 Catalin Hulea
  * @license GNU General Public License version 3

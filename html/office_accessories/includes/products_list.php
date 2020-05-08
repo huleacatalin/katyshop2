@@ -25,9 +25,23 @@ if($productsCount > 0)
 					continue;
 				?>
 				<div class="product">
-					<a href="product.php?id_product=<?php echo intval($p->id); ?>">
+					<?php
+					if(!empty($p->picture) && is_file(WEB_DIR . "/img/products/small/{$p->picture}"))
+					{
+						?>
+						<a href="product.php?id_product=<?php echo intval($p->id); ?>">
 						<img src="img/products/small/<?php echo htmlspecialchars($p->picture); ?>">
-					</a>
+						</a>
+						<?php
+					}
+					else {
+						?>
+						<a href="product.php?id_product=<?php echo intval($p->id); ?>">
+						<img src="html/office_accessories/img/design/no-img.jpg">
+						</a>
+						<?php
+					}
+					?>
 
 					<div class="desc">
 						<p class="name"><?php echo htmlspecialchars($p->title); ?></p>

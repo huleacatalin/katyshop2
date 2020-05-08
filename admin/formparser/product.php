@@ -6,6 +6,7 @@
  */
 
 require_once(dirname(dirname(dirname(__FILE__))) . "/init.php");
+require_once(dirname(dirname(dirname(__FILE__))) . "/classes/common/htmlpurifier/library/HTMLPurifier.auto.php");
 require_once(WEB_DIR . "/includes/req_admin.php");
 
 function append_http_querystring() {
@@ -35,6 +36,11 @@ if(@$_GET["action"] == "save")
 			$old = $db->tbProduct->getRecordById($p->id);
 			$p->picture = $old->picture;
 		}
+		
+		$purifierConfig = HTMLPurifier_Config::createDefault();
+		$purifier = new HTMLPurifier($purifierConfig);
+		$p->content = $purifier->purify($p->content);
+		
 		$db->tbProduct->save($p);
 		Application::addMessage("Product has been saved");
 

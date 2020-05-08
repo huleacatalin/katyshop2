@@ -7,25 +7,14 @@
 require_once(dirname(__FILE__) . "/init.php");
 require_once(dirname(__FILE__) . "/includes/req_admin.php");
 ?>
+<!DOCTYPE html>
 <html>
 <head>
 <title><?php echo htmlspecialchars(APP_NAME); ?></title>
 <?php require_once(dirname(__FILE__) . "/includes/html_head.php"); ?>
+<script src="admin/js/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="admin/js/tinymce/init.js?<?php echo time(); ?>"></script>
 
-<script type="text/javascript">
-_editor_url = "admin/js/htmlarea/";
-_editor_lang = "en";
-</script>
-<script type="text/javascript" src="admin/js/htmlarea/htmlarea.js"></script>
-<script type="text/javascript">
-HTMLArea.loadPlugin("ContextMenu");
-HTMLArea.onload = function() {
-	var editor = new HTMLArea("editor");
-	editor.registerPlugin(ContextMenu);
-	editor.generate();
-};
-HTMLArea.init();
-</script>
 </head>
 
 <body>
@@ -179,7 +168,7 @@ if(@$_GET["action"] == "edit")
 	<label><?php echo htmlspecialchars(translate("Position")); ?>: <input type="number" name="pos" required min="1" value="<?php echo htmlspecialchars($p->pos); ?>" class="text"></label>
 	<label><?php echo htmlspecialchars(translate("Short description (appeares to the list of products)")); ?>: <textarea name="description" maxlength="1000" style="width: 500px; height: 100px; "><?php echo htmlspecialchars($p->description); ?></textarea></label>
 	<label><?php echo htmlspecialchars(translate("Content (detailed description, appeares to the product details page)")); ?>:
-		<textarea name="content" maxlength="1000000" id="editor"><?php echo $p->content; ?></textarea>
+		<textarea name="content" maxlength="1000000" id="editor"><?php echo htmlspecialchars($p->content); ?></textarea>
 	</label>
 	<label><?php echo htmlspecialchars(translate("Technical details")); ?>: <textarea name="technical_details" maxlength="1000" style="width: 500px; height: 100px; "><?php echo htmlspecialchars($p->technical_details); ?></textarea></label>
 	<?php

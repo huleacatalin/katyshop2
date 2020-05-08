@@ -1,4 +1,0 @@
-.htmlarea .toolbar .buttonDisabled {
-  filter: gray() alpha(opacity = 25);
-  opacity: 0.25;
-}
