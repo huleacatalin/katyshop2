@@ -28,8 +28,8 @@ class TableProduct extends MysqlTable
 	function getRecordById($id)
 	{
 		$ret = new Product();
-		$q = "select p.*, m.title as manufacturer from {$this->name} p
-			left join {$this->db->tbManufacturer->name} m on p.id_manufacturer = m.id
+		$q = "select p.*, m.title as manufacturer from `{$this->name}` p
+			left join `{$this->db->tbManufacturer->name}` m on p.id_manufacturer = m.id
 			where p.id = '" . $this->db->escape($id) . "' ";
 		$res = $this->db->query($q);
 		if($row = $this->db->fetch_array($res))
@@ -46,8 +46,8 @@ class TableProduct extends MysqlTable
 	function getProductByTitle($title, $id_category)
 	{
 		$ret = new Product();
-		$q = "select p.*, m.title as manufacturer from {$this->name} p
-			left join {$this->db->tbManufacturer->name} m on p.id_manufacturer = m.id
+		$q = "select p.*, m.title as manufacturer from `{$this->name}` p
+			left join `{$this->db->tbManufacturer->name}` m on p.id_manufacturer = m.id
 			where p.title = '" . $this->db->escape($title) . "'
 			and p.id_category = '" . $this->db->escape($id_category) . "' ";
 		$res = $this->db->query($q);
@@ -65,8 +65,8 @@ class TableProduct extends MysqlTable
 	function getProductByPos($pos, $id_category)
 	{
 		$ret = new Product();
-		$q = "select p.*, m.title as manufacturer from {$this->name} p
-			left join {$this->db->tbManufacturer->name} m on p.id_manufacturer = m.id
+		$q = "select p.*, m.title as manufacturer from `{$this->name}` p
+			left join `{$this->db->tbManufacturer->name}` m on p.id_manufacturer = m.id
 			where p.pos = '" . $this->db->escape($pos) . "'
 			and id_category = '" . $this->db->escape($id_category) . "' ";
 		$res = $this->db->query($q);
@@ -79,7 +79,7 @@ class TableProduct extends MysqlTable
 
 	function productExists($id)
 	{
-		$q = "select count(*) as total from {$this->name}
+		$q = "select count(*) as total from `{$this->name}`
 			where id = '" . $this->db->escape($id) . "' ";
 		$res = $this->db->query($q);
 		$row = $this->db->fetch_array($res);
@@ -89,7 +89,7 @@ class TableProduct extends MysqlTable
 
 	function getMaxPos($id_category)
 	{
-		$q = "select max(pos) as max_pos from {$this->name}
+		$q = "select max(pos) as max_pos from `{$this->name}`
 			where id_category = '" . $this->db->escape($id_category) . "' ";
 		$res = $this->db->query($q);
 		$row = $this->db->fetch_array($res);
@@ -102,7 +102,7 @@ class TableProduct extends MysqlTable
 	 */
 	function removePosition($pos, $id_category)
 	{
-		$q = "update {$this->name} set pos = pos - 1
+		$q = "update `{$this->name}` set pos = pos - 1
 			where pos >= '" . $this->db->escape($pos) . "'
 			and id_category = '" . $this->db->escape($id_category) . "' ";
 		$this->db->query($q);
@@ -111,7 +111,7 @@ class TableProduct extends MysqlTable
 	// make room in the stack of positions for this product:
 	function insertPosition($pos, $id_category)
 	{
-		$q = "update {$this->name} set pos = pos + 1
+		$q = "update `{$this->name}` set pos = pos + 1
 			where pos >= '" . $this->db->escape($pos) . "'
 			and id_category = '" . $this->db->escape($id_category) . "' ";
 		$this->db->query($q);
@@ -181,9 +181,9 @@ class TableProduct extends MysqlTable
 		$strictFields = $this->getStrictFields();
 
 		$ret = array();
-		$q = "select p.*, m.title as manufacturer, c.nest_level, c.pos from {$this->name} p
-			left join {$this->db->tbManufacturer->name} m on p.id_manufacturer = m.id
-			left join {$this->db->tbCategory->name} c on p.id_category = c.id
+		$q = "select p.*, m.title as manufacturer, c.nest_level, c.pos from `{$this->name}` p
+			left join `{$this->db->tbManufacturer->name}` m on p.id_manufacturer = m.id
+			left join `{$this->db->tbCategory->name}` c on p.id_category = c.id
 			where 1 = 1 ";
 		if(!empty($criteria["title"]))
 			$q .= "and p.title like '%" . $this->db->escape(@$criteria["title"]) . "%' ";
@@ -241,9 +241,9 @@ class TableProduct extends MysqlTable
 		$strictFields = $this->getStrictFields();
 
 		$ret = array();
-		$q = "select count(*) as total from {$this->name} p
-			left join {$this->db->tbManufacturer->name} m on p.id_manufacturer = m.id
-			left join {$this->db->tbCategory->name} c on p.id_category = c.id
+		$q = "select count(*) as total from `{$this->name}` p
+			left join `{$this->db->tbManufacturer->name}` m on p.id_manufacturer = m.id
+			left join `{$this->db->tbCategory->name}` c on p.id_category = c.id
 			where 1 = 1 ";
 		if(!empty($criteria["title"]))
 			$q .= "and p.title like '%" . $this->db->escape(@$criteria["title"]) . "%' ";
@@ -252,11 +252,11 @@ class TableProduct extends MysqlTable
 		if(floatval(@$criteria["max_price"]) > 0)
 			$q .= "and p.price <= '" . $this->db->escape($criteria["max_price"]) . "' ";
 		if(!empty($criteria["measuring_unit"]))
-			$q .= "and p.measuring_unit = '" . $criteria["measuring_unit"] . "' ";
+			$q .= "and p.measuring_unit = '" . $this->db->escape($criteria["measuring_unit"]) . "' ";
 		if(!empty($criteria["description"]))
-			$q .= "and p.description like '%" . $criteria["description"] . "%' ";
+			$q .= "and p.description like '%" . $this->db->escape($criteria["description"]) . "%' ";
 		if(!empty($criteria["content"]))
-			$q .= "and p.content like '%" . $criteria["content"] . "%' ";
+			$q .= "and p.content like '%" . $this->db->escape($criteria["content"]) . "%' ";
 		if(intval(@$criteria["id_manufacturer"]) > 0)
 			$q .= "and p.id_manufacturer = '" . $this->db->escape($criteria["id_manufacturer"]) . "' ";
 		if(intval(@$criteria["id_category"]) > 0 && @$criteria["only_current_category"] == "1")
@@ -299,7 +299,7 @@ class TableProduct extends MysqlTable
 	
 	function updatePicture($id_product, $picture)
 	{
-		$q = "update {$this->name} set picture = '" . $this->db->escape($picture) . "'
+		$q = "update `{$this->name}` set picture = '" . $this->db->escape($picture) . "'
 			where id = '" . intval($id_product) . "' ";
 		$this->db->query($q);
 	}
@@ -317,8 +317,8 @@ class TableProduct extends MysqlTable
 
 	function deleteByCategoryId($id_category)
 	{
-		$q = "select * from {$this->name}
-			where id_category = '" . $id_category . "' ";
+		$q = "select * from `{$this->name}`
+			where id_category = '" . intval($id_category) . "' ";
 		$res = $this->db->query($q);
 		while($row = $this->db->fetch_array($res))
 		{

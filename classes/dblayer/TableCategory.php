@@ -23,7 +23,7 @@ class TableCategory extends MysqlTable
 	function getRecordById($id)
 	{
 		$ret = new Category();
-		$q = "select * from {$this->name}
+		$q = "select * from `{$this->name}`
 			where id = '" . $this->db->escape($id) . "' ";
 		$res = $this->db->query($q);
 		if($row = $this->db->fetch_array($res))
@@ -38,7 +38,7 @@ class TableCategory extends MysqlTable
 	function getCategoryByTitle($title, $id_parent)
 	{
 		$ret = new Category();
-		$q = "select * from {$this->name}
+		$q = "select * from `{$this->name}`
 			where title = '" . $this->db->escape($title) . "'
 			and id_parent = '" . $this->db->escape($id_parent) . "' ";
 		$res = $this->db->query($q);
@@ -54,7 +54,7 @@ class TableCategory extends MysqlTable
 	function getCategoryByPos($pos, $id_parent)
 	{
 		$ret = new Category();
-		$q = "select * from {$this->name}
+		$q = "select * from `{$this->name}`
 			where pos = '" . $this->db->escape($pos) . "'
 			and id_parent = '" . $this->db->escape($id_parent) . "' ";
 		$res = $this->db->query($q);
@@ -66,7 +66,7 @@ class TableCategory extends MysqlTable
 
 	function categoryExists($id)
 	{
-		$q = "select count(*) as total from {$this->name}
+		$q = "select count(*) as total from `{$this->name}`
 			where id = '" . $this->db->escape($id) . "' ";
 		$res = $this->db->query($q);
 		$row = $this->db->fetch_array($res);
@@ -85,7 +85,7 @@ class TableCategory extends MysqlTable
 		$where = ($onlyActive) ? "and active = '1' " : "";
 
 		$ret = array();
-		$q = "select * from {$this->name}
+		$q = "select * from `{$this->name}`
 			where id_parent = '" . $this->db->escape($id) . "'
 			$where
 			order by $orderBy $orderDirection ";
@@ -102,7 +102,7 @@ class TableCategory extends MysqlTable
 
 	function getChildrenCount($id)
 	{
-		$q = "select count(*) as total from {$this->name}
+		$q = "select count(*) as total from `{$this->name}`
 			where id_parent = '" . $this->db->escape($id) . "' ";
 		$res = $this->db->query($q);
 		$row = $this->db->fetch_array($res);
@@ -113,7 +113,7 @@ class TableCategory extends MysqlTable
 	function getAllChildIds($id_category)
 	{
 		$ret = array();
-		$q = "select id from {$this->name}
+		$q = "select id from `{$this->name}`
 			where id_parent = '" . $this->db->escape($id_category) . "' ";
 		$res = $this->db->query($q);
 		while($row = $this->db->fetch_array($res))
@@ -129,7 +129,7 @@ class TableCategory extends MysqlTable
 	function getBreadcrumb($id)
 	{
 		$ret = array();
-		$q = "select * from {$this->name}
+		$q = "select * from `{$this->name}`
 			where id = '" . $this->db->escape($id) . "' ";
 		$res = $this->db->query($q);
 		if($row = $this->db->fetch_array($res))
@@ -147,7 +147,7 @@ class TableCategory extends MysqlTable
 	function getTree($onlyActive = true)
 	{
 		$ret = array();
-		$q = "select * from {$this->name} ";
+		$q = "select * from `{$this->name}` ";
 		if($onlyActive)
 			$q .= "where active = 1 ";
 		$q .= "order by pos ";
@@ -180,7 +180,7 @@ class TableCategory extends MysqlTable
 
 	function getMaxPos($id_parent)
 	{
-		$q = "select max(pos) as max_pos from {$this->name}
+		$q = "select max(pos) as max_pos from `{$this->name}`
 			where id_parent = '" . $this->db->escape($id_parent) . "' ";
 		$res = $this->db->query($q);
 		$row = $this->db->fetch_array($res);
@@ -193,7 +193,7 @@ class TableCategory extends MysqlTable
 	 */
 	function removePosition($pos, $id_parent)
 	{
-		$q = "update {$this->name} set pos = pos - 1
+		$q = "update `{$this->name}` set pos = pos - 1
 			where pos >= '" . $this->db->escape($pos) . "'
 			and id_parent = '" . $this->db->escape($id_parent) . "' ";
 		$this->db->query($q);
@@ -202,7 +202,7 @@ class TableCategory extends MysqlTable
 	// make room in the stack of positions for this category:
 	function insertPosition($pos, $id_parent)
 	{
-		$q = "update {$this->name} set pos = pos + 1
+		$q = "update `{$this->name}` set pos = pos + 1
 			where pos >= '" . $this->db->escape($pos) . "'
 			and id_parent = '" . $this->db->escape($id_parent) . "' ";
 		$this->db->query($q);

@@ -39,7 +39,7 @@ class TableManufacturer extends MysqlTable
 	function getManufacturerByTitle($title)
 	{
 		$ret = new Manufacturer();
-		$q = "select * from {$this->name}
+		$q = "select * from `{$this->name}`
 			where title = '" . $this->db->escape($title) . "' ";
 		$res = $this->db->query($q);
 		if($row = $this->db->fetch_array($res))
@@ -50,7 +50,7 @@ class TableManufacturer extends MysqlTable
 
 	function idExists($id)
 	{
-		$q = "select count(*) as total from {$this->name}
+		$q = "select count(*) as total from `{$this->name}`
 			where id = '" . $this->db->escape($id) . "' ";
 		$res = $this->db->query($q);
 		$row = $this->db->fetch_array($res);
@@ -60,7 +60,7 @@ class TableManufacturer extends MysqlTable
 
 	function titleExists($title)
 	{
-		$q = "select count(*) as total from {$this->name}
+		$q = "select count(*) as total from `{$this->name}`
 			where id = '" . $this->db->escape($title) . "' ";
 		$res = $this->db->query($q);
 		$row = $this->db->fetch_array($res);

@@ -2,7 +2,7 @@
 
 /**
  * Product: Katyshop2
- * @version 2.13 - security bug fix include tinymce and HTMLPurifier
+ * @version 2.14 - 2020-05-10 - html theme office accessories
  * @author Catalin Hulea - catalinhulea@users.sourceforge.net
  * @copyright Copyleft 2020 Catalin Hulea
  * @license GNU General Public License version 3
@@ -26,6 +26,9 @@
  * classes/common/date http://pear.php.net/package/Date
  * classes/common/phpmailer http://phpmailer.sourceforge.net
  * classes/common/resizeimage.php http://phpclasses.solarix.biz/browse/package/2179.html
+ * classes/common/htmlpurifier http://htmlpurifier.org/
+ * admin/js/tinymce https://www.tiny.cloud/
+ * html/office_accessories https://css-free-templates.com/e-commerce/ecommerce-free-css-template-for-office-accessories
  */
 
 // this file has no global variables because it is required()

@@ -19,7 +19,7 @@
 
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 <link rel="shortcut icon" href="html/office_accessories/css/images/favicon.ico" />
-<link rel="stylesheet" href="html/office_accessories/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="html/office_accessories/css/style.css?<?php echo time(); ?>" type="text/css" media="all" />
 <!--[if IE 6]>
 <link rel="stylesheet" href="html/office_accessories/css/ie6.css" type="text/css" media="all" />	
 <![endif]-->
@@ -28,4 +28,4 @@
 <script src="html/office_accessories/js/DD_belatedPNG-min.js" type="text/javascript"></script>
 <script src="html/office_accessories/js/jquery.jscrollpane.min.js" type="text/javascript"></script>
 <script src="html/office_accessories/js/jquery.jcarousel.js" type="text/javascript"></script>
-<script src="html/office_accessories/js/functions.js" type="text/javascript"></script>
+<script src="html/office_accessories/js/functions.js?<?php echo time(); ?>" type="text/javascript"></script>

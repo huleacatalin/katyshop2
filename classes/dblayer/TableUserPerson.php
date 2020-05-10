@@ -21,8 +21,8 @@ class TableUserPerson extends MysqlTable
 	function getRecordById($id)
 	{
 		$ret = new UserPerson();
-		$q = "select * from {$this->name} up
-			left join {$this->db->tbUser->name} u on up.id = u.id
+		$q = "select * from `{$this->name}` up
+			left join `{$this->db->tbUser->name}` u on up.id = u.id
 			where up.id = '" . $this->db->escape($id) . "' ";
 		$res = $this->db->query($q);
 		if($row = $this->db->fetch_array($res))

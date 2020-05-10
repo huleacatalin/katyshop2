@@ -23,7 +23,7 @@ class TableProductImage extends MysqlTable
 	function getRecordById($id)
 	{
 		$ret = new ProductImage();
-		$q = "select * from {$this->name} 
+		$q = "select * from `{$this->name}` 
 			where id = '" . $this->db->escape($id) . "' ";
 		$res = $this->db->query($q);
 		if($row = $this->db->fetch_array($res))
@@ -34,7 +34,7 @@ class TableProductImage extends MysqlTable
 	
 	function getImageByPos($id_product, $pos) {
 		$ret = new ProductImage();
-		$q = "select * from {$this->name}
+		$q = "select * from `{$this->name}`
 			where id_product = '" . intval($id_product) . "'
 			and pos = '" . intval($pos) . "' ";
 		$res = $this->db->query($q);
@@ -46,7 +46,7 @@ class TableProductImage extends MysqlTable
 
 	function getImagesByProductId($id_product)
 	{
-		$q = "select * from {$this->name} 
+		$q = "select * from `{$this->name}` 
 			where id_product = '" . $this->db->escape($id_product) . "' 
 			order by pos ";
 		$res = $this->db->query($q);
@@ -62,7 +62,7 @@ class TableProductImage extends MysqlTable
 
 	function getMaxPos($id_product)
 	{
-		$q = "select max(pos) as max_pos from {$this->name}
+		$q = "select max(pos) as max_pos from `{$this->name}`
 			where id_product = '" . $this->db->escape($id_product) . "' ";
 		$res = $this->db->query($q);
 		$row = $this->db->fetch_array($res);
@@ -75,7 +75,7 @@ class TableProductImage extends MysqlTable
 	 */
 	function removePosition($pos, $id_product)
 	{
-		$q = "update {$this->name} set pos = pos - 1
+		$q = "update `{$this->name}` set pos = pos - 1
 			where pos >= '" . $this->db->escape($pos) . "'
 			and id_product = '" . $this->db->escape($id_product) . "' ";
 		$this->db->query($q);
@@ -84,7 +84,7 @@ class TableProductImage extends MysqlTable
 	// make room in the stack of positions for this product image:
 	function insertPosition($pos, $id_product)
 	{
-		$q = "update {$this->name} set pos = pos + 1
+		$q = "update `{$this->name}` set pos = pos + 1
 			where pos >= '" . $this->db->escape($pos) . "'
 			and id_product = '" . $this->db->escape($id_product) . "' ";
 		$this->db->query($q);

@@ -29,7 +29,7 @@ class TableOrder extends MysqlTable
 	function getRecordById($id)
 	{
 		$ret = new Order();
-		$q = "select * from {$this->name}
+		$q = "select * from `{$this->name}`
 			where id = '" . $this->db->escape($id) . "' ";
 		$res = $this->db->query($q);
 		if($row = $this->db->fetch_array($res))
@@ -48,7 +48,7 @@ class TableOrder extends MysqlTable
 	function getRecordByCode($code)
 	{
 		$ret = new Order();
-		$q = "select * from {$this->name}
+		$q = "select * from `{$this->name}`
 			where code = '" . $this->db->escape($code) . "' ";
 		$res = $this->db->query($q);
 		if($row = $this->db->fetch_array($res))
@@ -63,7 +63,7 @@ class TableOrder extends MysqlTable
 
 	function orderExists($id)
 	{
-		$q = "select count(*) as total from {$this->name}
+		$q = "select count(*) as total from `{$this->name}`
 			where id = '" . $this->db->escape($id) . "' ";
 		$res = $this->db->query($q);
 		$row = $this->db->fetch_array($res);
@@ -73,7 +73,7 @@ class TableOrder extends MysqlTable
 
 	function changeStatus($id_order, $newStatus)
 	{
-		$q = "update {$this->name}
+		$q = "update `{$this->name}`
 			set status = '" . $this->db->escape($newStatus) . "'
 			where id = '" . $this->db->escape($id_order) . "' ";
 		$this->db->query($q);

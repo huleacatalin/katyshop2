@@ -88,9 +88,12 @@ function template_include_header() {
 					<li>
 						<a title="Categories" href="#"><?php echo htmlspecialchars(translate('Categories')); ?></a>							
 						<div class="dd">
+							<nav id="categories">
 							<?php
 							displayCategoriesTree($categoriesTree, 'category.php', $currentCategory);
-							?>							
+							?>
+							<br clear="all">
+							</nav>
 						</div>
 					</li>
 				</ul>

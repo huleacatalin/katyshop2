@@ -27,7 +27,7 @@ class TableOrderProduct extends MysqlTable
 	function getRecordsByOrderId($id_order)
 	{
 		$ret = array();
-		$q = "select * from {$this->name}
+		$q = "select * from `{$this->name}`
 			where id_order = '" . $this->db->escape($id_order) . "'
 			order by line_number";
 		$res = $this->db->query($q);
@@ -61,7 +61,7 @@ class TableOrderProduct extends MysqlTable
 
 	function orderProductExists($id_order, $line_number)
 	{
-		$q = "select count(*) as total from {$this->name}
+		$q = "select count(*) as total from `{$this->name}`
 			where id_order = '" . $this->db->escape($id_order) . "'
 			and line_number = '" . $this->db->escape($line_number) . "' ";
 		$res = $this->db->query($q);

@@ -14,7 +14,7 @@ $this->cfg["counties"] = array(
 	"Colorado",
 	"Connecticut",
 	"Delaware",
-	"District of Columbia*",
+	"District of Columbia",
 	"Florida",
 	"Georgia",
 	"Hawaii",

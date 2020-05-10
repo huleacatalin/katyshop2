@@ -11,20 +11,42 @@
 </head>
 
 <body>
-<?php require_once(dirname(__FILE__) . "/includes/header.php"); ?>
-<?php require_once(dirname(__FILE__) . "/includes/left.php"); ?>
-<main>
-<h1><?php echo htmlspecialchars(translate("User account activation")); ?></h1>
-<?php require_once(dirname(__FILE__) . "/includes/print_messages.php"); ?>
+	<!-- Wrapper -->
+	<div id="wrapper">
+		<div id="wrapper-bottom">
+			<div class="shell">
+				<?php require_once(dirname(__FILE__) . "/includes/header.php"); ?>
+				<!-- Main -->
+				<div id="main">
+					
+						<!-- Featured Products -->
+						<div class="products-holder" style="margin-left: 5px; ">
+							<div class="top"></div>
+							<div class="middle">
+								<div class="cl"></div>
 
-<form method="get" action="activate.php">
-<label><?php echo htmlspecialchars(translate("Username")); ?>: <input type="text" name="username" required class="text"></label>
-<label><?php echo htmlspecialchars(translate("Activation code")); ?>: <input type="text" name="activation_code" required class="text"></label>
-<input type="submit" value="<?php echo htmlspecialchars(translate("Activate")); ?>" class="button">
-</form>
+								<h1><?php echo htmlspecialchars(translate("User account activation")); ?></h1>
+								<?php require_once(dirname(__FILE__) . "/includes/print_messages.php"); ?>
 
-</main>
-<?php require_once(dirname(__FILE__) . "/includes/right.php"); ?>
-<?php require_once(dirname(__FILE__) . "/includes/footer.php"); ?>
+								<form method="get" action="activate.php">
+								<label><?php echo htmlspecialchars(translate("Username")); ?>: <input type="text" name="username" required class="text"></label>
+								<label><?php echo htmlspecialchars(translate("Activation code")); ?>: <input type="text" name="activation_code" required class="text"></label>
+								<input type="submit" value="<?php echo htmlspecialchars(translate("Activate")); ?>" class="button">
+								</form>
+
+								<div class="cl"></div>
+							</div>
+							<div class="bottom"></div>									
+						</div>
+						<!-- END Featured Products -->
+						
+				</div>
+				<!-- END Main -->
+			</div>
+		</div>
+		<div id="footer-push"></div>
+	</div>
+	<!-- END Wrapper -->
+	<?php require_once(dirname(__FILE__) . "/includes/footer.php"); ?>
 </body>
 </html>

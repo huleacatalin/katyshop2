@@ -27,7 +27,19 @@ input.text {
 }
 
 input.button {
+	background-image: linear-gradient(#1fb0e2, #0178de);
+	border: 1px solid #1992de;
+	color: white;
 	padding: 5px;
+	border-radius: 20px;
+	display: block;
+	float: left;
+	text-align: center;
+	font-weight: bold;
+}
+
+input.button:hover {
+	background-image: linear-gradient(#22bbee, #00aadd);
 }
 
 label {
@@ -103,7 +115,6 @@ aside#left {
 
 nav#categories ul {
 	list-style-type: none;
-	padding-left: 30px;
 }
 
 nav#categories ul li.nest_level_0 {
@@ -112,6 +123,15 @@ nav#categories ul li.nest_level_0 {
 
 nav#categories ul li.nest_level_1 {
 	font-size: 1.2em;
+	padding-left: 1em;
+}
+
+nav#categories ul li.nest_level_2 {
+	padding-left: 2em;
+}
+
+nav#categories ul li.nest_level_3 {
+	padding-left: 3em;
 }
 
 aside#left ul li a {
@@ -143,6 +163,24 @@ div.category_box p.pic {
 	margin: 0px;
 	padding: 0px;
 	overflow: hidden;
+}
+
+a.category-button {
+	background-image: linear-gradient(#1fb0e2, #0178de);
+	border: 1px solid #1992de;
+	color: white;
+	margin: 10px;
+	padding: 10px;
+	border-radius: 20px;
+	min-width: 100px;
+	display: block;
+	float: left;
+	text-align: center;
+	font-weight: bold;
+}
+
+a.category-button:hover {
+	background-image: linear-gradient(#22bbee, #00aadd);
 }
 
 table#products_list tr.border_top td {

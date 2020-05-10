@@ -69,12 +69,12 @@ span.label-right { display: block; float: left; width: 32px; height: 42px; backg
 #sort-nav ul li { position: relative; display: inline; float: left; line-height: 32px; padding-right: 44px; }
 #sort-nav ul li.last { padding-right: 19px; }
 #sort-nav ul li a { position: relative; padding-right: 12px; font-weight: bold; color: #fff; background: url(images/nav-item.png) no-repeat right 50%;  }
-#sort-nav .dd { display: none; position: absolute; z-index: 100; top: 30px; left: 0; width: 109px; background: #3a8cc0; }
-#sort-nav .dd ul { float: none; }
-#sort-nav .dd ul li { float: left;  background: none; padding: 0; width: 109px; }
-#sort-nav .dd ul li a { display: block; padding: 0 0 0 15px; line-height: 25px; width: 95px; background: none; }
+#sort-nav .dd { display: none; position: absolute; z-index: 100; top: 30px; left: 0; padding: 10px; min-width: 200px; background: #3a8cc0; }
+#sort-nav .dd ul { display: block; float: none; margin: 0; padding: 0; }
+#sort-nav .dd ul li { display: block; float: none;  background: none; margin: 0; padding: 0;  }
+#sort-nav .dd ul li a { display: block; line-height: 1em; background: none; margin: 0; padding: 0; }
 
-#main { position: relative; z-index: 1;}
+#main { position: relative; z-index: 1; min-height: 470px; }
 
 .slider-holder { position: relative; width: 887px; height: 410px; padding: 39px 33px 0 72px; background: url(images/slider-frame.png) no-repeat 0 0; }
 .promo { display: block; float: left; padding-top: 47px; width: 234px; height: 276px; }

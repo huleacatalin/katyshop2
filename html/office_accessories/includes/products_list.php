@@ -44,7 +44,7 @@ if($productsCount > 0)
 					?>
 
 					<div class="desc">
-						<p class="name"><?php echo htmlspecialchars($p->title); ?></p>
+						<p class="name"><a href="product.php?id_product=<?php echo intval($p->id); ?>"><?php echo htmlspecialchars($p->title); ?></a></p>
 						<?php
 						if(!empty($p->manufacturer))
 						{
@@ -53,11 +53,16 @@ if($productsCount > 0)
 							<?php
 						}
 						?>
+						
+						<form action="formparser/order.php?action=add_to_cart" method="post" style="margin-top: 5px; ">
+						<input type="hidden" name="id_product" value="<?php echo htmlspecialchars(@$p->id); ?>">
+						<input type="submit" value="<?php echo htmlspecialchars(translate("Add to the cart")); ?>" class="button">
+						</form>
 					</div>
 					
 					<div class="price-box">
 						<p><span class="price"><?php echo htmlspecialchars(displayPrice($p->price)); ?></span> <?php echo htmlspecialchars(Application::getConfigValue("default_currency")); ?></p>
-						<p class="per-peace">Per Peace</p>
+						<p class="per-peace">Per <?php echo htmlspecialchars($p->measuring_unit); ?></p>
 					</div>
 					<div class="cl"></div>
 				</div><!-- END <div class="product"> -->
@@ -67,7 +72,7 @@ if($productsCount > 0)
 			
 			<div class="cl"></div>	
 		</div>
-		<div class="bottom"></div>									
+		<div class="bottom"></div>
 	</div>
 	<!-- END Featured Products -->
 	<?php

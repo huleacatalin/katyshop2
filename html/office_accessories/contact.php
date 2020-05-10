@@ -12,9 +12,20 @@
 </head>
 
 <body>
-<?php require_once(dirname(__FILE__) . "/includes/header.php"); ?>
-<?php require_once(dirname(__FILE__) . "/includes/left.php"); ?>
-<main>
+	<!-- Wrapper -->
+	<div id="wrapper">
+		<div id="wrapper-bottom">
+			<div class="shell">
+				<?php require_once(dirname(__FILE__) . "/includes/header.php"); ?>
+				<!-- Main -->
+				<div id="main">
+					
+						<!-- Featured Products -->
+						<div class="products-holder" style="margin-left: 5px; ">
+							<div class="top"></div>
+							<div class="middle">
+								<div class="cl"></div>
+
 <h1><?php echo htmlspecialchars(translate("Contact")); ?></h1>
 <?php require_once(dirname(__FILE__) . "/includes/print_messages.php"); ?>
 
@@ -36,8 +47,19 @@ Phone/Fax: 555-555-555
 <input type="submit" value="<?php echo htmlspecialchars(translate("Send")); ?>" class="button">
 </form>
 
-</main>
-<?php require_once(dirname(__FILE__) . "/includes/right.php"); ?>
-<?php require_once(dirname(__FILE__) . "/includes/footer.php"); ?>
+								<div class="cl"></div>
+							</div>
+							<div class="bottom"></div>									
+						</div>
+						<!-- END Featured Products -->
+						
+				</div>
+				<!-- END Main -->
+			</div>
+		</div>
+		<div id="footer-push"></div>
+	</div>
+	<!-- END Wrapper -->
+	<?php require_once(dirname(__FILE__) . "/includes/footer.php"); ?>
 </body>
 </html>

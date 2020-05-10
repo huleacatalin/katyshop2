@@ -8,8 +8,6 @@ function template_include_footer() {
 	// local variables scope so they don't conflict with the global ones
 	$user = Application::getUser();
 	?>
-	<br clear="all">
-
 	<!-- Footer -->
 	<div id="footer">
 		<div class="shell">

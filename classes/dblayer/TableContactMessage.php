@@ -28,7 +28,7 @@ class TableContactMessage extends MysqlTable
 	function getRecordById($id)
 	{
 		$ret = new ContactMessage();
-		$q = "select * from {$this->name}
+		$q = "select * from `{$this->name}`
 			where id = '" . $this->db->escape($id) . "' ";
 		$res = $this->db->query($q);
 		if($row = $this->db->fetch_array($res))
@@ -40,7 +40,7 @@ class TableContactMessage extends MysqlTable
 
 	function messageExists($id)
 	{
-		$q = "select count(*) as total from {$this->name}
+		$q = "select count(*) as total from `{$this->name}`
 			where id = '" . $this->db->escape($id) . "' ";
 		$res = $this->db->query($q);
 		$row = $this->db->fetch_array($res);

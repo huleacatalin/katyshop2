@@ -24,7 +24,7 @@ class TableUser extends MysqlTable
 	function getUserById($id)
 	{
 		$ret = new User();
-		$q = "select * from {$this->name}
+		$q = "select * from `{$this->name}`
 			where id = '" . $this->db->escape($id) . "' ";
 		$res = $this->db->query($q);
 		if($row = $this->db->fetch_array($res))
@@ -41,7 +41,7 @@ class TableUser extends MysqlTable
 	function getUserByUsername($username)
 	{
 		$ret = new User();
-		$q = "select * from {$this->name}
+		$q = "select * from `{$this->name}`
 			where username = '" . $this->db->escape($username) . "' ";
 		$res = $this->db->query($q);
 		if($row = $this->db->fetch_array($res))
@@ -53,7 +53,7 @@ class TableUser extends MysqlTable
 
 	function usernameExists($username)
 	{
-		$q = "select count(*) as total from {$this->name}
+		$q = "select count(*) as total from `{$this->name}`
 			where username = '" . $this->db->escape($username) . "' ";
 		$res = $this->db->query($q);
 		$row = $this->db->fetch_array($res);
@@ -63,7 +63,7 @@ class TableUser extends MysqlTable
 
 	function idExists($id)
 	{
-		$q = "select count(*) as total from {$this->name}
+		$q = "select count(*) as total from `{$this->name}`
 			where id = '" . $this->db->escape($id) . "' ";
 		$res = $this->db->query($q);
 		$row = $this->db->fetch_array($res);
@@ -73,7 +73,7 @@ class TableUser extends MysqlTable
 
 	function emailExists($email)
 	{
-		$q = "select count(*) as total from {$this->name}
+		$q = "select count(*) as total from `{$this->name}`
 			where email = '" . $this->db->escape($email) . "' ";
 		$res = $this->db->query($q);
 		$row = $this->db->fetch_array($res);
@@ -83,14 +83,14 @@ class TableUser extends MysqlTable
 
 	function setLoginCode($id_user, $login_code)
 	{
-		$q = "update {$this->name} set login_code = '" . $this->db->escape($login_code) . "'
+		$q = "update `{$this->name}` set login_code = '" . $this->db->escape($login_code) . "'
 			where id = '" . $this->db->escape($id_user) . "' ";
 		$this->db->query($q);
 	}
 
 	function activate($id_user)
 	{
-		$q = "update {$this->name} set active = '1',
+		$q = "update `{$this->name}` set active = '1',
 			activation_code = ''
 			where id = '" . $this->db->escape($id_user) . "' ";
 		$this->db->query($q);
@@ -98,7 +98,7 @@ class TableUser extends MysqlTable
 
 	function deactivate($id_user)
 	{
-		$q = "update {$this->name} set active = '0' ,
+		$q = "update `{$this->name}` set active = '0' ,
 			activation_code = ''
 			where id = '" . $this->db->escape($id_user) . "' ";
 		$this->db->query($q);

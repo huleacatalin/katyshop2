@@ -296,7 +296,7 @@ class Application extends BaseObject
 		if(defined('INSTALL_DONE')) {
 			Logger::request();
 			SessionWrapper::start();
-			SessionWrapper::set('html_theme', 'default');
+			SessionWrapper::set('html_theme', 'office_accessories');
 
 			$this->fixCompat();
 			$this->createDatabase();

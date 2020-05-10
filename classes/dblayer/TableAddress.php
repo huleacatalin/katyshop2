@@ -28,7 +28,7 @@ class TableAddress extends MysqlTable
 	function getRecordById($id)
 	{
 		$ret = new Address();
-		$q = "select * from {$this->name}
+		$q = "select * from `{$this->name}`
 			where id = '" . $this->db->escape($id) . "' ";
 		$res = $this->db->query($q);
 		if($row = $this->db->fetch_array($res))
@@ -54,7 +54,7 @@ class TableAddress extends MysqlTable
 				break;
 		}
 		$ret = array();
-		$q = "select * from {$this->name}
+		$q = "select * from `{$this->name}`
 			where id_user = '" . $this->db->escape($id_user) . "'
 			$where
 			order by primary_addr desc ";
@@ -77,7 +77,7 @@ class TableAddress extends MysqlTable
 	{
 		if($a->primary_addr == 1)
 		{
-			$q = "update {$this->name} set primary_addr = '0'
+			$q = "update `{$this->name}` set primary_addr = '0'
 				where id_user = '" . $this->db->escape($a->id_user) . "' ";
 			$this->db->query($q);
 		}
@@ -92,7 +92,7 @@ class TableAddress extends MysqlTable
 
 	function deleteByUserId($id_user)
 	{
-		$q = "delete from {$this->name}
+		$q = "delete from `{$this->name}`
 			where id_user = '" . $this->db->escape($id_user) . "' ";
 		$this->db->query($q);
 	}

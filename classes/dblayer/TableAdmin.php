@@ -21,8 +21,8 @@ class TableAdmin extends MysqlTable
 	function getRecordById($id)
 	{
 		$ret = new Admin();
-		$q = "select * from {$this->name} a
-			left join {$this->db->tbUser->name} u on a.id_admin = u.id
+		$q = "select * from `{$this->name}` a
+			left join `{$this->db->tbUser->name}` u on a.id_admin = u.id
 			where a.id_admin = '" . $this->db->escape($id) . "' ";
 
 		$res = $this->db->query($q);
