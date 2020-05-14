@@ -296,7 +296,11 @@ class Application extends BaseObject
 		if(defined('INSTALL_DONE')) {
 			Logger::request();
 			SessionWrapper::start();
-			SessionWrapper::set('html_theme', 'office_accessories');
+			
+			if(isset($_GET['html_theme']) && in_array($_GET['html_theme'], $this->cfg['html_themes']))
+				SessionWrapper::set('html_theme', $_GET['html_theme']);
+			if(!in_array(SessionWrapper::get('html_theme'), $this->cfg['html_themes']))
+				SessionWrapper::set('html_theme', 'PCStore');
 
 			$this->fixCompat();
 			$this->createDatabase();

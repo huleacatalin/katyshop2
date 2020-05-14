@@ -1,0 +1,415 @@
+
+#content {
+	width: 574px!important;
+}
+
+#content * {
+	max-width: 575px;
+}
+
+a.category-button {
+	background-image: linear-gradient(#93c20f, #688a0b);
+	border: 1px solid #49dc06;
+	color: white;
+	margin: 10px;
+	padding: 10px;
+	border-radius: 20px;
+	min-width: 100px;
+	display: block;
+	float: left;
+	text-align: center;
+	font-weight: bold;
+}
+
+a.category-button:hover {
+	background-image: linear-gradient(#aabb22, #779911);
+}
+
+a.button, input.button {
+	background-image: linear-gradient(#93c20f, #688a0b);
+	border: 1px solid #49dc06;
+	color: white;
+	padding: 5px;
+	border-radius: 20px;
+	display: block;
+	text-align: center;
+	font-weight: bold;
+}
+
+input.button:hover {
+	background-image: linear-gradient(#aabb22, #779911);
+}
+
+div#left-sidebar li.widget div.widget-entry li {
+	padding-left: 12px;
+	display: block;
+	/*background: url('images/widget-arrow.png') no-repeat 0 13px;*/
+	/*background: url('images/widget-item.png') repeat-x 0 0;*/
+	background-image: url('images/categories_li_bg.png');
+}
+
+div#left-sidebar li.widget div.widget-entry li a {
+	background: url('images/widget-arrow.png') no-repeat 0 13px;
+}
+
+div#left-sidebar li.widget div.widget-entry li:hover {
+	background-image: url('images/categories_li_bg_hover.png');
+}
+
+div.widget-entry li.nest_level_1 {
+	padding-left: 2em!important;
+}
+
+div.widget-entry li.nest_level_2 {
+	padding-left: 3em!important;
+}
+
+div.widget-entry li.nest_level_3 {
+	padding-left: 4em!important;
+}
+
+input {
+	font-size: 1em;
+}
+
+select.select {
+	font-size: 1em;
+	width: 250px;
+	padding: 5px;
+	display: block;
+}
+
+textarea {
+	width: 500px;
+	height: 250px;
+	display: block;
+	font-size: larger;
+}
+
+textarea.comment {
+	height: 100px;
+}
+
+input.text {
+	width: 250px;
+	padding: 5px;
+}
+
+input.button {
+	padding: 5px;
+}
+
+label {
+	display: block;
+	margin-bottom: 10px;
+}
+
+label input.text {
+	display: block;
+}
+
+a {
+	color: black;
+}
+
+a.button {
+	padding: 10px;
+	background-color: #cccccc;
+}
+
+table.cuborder
+{
+	border-left: 1px solid black;
+	border-top: 1px solid black;
+}
+
+table.cuborder td
+{
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+	padding: 5px;
+}
+
+table.cuborder th
+{
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+	padding: 5px;
+}
+
+form#choose_html_theme {
+	float: left; 
+	color: white;
+	padding: 4px;
+	padding-left: 10px;
+	width: 210px!important;
+	margin-right: 100px;
+	background-color: black;
+}
+
+div#print_messages
+{
+	border: 1px solid #aaaaaa;
+	margin: 10px;
+	max-width: 575px;
+}
+
+div#print_messages p.message
+{
+	color: darkgreen;
+	font-weight: bold;
+	margin: 5px;
+}
+
+div#print_messages p.error
+{
+	color: red;
+	margin: 5px;
+}
+
+header#HEADER {
+	background-color: #dddddd;
+}
+
+header nav ul li {
+	float: left;
+	list-style-type: none;
+	margin: 10px;
+}
+
+div#search_box {
+	margin: 10px;
+	float: right;
+}
+
+div#search_box input.search {
+	font-size: 1.4em;
+	padding: 0px;
+}
+
+div#search_box input.button {
+	background-image: url('../img/design/search.gif');
+	width: 30px;
+	height: 30px;
+	font-size: 0px;
+	margin: 0px;
+	vertical-align: bottom;
+}
+
+aside#left {
+	float: left;
+	width: 250px;
+	overflow-x: auto;
+}
+
+nav#categories li.nest_level_0 {
+	font-size: 1.4em;
+}
+
+nav#categories li.nest_level_1 {
+	font-size: 1.2em;
+	padding-left: 1em;
+}
+
+aside#left ul li a {
+	display: block;
+	padding: 5px;
+}
+
+li.selected
+{
+	background-color: #dddddd;
+}
+
+main {
+	float: left;
+	width: 800px;
+	margin-left: 20px;
+}
+
+div.category_box {
+	width: 220px;
+	float: left;
+	text-align: center;
+	margin-right: 20px;
+}
+
+div.category_box h2 {
+	margin-bottom: 0px;
+	overflow-x: hidden;
+}
+
+div.category_box p.pic {
+	width: 220px;
+	height: 100px;
+	background-color: #eeeeee;
+	margin: 0px;
+	padding: 0px;
+	overflow: hidden;
+}
+
+table#products_list tr.border_top td {
+	border-top: 1px solid #aaaaaa;
+}
+
+table#products_list h3 {
+	margin: 0px;
+	padding: 0px;
+}
+
+table#products_list p.description {
+	background-color: #eeeeee;
+	margin: 0px;
+	padding: 0px;
+}
+
+figure#product_image_box {
+	width: 400px;
+	float: left;
+}
+
+ul.actions {
+	list-style-type: none;
+}
+
+ul.actions li.delete a
+{
+	background-image: url('../img/icons/delete.png');
+	background-repeat: no-repeat;
+	padding-left: 20px;
+}
+
+ul.actions li.move a
+{
+	background-image: url('../img/icons/move.gif');
+	background-repeat: no-repeat;
+	padding-left: 20px;
+}
+
+ul.actions li.add_category a
+{
+	background-image: url('../img/icons/folder_new.gif');
+	background-repeat: no-repeat;
+	padding-left: 20px;
+}
+
+ul.actions li.add_product a
+{
+	background-image: url('../img/icons/page_new.gif');
+	background-repeat: no-repeat;
+	padding-left: 20px;
+}
+
+ul.actions li.up a
+{
+	background-image: url('../img/icons/up_folder.gif');
+	background-repeat: no-repeat;
+	padding-left: 20px;
+}
+
+ul.actions li.edit a
+{
+	background-image: url('../img/icons/edit.gif');
+	background-repeat: no-repeat;
+	padding-left: 20px;
+}
+
+ul.public_site {
+	list-style-type: none;
+}
+
+ul.public_site li {
+	margin-top: 0.5em;
+}
+
+ul.properties {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
+/*
+ul#my_addresses_actions {
+	border-bottom: 1px solid black;
+}
+*/
+ul#my_addresses_actions li {
+	list-style-type: none;
+	display: inline;
+	margin-right: 20px;
+}
+
+ul#my_addresses_actions li.add_new_address {
+	background-image: url('../img/icons/page_new.gif');
+	background-repeat: no-repeat;
+	padding-left: 20px;
+}
+
+ul.properties li {
+	margin-bottom: 10px;
+}
+
+ul.properties span.value {
+	width: 250px;
+	padding: 5px;
+	display: block;
+	background-color: #dddddd;
+}
+
+div.comment {
+	border: 1px solid #aaaaaa;
+	margin-bottom: 1em;
+	padding: 10px;
+}
+
+div.comment span.username {
+	float: left;
+	font-weight: bold;
+}
+
+div.comment span.date {
+	float: right;
+	background-color: #dddddd;
+}
+
+div.comment span.delete {
+	float: right;
+}
+
+div.comment span.delete a {
+	color: red;
+}
+
+div.comment p {
+	margin: 0;
+	padding: 0;
+	margin-left: 100px;
+}
+
+aside#right {
+	float: right;
+	font-size: 0.9em;
+}
+
+aside#right h3 {
+	background-color: #dddddd;
+}
+
+div#shopping_cart_box ul {
+	list-style-type: none;
+}
+
+footer {
+	background-color: #aaaaaa;
+}
+
+footer nav li {
+	float: left;
+	list-style-type: none;
+	margin: 10px;
+}
+
+a#copyleft {
+	display: block;
+	float: right;
+	margin: 10px;
+}

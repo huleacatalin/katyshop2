@@ -28,10 +28,9 @@ function template_include_shopping_cart_box() {
 			for($i = 0; $i < $basket->getProductsCount(); $i++)
 			{
 				$op = $basket->getOrderProduct($i + 1);
-				$theme = SessionWrapper::get('html_theme');
 				?>
 				<li>
-					<a href="javascript:removeOrderProduct('<?php echo intval($op->line_number); ?>'); " title="remove product"><img src="html/<?php echo htmlspecialchars($theme); ?>/img/icons/delete.png" alt="remove product"></a>
+					<a href="javascript:removeOrderProduct('<?php echo intval($op->line_number); ?>'); " title="remove product"><img src="html/default/img/icons/delete.png" alt="remove product"></a>
 					<big><b><?php echo htmlspecialchars($op->quantity); ?></b></big>
 					<a href="product.php?id_product=<?php echo htmlspecialchars($op->id_product); ?>"><?php echo htmlspecialchars($op->product_name); ?></a>
 				</li>

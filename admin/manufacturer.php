@@ -94,7 +94,6 @@ else
 		<td>&nbsp;</td>
 		</tr>
 		<?php
-		$theme = SessionWrapper::get('html_theme');
 		for($i = 0; $i < count($list); $i++)
 		{
 			$m = $list[$i];

@@ -65,10 +65,9 @@ else
 	for($i = 0; $i < $basket->getProductsCount(); $i++)
 	{
 		$op = $basket->getOrderProduct($i + 1);
-		$theme = SessionWrapper::get('html_theme');
 		?>
 		<tr>
-		<td><a href="javascript:removeOrderProduct('<?php echo intval($op->line_number); ?>'); " title="remove product"><img src="html/<?php echo htmlspecialchars($theme); ?>/img/icons/delete.png" alt="remove product"></a></td>
+		<td><a href="javascript:removeOrderProduct('<?php echo intval($op->line_number); ?>'); " title="remove product"><img src="html/office_accessories/img/icons/delete.png" alt="remove product"></a></td>
 		<td>
 			<input type="hidden" name="line_number[]" value="<?php echo htmlspecialchars($op->line_number); ?>">
 			<?php echo htmlspecialchars($op->line_number); ?>

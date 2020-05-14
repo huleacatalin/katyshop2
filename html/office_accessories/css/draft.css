@@ -76,6 +76,13 @@ table.cuborder th
 	padding: 5px;
 }
 
+form#choose_html_theme {
+	display: inline;
+	color: #0a70b0; 
+	float: left; 
+	margin-left: 100px;
+}
+
 div#print_messages
 {
 	border: 1px solid #aaaaaa;

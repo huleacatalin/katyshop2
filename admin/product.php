@@ -75,7 +75,6 @@ if($p->id > 0)
 		<li class="edit"><a href="admin/product.php?action=edit&id_product=<?php echo intval(@$p->id); ?>"><?php echo htmlspecialchars(translate("Edit product")); ?> <?php echo htmlspecialchars($p->title); ?></a></li>
 		<li class="delete"><a href="javascript:deleteProduct('<?php echo intval($p->id); ?>'); " style="color: red; "><?php echo htmlspecialchars(translate("Delete product")); ?> <?php echo htmlspecialchars($p->title); ?></a></li>
 		<?php
-		$theme = SessionWrapper::get('html_theme');
 		if($p->active == 1)
 		{
 			?>
@@ -179,7 +178,6 @@ if(@$_GET["action"] == "edit")
 		<label><?php echo htmlspecialchars(translate("Images")); ?></label>
 		<?php
 		foreach($p->images as $pi) {
-			$theme = SessionWrapper::get('html_theme');
 			?>
 			<div style="width: 75px; height: 95px; float: left; border: 1px solid black; margin: 5px; text-align: center; ">
 			<table cellpadding="0" cellspacing="0">
@@ -228,7 +226,6 @@ elseif(@$_GET['action'] == 'view_comments') {
 	$db = Application::getDb();
 	$arr = $db->tbComment->getCommentsByProductId(@$p->id);
 	foreach($arr as $comment) {
-		$theme = SessionWrapper::get('html_theme');
 		?>
 		<div class="comment">
 		<span class="username"><?php echo htmlspecialchars($comment->username); ?>:</span>

@@ -36,7 +36,9 @@
 <input type="submit" value="<?php echo htmlspecialchars(translate("Login")); ?>" class="button">
 </form>
 
-<ul>
+<div class="cl"></div>
+
+<ul style="margin-top: 1em; margin-left: 1em; ">
 <li><a href="register.php" style="font-weight: bold; font-size: 1.4em; "><?php echo htmlspecialchars(translate("Register new account")); ?></a></li>
 <li><a href="forgot_password.php"><?php echo htmlspecialchars(translate("Password or activation code forgotten?")); ?></a></li>
 <li><a href="activate.php"><?php echo htmlspecialchars(translate("Activation link")); ?></a></li>

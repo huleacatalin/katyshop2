@@ -7,10 +7,9 @@
 function template_include_header() {
 	// local variables scope so they don't conflict with the global ones
 	$user = Application::getUser();
-	$theme = SessionWrapper::get('html_theme');
 	?>
 	<header id="HEADER">
-	<a href="index.php"><img src="html/<?php echo htmlspecialchars($theme); ?>/img/design/logo.jpg" id="logo"></a>
+	<a href="index.php"><img src="html/default/img/design/logo.jpg" id="logo"></a>
 	<form id="logout_form" action="formparser/user.php?action=logout" method="post" style="display: none; ">
 	<input type="hidden" name="logout" value="1">
 	</form>
@@ -52,6 +51,15 @@ function template_include_header() {
 	</ul>
 	</nav>
 
+	<form action="index.php" method="get" id="choose_html_theme">
+	Choose theme: 
+	<select name="html_theme" onchange="this.form.submit(); ">
+	<option value="default" selected>Default</option>
+	<option value="office_accessories">Office Accessories</option>
+	<option value="PCStore">PC Store</option>
+	</select>
+	</form>
+	
 	<form action="formparser/order.php?action=remove_product" method="post" id="frm_remove_product">
 	<input type="hidden" name="line_number" value="0">
 	</form>

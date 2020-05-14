@@ -14,13 +14,12 @@ function template_include_comments() {
 		<span class="username"><?php echo htmlspecialchars($comment->username); ?>:</span>
 		<?php
 		if($user->isAdminLoggedIn()) {
-			$theme = SessionWrapper::get('html_theme');
 			?>
 			<span class="delete">
 			<form action="formparser/comment.php?action=delete" method="post" id="frm_del_comment_<?php echo intval($comment->id); ?>">
 			<input type="hidden" name="id" value="<?php echo intval($comment->id); ?>">
 			<input type="hidden" name="id_product" value="<?php echo intval($product->id); ?>">
-			<a href="javascript:if(confirm('<?php echo htmlspecialchars(translate('Are you sure you want to delete this comment?')) ?>')) {document.getElementById('frm_del_comment_<?php echo intval($comment->id); ?>').submit()} " title="<?php echo htmlspecialchars(translate('delete')); ?>"><img src="html/<?php echo htmlspecialchars($theme); ?>/img/icons/delete.png" alt="<?php echo htmlspecialchars(translate('delete')); ?>"><?php echo htmlspecialchars(translate('delete')); ?></a>
+			<a href="javascript:if(confirm('<?php echo htmlspecialchars(translate('Are you sure you want to delete this comment?')) ?>')) {document.getElementById('frm_del_comment_<?php echo intval($comment->id); ?>').submit()} " title="<?php echo htmlspecialchars(translate('delete')); ?>"><img src="html/office_accessories/img/icons/delete.png" alt="<?php echo htmlspecialchars(translate('delete')); ?>"><?php echo htmlspecialchars(translate('delete')); ?></a>
 			</form>
 			</span>
 			<?php

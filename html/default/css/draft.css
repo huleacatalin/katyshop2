@@ -91,6 +91,13 @@ table.cuborder th
 	padding: 5px;
 }
 
+form#choose_html_theme {
+	display: inline;
+	float: left; 
+	margin-left: 50px;
+	margin-top: 10px;
+}
+
 div#print_messages
 {
 	border: 1px solid #aaaaaa;

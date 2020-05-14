@@ -7,7 +7,6 @@
 function template_include_header() {
 	// local variables scope so they don't conflict with the global ones
 	$user = Application::getUser();
-	$theme = SessionWrapper::get('html_theme');
 	$basket = Application::getShoppingCart();
 	$db = Application::getDb();
 	$currentCategory = Application::getCurrentCategory();
@@ -17,6 +16,16 @@ function template_include_header() {
 	<div id="header">
 		<!-- Logo -->
 		<h1 id="logo"><a title="Home" href="index.php">accessories store</a></h1>
+		
+		<form action="index.php" method="get" id="choose_html_theme">
+		Choose theme: 
+		<select name="html_theme" onchange="this.form.submit(); ">
+		<option value="default">Default</option>
+		<option value="office_accessories" selected>Office Accessories</option>
+		<option value="PCStore">PC Store</option>
+		</select>
+		</form>
+		
 		<p class="shopping-cart"><a class="cart" href="shopping_cart.php" title="Your Shopping Cart">Your Shopping Cart</a><span>Articles:</span>&nbsp;<?php echo htmlspecialchars($basket->getProductsCount()); ?><span>Cost:</span>&nbsp;<?php echo htmlspecialchars(displayPrice($basket->total)); ?></p>
 
 		<form action="formparser/order.php?action=remove_product" method="post" id="frm_remove_product">

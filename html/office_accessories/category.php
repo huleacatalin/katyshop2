@@ -39,9 +39,8 @@
 							<?php
 							if($user->isAdminLoggedIn())
 							{
-								$theme = SessionWrapper::get('html_theme');
 								?>
-								<p><a href="admin/category.php?action=edit&id_category=<?php echo htmlspecialchars($category->id); ?>" style="font-size: 12pt; "><img src="html/<?php echo htmlspecialchars($theme); ?>/img/icons/edit.gif"> <?php echo htmlspecialchars(translate("Edit category")); ?> <?php echo htmlspecialchars($category->title); ?></a></p>
+								<p><a href="admin/category.php?action=edit&id_category=<?php echo htmlspecialchars($category->id); ?>" style="font-size: 12pt; "><img src="html/office_accessories/img/icons/edit.gif"> <?php echo htmlspecialchars(translate("Edit category")); ?> <?php echo htmlspecialchars($category->title); ?></a></p>
 								<?php
 							}
 							?>

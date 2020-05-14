@@ -2,7 +2,7 @@
 
 /**
  * Product: Katyshop2
- * @version 2.14 - 2020-05-10 - html theme office accessories
+ * @version 2.15 - 2020-05-15 - html theme PC Store
  * @author Catalin Hulea - catalinhulea@users.sourceforge.net
  * @copyright Copyleft 2020 Catalin Hulea
  * @license GNU General Public License version 3
@@ -29,6 +29,7 @@
  * classes/common/htmlpurifier http://htmlpurifier.org/
  * admin/js/tinymce https://www.tiny.cloud/
  * html/office_accessories https://css-free-templates.com/e-commerce/ecommerce-free-css-template-for-office-accessories
+ * html/PCStore https://css-free-templates.com/dark/dark-free-css-ecommerce-template-for-pc-store
  */
 
 // this file has no global variables because it is required()
@@ -49,6 +50,9 @@ header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
 //###############################################
 define("DATA_DIR", dirname(dirname(__FILE__)) . "/data");
 define("WEB_DIR", dirname(dirname(__FILE__)));
+
+// html_themes
+$this->cfg['html_themes'] = array('default', 'office_accessories', 'PCStore');
 
 //###############################################
 //# LOGGER										#

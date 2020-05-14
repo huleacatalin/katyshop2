@@ -10,6 +10,7 @@
 }
 
 * { margin: 0; padding: 0; outline: 0; }
+h1, h2, h3, h4, h5, h6 {margin-top: 0.5em; margin-bottom: 0.5em; }
 
 html, body { height: 100%; }
 
@@ -57,7 +58,7 @@ span.label-left { display: block; float: left; width: 21px; height: 42px; backgr
 span.label-right { display: block; float: left; width: 32px; height: 42px; background: url(images/label-right.png) no-repeat 0 0; }
 .label-bg { display: inline; float: left; height: 42px; background: url(images/label-bg.png) repeat-x 0 0; }
 .label { position: absolute; top: -15px; left: -7px; height: 42px; width: 203px; background: url(images/label.png) no-repeat 0 0; }
-.label h3 { padding-left: 15px; display: inline; float: left; font-family: Arial, helvetica, sans-serif; font-size: 18px; color: #fff; font-weight: normal; line-height: 30px;  }
+.label h3 { margin: 0; padding-left: 15px; display: inline; float: left; font-family: Arial, helvetica, sans-serif; font-size: 18px; color: #fff; font-weight: normal; line-height: 30px;  }
 
 #navigation { display: inline; float: right; padding: 10px 32px 0 0; }
 #navigation ul li { list-style: none; display: inline; float: left;	font-weight: bold; line-height: 14px; padding-left: 30px; }
