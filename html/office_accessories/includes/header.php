@@ -18,15 +18,16 @@ function template_include_header() {
 		<h1 id="logo"><a title="Home" href="index.php">accessories store</a></h1>
 		
 		<form action="index.php" method="get" id="choose_html_theme">
-		Choose theme: 
+		<?php echo translate("Choose theme"); ?>: 
 		<select name="html_theme" onchange="this.form.submit(); ">
 		<option value="default">Default</option>
 		<option value="office_accessories" selected>Office Accessories</option>
 		<option value="PCStore">PC Store</option>
+		<option value="book-store">Book Store</option>
 		</select>
 		</form>
 		
-		<p class="shopping-cart"><a class="cart" href="shopping_cart.php" title="Your Shopping Cart">Your Shopping Cart</a><span>Articles:</span>&nbsp;<?php echo htmlspecialchars($basket->getProductsCount()); ?><span>Cost:</span>&nbsp;<?php echo htmlspecialchars(displayPrice($basket->total)); ?></p>
+		<p class="shopping-cart"><a class="cart" href="shopping_cart.php" title="Your Shopping Cart"><?php echo translate("Shopping cart"); ?></a><span><?php echo translate("Articles"); ?>:</span>&nbsp;<?php echo htmlspecialchars($basket->getProductsCount()); ?><span><?php echo translate("Cost"); ?>:</span>&nbsp;<?php echo htmlspecialchars(displayPrice($basket->total)); ?></p>
 
 		<form action="formparser/order.php?action=remove_product" method="post" id="frm_remove_product">
 		<input type="hidden" name="line_number" value="0">

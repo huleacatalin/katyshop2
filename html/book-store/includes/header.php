@@ -8,16 +8,14 @@ function template_include_header() {
 	// local variables scope so they don't conflict with the global ones
 	$user = Application::getUser();
 	?>
-	<header id="HEADER">
-	<a href="index.php"><img src="html/default/img/design/logo.jpg" id="logo"></a>
+	
 	<form id="logout_form" action="formparser/user.php?action=logout" method="post" style="display: none; ">
 	<input type="hidden" name="logout" value="1">
 	</form>
 
-	<nav>
+	<div id="templatemo_menu">
 	<ul>
-	<li><a href="how_to_buy.php"><?php echo htmlspecialchars(translate("How to buy")); ?></a></li>
-	<li><a href="payment_and_delivery.php"><?php echo htmlspecialchars(translate("Payment")); ?></a></li>
+	<li><a href="index.php"><?php echo htmlspecialchars(translate("Home")); ?></a></li>
 	<li><a href="contact.php"><?php echo htmlspecialchars(translate("Contact")); ?></a></li>
 	<?php
 	if($user->isAdminLoggedIn())
@@ -49,15 +47,23 @@ function template_include_header() {
 	}
 	?>
 	</ul>
-	</nav>
+	
+	<div id="search_box">
+	<form action="search.php" method="get">
+	<input type="search" name="keywords" value="<?php echo htmlspecialchars(@$_GET["keywords"]); ?>" class="search" onfocus="this.select(); "><input type="submit" value="Search!" class="button">
+	<a href="advanced_search.php?<?php echo Tools::http_build_query2($_GET); ?>"><?php echo htmlspecialchars(translate("advanced")); ?> &raquo;</a>
+	</form>
+	</div>
+    
+    </div> <!-- end of menu -->
 
 	<form action="index.php" method="get" id="choose_html_theme">
 	<?php echo translate("Choose theme"); ?>: 
 	<select name="html_theme" onchange="this.form.submit(); ">
-	<option value="default" selected>Default</option>
+	<option value="default">Default</option>
 	<option value="office_accessories">Office Accessories</option>
 	<option value="PCStore">PC Store</option>
-	<option value="book-store">Book Store</option>
+	<option value="book-store" selected>Book Store</option>
 	</select>
 	</form>
 	
@@ -65,15 +71,27 @@ function template_include_header() {
 	<input type="hidden" name="line_number" value="0">
 	</form>
 
-	<div id="search_box">
-	<form action="search.php" method="get">
-	<input type="search" name="keywords" value="<?php echo htmlspecialchars(@$_GET["keywords"]); ?>" class="search" onfocus="this.select(); "><input type="submit" value="Search!" class="button">
-	<a href="advanced_search.php?<?php echo Tools::http_build_query2($_GET); ?>"><?php echo htmlspecialchars(translate("advanced")); ?> &raquo;</a>
-	</form>
-	</div>
+    <div id="templatemo_header">
+    	<div id="templatemo_special_offers">
+        	<p>
+                <span>25%</span> discounts for
+        purchase over $80
+        	</p>
+			<a href="subpage.html" style="margin-left: 50px;">Read more...</a>
+        </div>
+        
+        
+        <div id="templatemo_new_books">
+        	<ul>
+                <li>Suspen disse</li>
+                <li>Maece nas metus</li>
+                <li>In sed risus ac feli</li>
+            </ul>
+            <a href="subpage.html" style="margin-left: 50px;">Read more...</a>
+        </div>
+    </div> <!-- end of header -->
+    
 
-	<br clear="all">
-	</header>
 	<?php
 }
 template_include_header();

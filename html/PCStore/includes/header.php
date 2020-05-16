@@ -18,17 +18,18 @@ function template_include_header() {
 			<form action="search.php" method="get">
 				<div class="container">
 					<input type="search" name="keywords" value="<?php echo htmlspecialchars(@$_GET["keywords"]); ?>" class="blink" onfocus="this.select(); ">
-					<a href="advanced_search.php" style="display: block; margin-top: 1em; ">advanced search</a>
+					<a href="advanced_search.php" style="display: block; margin-top: 1em; "><?php echo translate("advanced search"); ?></a>
 				</div>
 				<input class="search-button" type="submit" value="Submit" />
 			</form>
 			
 			<form action="index.php" method="get" id="choose_html_theme">
-			Choose theme: 
+			<?php echo translate("Choose theme"); ?>: 
 			<select name="html_theme" onchange="this.form.submit(); ">
 			<option value="default">Default</option>
 			<option value="office_accessories">Office Accessories</option>
 			<option value="PCStore" selected>PC Store</option>
+			<option value="book-store">Book Store</option>
 			</select>
 			</form>
 			

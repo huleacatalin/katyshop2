@@ -276,6 +276,10 @@ $this->cfg["lang"]["ro"] = array(
 	// includes/header.php
 	"advanced" => 'avansat',
 	"Payment" => 'Cum plătesc',
+	"Choose theme" => "Alegeți tema",
+	"advanced search" => "căutare avansată",
+	"Articles" => "Articole",
+	"Cost" => "Cost",
 	
 	// includes/products_list.php
 	"Price" => 'Preț',

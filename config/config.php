@@ -2,7 +2,7 @@
 
 /**
  * Product: Katyshop2
- * @version 2.15 - 2020-05-15 - html theme PC Store
+ * @version 2.16 - 2020-05-16 - html theme Book Store
  * @author Catalin Hulea - catalinhulea@users.sourceforge.net
  * @copyright Copyleft 2020 Catalin Hulea
  * @license GNU General Public License version 3
@@ -30,6 +30,7 @@
  * admin/js/tinymce https://www.tiny.cloud/
  * html/office_accessories https://css-free-templates.com/e-commerce/ecommerce-free-css-template-for-office-accessories
  * html/PCStore https://css-free-templates.com/dark/dark-free-css-ecommerce-template-for-pc-store
+ * html/book-store http://www.templatemo.com/preview/templatemo_086_book_store
  */
 
 // this file has no global variables because it is required()
@@ -52,7 +53,7 @@ define("DATA_DIR", dirname(dirname(__FILE__)) . "/data");
 define("WEB_DIR", dirname(dirname(__FILE__)));
 
 // html_themes
-$this->cfg['html_themes'] = array('default', 'office_accessories', 'PCStore');
+$this->cfg['html_themes'] = array('default', 'office_accessories', 'PCStore', 'book-store');
 
 //###############################################
 //# LOGGER										#

@@ -277,6 +277,10 @@ $this->cfg["lang"]["en"] = array(
 	// includes/header.php
 	"advanced" => 'advanced',
 	"Payment" => 'Payment',
+	"Choose theme" => "Choose theme",
+	"advanced search" => "advanced search",
+	"Articles" => "Articles",
+	"Cost" => "Cost",
 	
 	// includes/products_list.php
 	"Price" => 'Price',
