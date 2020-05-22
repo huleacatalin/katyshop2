@@ -1,4 +1,99 @@
 
+.product a img {
+	object-fit: scale-down;
+}
+
+@media only screen and (max-width: 600px) {
+	/* smartphones */
+	body {
+		min-width: 0!important;
+	}
+	body, .shell, .products-holder, textarea {
+		width: 100%!important;
+		margin-left: 0!important;
+		margin-right: 0!important;
+		padding-left: 0!important;
+		padding-right: 0!important;
+	}
+	#logo {
+		margin-bottom: 50px;
+	}
+	.shopping-cart {
+		display: none;
+	}
+	#navigation {
+		background-color: #41d6ee;
+	}
+	#navigation a {
+		padding: 1em;
+		display: block;
+	}
+	a#responsive_menu {
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 10;
+		width: 40px;
+		height: 40px;
+		margin: 0;
+		padding: 0!important;
+		background-image: url('../img/design/responsive_menu.png');
+	}
+	#header {
+		display: none;
+	}
+	h1 {
+		margin-left: 40px;
+	}
+	figure#product_image_box img {
+		max-width: 100%;
+	}
+	#footer .shell {
+		background-color: #0b83bf;
+	}
+	#bottom-nav a {
+		display: block;
+		padding-bottom: 1em;
+	}
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1000px) {
+	/* tablets */
+	body {
+		min-width: 0!important;
+	}
+	body, .shell, .products-holder {
+		width: 100%!important;
+		margin-left: 0!important;
+		margin-right: 0!important;
+		padding-left: 0!important;
+		padding-right: 0!important;
+	}
+}
+
+.cart_micro {
+	color: black;
+	text-decoration: underline;
+	background-image: url('../img/design/cart_micro.gif');
+	background-repeat: no-repeat;
+	background-position: 5px 10px;
+	
+	border: 1px solid #1992de;
+	margin: 10px;
+	padding: 10px;
+	border-radius: 20px;
+	min-width: 100px;
+	display: block;
+	float: left;
+	text-align: center;
+	font-weight: bold;
+}
+
+.cart_micro:hover {
+	border-color: black;
+}
+
 input {
 	font-size: 1em;
 }
@@ -32,8 +127,6 @@ input.button {
 	color: white;
 	padding: 5px;
 	border-radius: 20px;
-	display: block;
-	float: left;
 	text-align: center;
 	font-weight: bold;
 }
@@ -206,7 +299,8 @@ table#products_list p.description {
 }
 
 figure#product_image_box {
-	width: 400px;
+	max-width: 400px;
+	object-fit: scale-down;
 	float: left;
 }
 

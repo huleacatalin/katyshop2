@@ -12,6 +12,7 @@ function template_include_header() {
 	$currentCategory = Application::getCurrentCategory();
 	$categoriesTree = $db->tbCategory->getTree();
 	?>
+	<a id="responsive_menu" href="javascript:responsive_menu(); "></a>
 	<!-- Header -->
 	<div id="header">
 		<!-- Logo -->

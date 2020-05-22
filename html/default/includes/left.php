@@ -12,7 +12,10 @@ function template_include_left() {
 	?>
 	<aside id="left">
 
+	<?php require_once(dirname(__FILE__) . "/shopping_cart_box.php"); ?>
+	
 	<nav id="categories">
+	<h3><?php echo htmlspecialchars(translate("Categories")); ?></h3>
 	<?php
 	displayCategoriesTree($categoriesTree, 'category.php', $currentCategory);
 	?>

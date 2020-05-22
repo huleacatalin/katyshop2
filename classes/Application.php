@@ -300,7 +300,7 @@ class Application extends BaseObject
 			if(isset($_GET['html_theme']) && in_array($_GET['html_theme'], $this->cfg['html_themes']))
 				SessionWrapper::set('html_theme', $_GET['html_theme']);
 			if(!in_array(SessionWrapper::get('html_theme'), $this->cfg['html_themes']))
-				SessionWrapper::set('html_theme', 'book-store');
+				SessionWrapper::set('html_theme', 'office_accessories');
 
 			$this->fixCompat();
 			$this->createDatabase();

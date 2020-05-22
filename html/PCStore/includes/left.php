@@ -13,6 +13,10 @@ function template_include_left() {
 	
 	<!-- Begin Left Sidebar -->
 	<div id="left-sidebar" class="sidebar">
+	
+		<?php require_once(dirname(__FILE__) . "/shopping_cart_box.php"); ?>
+		<br>
+		
 		<ul>
 			<li class="widget">
 				<h2>Categories</h2>

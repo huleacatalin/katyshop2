@@ -26,6 +26,8 @@
 							<div class="middle">
 								<div class="cl"></div>
 
+								<a href="shopping_cart.php" class="cart_micro"><?php echo translate('View cart'); ?> &raquo; </a>
+								<div class="cl"></div>
 <h1><?php echo htmlspecialchars(translate("My addresses")); ?></h1>
 <ul id="my_addresses_actions">
 <li><a href="address.php"><?php echo htmlspecialchars(translate("All addresses")); ?></a></li>

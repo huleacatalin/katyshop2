@@ -85,7 +85,7 @@ else
 		<input type="hidden" name="address_type" value="delivery">
 		<p>
 		<?php echo htmlspecialchars(translate("No delivery address could be found.")); ?>
-		<input type="submit" value="<?php echo htmlspecialchars(translate("Click here")); ?>">
+		<input type="submit" value="<?php echo htmlspecialchars(translate("Click here")); ?>" class="button">
 		<?php echo htmlspecialchars(translate("to add a new delivery address in your address book.")); ?>
 		</p>
 		</form>
@@ -97,7 +97,7 @@ else
 		<input type="hidden" name="address_type" value="invoice">
 		<p>
 		<?php echo htmlspecialchars(translate("No invoicing address could be found.")); ?>
-		<input type="submit" value="<?php echo htmlspecialchars(translate("Click here")); ?>">
+		<input type="submit" value="<?php echo htmlspecialchars(translate("Click here")); ?>" class="button">
 		<?php echo htmlspecialchars(translate("to add a new invoicing address in your address book.")); ?>
 		</p>
 		</form>

@@ -45,6 +45,8 @@
 							}
 							?>
 							<br clear="all">
+							<a href="shopping_cart.php" class="cart_micro"><?php echo translate('View cart'); ?> &raquo; </a>
+							
 							<?php
 							for($i = 0; $i < count($childCategories); $i++)
 							{

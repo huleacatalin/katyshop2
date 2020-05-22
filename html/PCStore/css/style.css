@@ -17,8 +17,8 @@ body {
     font-family: "Trebuchet MS", arial, sans-serif;
     color: #939393;
     background: #2a2a2a /*url('images/body-bg.png')*/ repeat-x 0 18px;
-    width: 100%;
-    min-width: 998px;
+    /*width: 100%;*/
+    /*min-width: 998px;*/
 }
 
 .shell {
@@ -142,7 +142,7 @@ h1#logo a { width: 214px; height: 43px; background: url('images/logo.png') no-re
 #content .post { padding-bottom: 31px; }
 
 #products h2 { padding: 17px 0 14px; font-weight: normal; margin-bottom: 21px; }
-#products .product { float: left; display: inline; padding-right: 5px; padding-bottom: 34px; text-align: center; position: relative; overflow: hidden; width: 186px; }
+#products .product { float: left; /*display: inline;*/ padding-right: 5px; padding-bottom: 34px; text-align: center; position: relative; overflow: hidden; width: 186px; }
 #products .last { padding-right: 0; }
 #products .product a { background: url('images/product-bg.png') no-repeat 0 0; display: block; width: 186px; height: 250px; }
 #products .product span { display: block; }

@@ -11,8 +11,6 @@ function template_include_right() {
 
 	<?php require_once(dirname(__FILE__) . "/login_box.php"); ?>
 
-	<?php require_once(dirname(__FILE__) . "/shopping_cart_box.php"); ?>
-	
 	<p><a href="https://www.github.com/huleacatalin/katyshop2" target="_blank"><img src="html/default/img/design/octocat.jpg"></a></p>
 	<p><a href="https://www.sourceforge.net/p/katyshop2" target="_blank"><img src="html/default/img/design/sourceforge.jpg"></a></p>
 	<p><a href="https://www.softpedia.com" target="_blank"><img src="html/default/img/design/softpedia.jpg"></a></p>

@@ -57,7 +57,7 @@ function template_include_footer() {
 
 	<p style="float: left; padding-top: 3px; ">Copyright &copy; PC Store 2012. Design by: <a href="http://css-free-templates.com/" title="CSS Free Templates">CSS-Free-Templates</a>. All Rights Reserved. </p>
 
-	<p style="margin: 0; padding: 0; padding-top: 5px; "><a href="https://katyshop2.sourceforge.io" target="_blank" id="copyleft" style="margin: 0; padding: 0; ">Powered by Katyshop2 2020</a></p>
+	<p id="powered_by_katyshop2" style="margin: 0; padding: 0; padding-top: 5px; "><a href="https://katyshop2.sourceforge.io" target="_blank" id="copyleft" style="margin: 0; padding: 0; ">Powered by Katyshop2 2020</a></p>
 
 			<div class="cl" style="margin: 0; padding: 0; height: 1px; overflow: hidden; ">&nbsp;</div>
 		</div>

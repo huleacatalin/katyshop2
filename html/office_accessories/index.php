@@ -27,6 +27,7 @@
 							<?php require_once(dirname(__FILE__) . "/includes/print_messages.php"); ?>
 
 							<div id="first_page">
+								<a href="shopping_cart.php" class="cart_micro"><?php echo translate('View cart'); ?> &raquo; </a>
 								<?php
 								for($i = 0; $i < count($childCategories); $i++)
 								{

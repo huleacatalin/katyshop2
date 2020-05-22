@@ -4,17 +4,21 @@
  * License GNU General Public License version 3 http://www.gnu.org/licenses/
  */
 
-function resizeContent() {
-	leftW = document.getElementById('left').offsetWidth;
-	rightW = document.getElementById('right').offsetWidth;
-	bodyW = document.body.clientWidth;
-	newW =  bodyW - leftW - rightW - 50;
-	if(newW < 300)
-		newW = 300;
-	document.body.getElementsByTagName('main')[0].style.setProperty('width', newW);
+function resize_window() {
+	if(document.body.clientWidth < 600) {
+		document.getElementById('responsive_menu').style.display = 'block';
+		document.getElementById('search-shell').style.display = 'none';
+		document.getElementById('navigation').style.display = 'none';
+		document.getElementById('left-sidebar').style.display = 'none';
+	}
+	else {
+		document.getElementById('responsive_menu').style.display = 'none';
+		document.getElementById('search-shell').style.display = 'block';
+		document.getElementById('navigation').style.display = 'block';
+		document.getElementById('left-sidebar').style.display = 'block';
+	}
 }
-window.onload = resizeContent;
-window.onresize = resizeContent;
+window.onresize = resize_window;
 
 function getBaseHref()
 {
@@ -55,4 +59,19 @@ function showHide(elementId)
 		el.style.display = "";
 	else
 		el.style.display = "none";
+}
+
+function showHide2(elementId)
+{
+	var el = document.getElementById(elementId);
+	if(el.style.display == "block")
+		el.style.display = "none";
+	else
+		el.style.display = "block";
+}
+
+function responsive_menu() {
+	showHide2('search-shell');
+	showHide2('navigation');
+	showHide2('left-sidebar');
 }

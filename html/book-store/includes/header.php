@@ -13,6 +13,7 @@ function template_include_header() {
 	<input type="hidden" name="logout" value="1">
 	</form>
 
+	<a id="responsive_menu" href="javascript:responsive_menu(); "></a>
 	<div id="templatemo_menu">
 	<ul>
 	<li><a href="index.php"><?php echo htmlspecialchars(translate("Home")); ?></a></li>
@@ -77,7 +78,7 @@ function template_include_header() {
                 <span>25%</span> discounts for
         purchase over $80
         	</p>
-			<a href="subpage.html" style="margin-left: 50px;">Read more...</a>
+			<a href="#" style="margin-left: 50px;">Read more...</a>
         </div>
         
         
@@ -87,7 +88,7 @@ function template_include_header() {
                 <li>Maece nas metus</li>
                 <li>In sed risus ac feli</li>
             </ul>
-            <a href="subpage.html" style="margin-left: 50px;">Read more...</a>
+            <a href="#" style="margin-left: 50px;">Read more...</a>
         </div>
     </div> <!-- end of header -->
     

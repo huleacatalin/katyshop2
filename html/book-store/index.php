@@ -18,7 +18,7 @@
     <div id="templatemo_content">
 <?php require_once(dirname(__FILE__) . "/includes/left.php"); ?>
         <div id="templatemo_content_right">
-			
+		
 			<h1><?php echo htmlspecialchars(APP_NAME); ?></h1>
 			<?php require_once(dirname(__FILE__) . "/includes/print_messages.php"); ?>
 
@@ -34,7 +34,7 @@
 			?>
 			<br clear="all">
 			</div>
-
+			
 			<?php 
 			$pageTitle = '';
 			require_once(dirname(__FILE__) . "/includes/products_list.php");

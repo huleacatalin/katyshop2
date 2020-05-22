@@ -12,9 +12,11 @@ function template_include_header() {
 	<input type="hidden" name="logout" value="1">
 	</form>
 
+	<a id="responsive_menu" href="javascript:responsive_menu();"></a>
+	
 	<!-- Begin Search -->
 	<div id="search">
-		<div class="shell">
+		<div id="search-shell" class="shell">
 			<form action="search.php" method="get">
 				<div class="container">
 					<input type="search" name="keywords" value="<?php echo htmlspecialchars(@$_GET["keywords"]); ?>" class="blink" onfocus="this.select(); ">

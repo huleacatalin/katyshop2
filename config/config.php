@@ -2,7 +2,7 @@
 
 /**
  * Product: Katyshop2
- * @version 2.16 - 2020-05-16 - html theme Book Store
+ * @version 2.17 - 2020-05-22 - responsive
  * @author Catalin Hulea - catalinhulea@users.sourceforge.net
  * @copyright Copyleft 2020 Catalin Hulea
  * @license GNU General Public License version 3

@@ -9,7 +9,7 @@
 <head>
 <title><?php echo htmlspecialchars(APP_NAME); ?></title>
 <?php require_once(dirname(__FILE__) . "/includes/html_head.php"); ?>
-<link rel="stylesheet" href="css/lightbox.min.css">
+<link rel="stylesheet" href="html/office_accessories/css/lightbox.min.css">
 </head>
 
 <body>
@@ -27,6 +27,8 @@
 							<div class="middle">
 								<div class="cl"></div>
 
+								<a href="shopping_cart.php" class="cart_micro"><?php echo translate('View cart'); ?> &raquo; </a>
+								<div class="cl"></div>
 <?php
 if($product->id > 0 && $product->canBeDisplayed())
 {
@@ -112,6 +114,6 @@ if($product->id > 0 && $product->canBeDisplayed())
 	</div>
 	<!-- END Wrapper -->
 	<?php require_once(dirname(__FILE__) . "/includes/footer.php"); ?>
-<script src="js/lightbox-plus-jquery.min.js"></script>
+<script src="html/office_accessories/js/lightbox-plus-jquery.min.js"></script>
 </body>
 </html>

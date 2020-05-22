@@ -9,7 +9,7 @@
 <head>
 <title><?php echo htmlspecialchars(APP_NAME); ?></title>
 <?php require_once(dirname(__FILE__) . "/includes/html_head.php"); ?>
-<link rel="stylesheet" href="css/lightbox.min.css">
+<link rel="stylesheet" href="html/PCStore/css/lightbox.min.css">
 </head>
 
 <body>
@@ -112,6 +112,6 @@ if($product->id > 0 && $product->canBeDisplayed())
 		<?php require_once(dirname(__FILE__) . "/includes/footer.php"); ?>
 	</div>
 	<!-- End Wrapper -->
-<script src="js/lightbox-plus-jquery.min.js"></script>
+<script src="html/PCStore/js/lightbox-plus-jquery.min.js"></script>
 </body>
 </html>

@@ -8,6 +8,7 @@ function template_include_header() {
 	// local variables scope so they don't conflict with the global ones
 	$user = Application::getUser();
 	?>
+	<a href="javascript:responsive_menu(); " id="responsive_menu"></a>
 	<header id="HEADER">
 	<a href="index.php"><img src="html/default/img/design/logo.jpg" id="logo"></a>
 	<form id="logout_form" action="formparser/user.php?action=logout" method="post" style="display: none; ">

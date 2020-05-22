@@ -21,22 +21,22 @@ function template_include_footer() {
 	</div>
 
 	<nav>
-	<a href="terms.php"><?php echo htmlspecialchars(translate("Terms and conditions")); ?></a> |
-	<a href="how_to_buy.php"><?php echo htmlspecialchars(translate("How to buy")); ?></a> |
-	<a href="payment_and_delivery.php"><?php echo htmlspecialchars(translate("Payment and delivery")); ?></a> |
+	<a href="terms.php"><?php echo htmlspecialchars(translate("Terms and conditions")); ?></a> <span class="bar">|</span>
+	<a href="how_to_buy.php"><?php echo htmlspecialchars(translate("How to buy")); ?></a> <span class="bar">|</span>
+	<a href="payment_and_delivery.php"><?php echo htmlspecialchars(translate("Payment and delivery")); ?></a> <span class="bar">|</span>
 	<?php
 	if($user->isAdminLoggedIn())
 	{
-		?><a href="admin/index.php"><?php echo htmlspecialchars(translate("Admin")); ?></a> |<?php
+		?><a href="admin/index.php"><?php echo htmlspecialchars(translate("Admin")); ?></a> <span class="bar">|</span><?php
 	}
 	if($user->isUserLoggedIn())
 	{
 		?>
-		<a href="profile.php"><?php echo htmlspecialchars(translate("Profile")); ?></a> |
+		<a href="profile.php"><?php echo htmlspecialchars(translate("Profile")); ?></a> <span class="bar">|</span>
 		<?php
 		if(!$user->isAdminLoggedIn())
 		{
-			?><a href="address.php"><?php echo htmlspecialchars(translate("My addresses")); ?></a> |<?php
+			?><a href="address.php"><?php echo htmlspecialchars(translate("My addresses")); ?></a> <span class="bar">|</span><?php
 		}
 		?>
 		<a href="javascript:logout(); " class="right_item"><?php echo htmlspecialchars(translate("Logout")); ?></a>
@@ -45,7 +45,7 @@ function template_include_footer() {
 	else
 	{
 		?>
-		<a href="register.php"><?php echo htmlspecialchars(translate("New account")); ?></a> |
+		<a href="register.php"><?php echo htmlspecialchars(translate("New account")); ?></a> <span class="bar">|</span>
 		<a href="login.php" class="right_item"><?php echo htmlspecialchars(translate("Login")); ?></a>
 		<?php
 	}

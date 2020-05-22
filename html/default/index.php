@@ -24,22 +24,7 @@ for($i = 0; $i < count($childCategories); $i++)
 {
 	$c = $childCategories[$i];
 	?>
-	<div class="category_box">
-	<h2><a href="category.php?id_category=<?php echo intval($c->id); ?>"><?php echo htmlspecialchars($c->title); ?></a></h2>
-	<p class="pic">
-	<?php
-	if(!empty($c->picture) && is_file(WEB_DIR . "/img/categories/{$c->picture}"))
-	{
-		?>
-		<a class="img_href" href="category.php?id_category=<?php echo intval($c->id); ?>"><img src="img/categories/<?php echo htmlspecialchars($c->picture); ?>"></a>
-		<?php
-	}
-	else {
-		echo htmlspecialchars($c->description);
-	}
-	?>
-	</p>
-	</div>
+	<a href="category.php?id_category=<?php echo intval($c->id); ?>" class="category-button"><?php echo htmlspecialchars($c->title); ?></a>
 	<?php
 }
 ?>

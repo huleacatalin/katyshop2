@@ -25,6 +25,8 @@
 							<div class="top"></div>
 							<div class="middle">
 								<div class="cl"></div>
+								<a href="shopping_cart.php" class="cart_micro"><?php echo translate('View cart'); ?> &raquo; </a>
+								<div class="cl"></div>
 
 <h1><?php echo htmlspecialchars(translate("Advanced search")); ?></h1>
 <?php require_once(dirname(__FILE__) . "/includes/print_messages.php"); ?>
