@@ -44,6 +44,7 @@
 }
 
 a.category-button, a.button, input.button {
+	display: inline-block;
 	background-image: linear-gradient(#cccccc, #555555);
 	border: 1px solid gray;
 	color: white;
@@ -240,7 +241,7 @@ nav#categories ul li.nest_level_1 {
 }
 
 aside#left ul li a {
-	display: block;
+	display: inline-block;
 	padding: 5px;
 }
 

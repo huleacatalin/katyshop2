@@ -129,7 +129,7 @@ create table _comments (
 	id_product int(11) not null,
 	id_user int(11) not null,
 	content text not null,
-	date_created datetime not null default now(),
+	date_created datetime not null,
 	constraint foreign key(id_product) references product(id),
 	constraint foreign key(id_user) references _users(id)
 );

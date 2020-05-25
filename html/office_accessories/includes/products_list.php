@@ -10,13 +10,16 @@ if($productsCount > 0)
 	<a name="products"></a>
 	<!-- Featured Products -->
 	<div class="products-holder">
-		<div class="top"></div>
-		<div class="middle">													
-			<div class="label">
-				<h3><?php echo htmlspecialchars($pageTitle); ?></h3>									
+		<div style="margin-left: -5px; ">
+			<span class="label-left"></span>												
+			<div class="label-bg">
+				<h3 style="color: white; "><?php echo htmlspecialchars($pageTitle); ?></h3>									
 			</div>
+			<span class="label-right"></span>
 			<div class="cl"></div>
-			
+		</div>
+		<div class="top" style="margin-top: -20px; "></div>
+		<div class="middle">
 			<?php
 			for($i = 0; $i < count($products); $i++)
 			{

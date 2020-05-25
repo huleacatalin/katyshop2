@@ -14,7 +14,6 @@ function template_include_right() {
 
 	<p><a href="https://www.github.com/huleacatalin/katyshop2" target="_blank"><img src="html/PCStore/img/design/octocat.jpg" width="173"></a></p>
 	<p><a href="https://www.sourceforge.net/p/katyshop2" target="_blank"><img src="html/PCStore/img/design/sourceforge.jpg" width="173"></a></p>
-	<p><a href="https://www.softpedia.com" target="_blank"><img src="html/PCStore/img/design/softpedia.jpg" width="173"></a></p>
 					</div>
 					<!-- End Sidebar -->
 	<?php

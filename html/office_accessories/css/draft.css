@@ -213,6 +213,15 @@ aside#left {
 	overflow-x: auto;
 }
 
+#sort-nav .dd, #sort-nav .dd ul, #sort-nav .dd ul li {
+	background-color: #3a8cc0!important;
+}
+
+#sort-nav .dd ul li a {
+	display: block!important;
+	padding-left: 1em!important;
+}
+
 nav#categories ul {
 	list-style-type: none;
 }

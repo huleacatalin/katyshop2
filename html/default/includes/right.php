@@ -13,7 +13,6 @@ function template_include_right() {
 
 	<p><a href="https://www.github.com/huleacatalin/katyshop2" target="_blank"><img src="html/default/img/design/octocat.jpg"></a></p>
 	<p><a href="https://www.sourceforge.net/p/katyshop2" target="_blank"><img src="html/default/img/design/sourceforge.jpg"></a></p>
-	<p><a href="https://www.softpedia.com" target="_blank"><img src="html/default/img/design/softpedia.jpg"></a></p>
 	</aside>
 	<?php
 }

@@ -18,7 +18,7 @@
     <div id="templatemo_content">
 <?php require_once(dirname(__FILE__) . "/includes/left.php"); ?>
         <div id="templatemo_content_right">
-<main>
+
 <h1><?php echo htmlspecialchars($category->title); ?></h1>
 <?php 
 require_once(dirname(__FILE__) . "/includes/print_messages.php");
@@ -52,7 +52,7 @@ for($i = 0; $i < count($childCategories); $i++)
 ?>
 <br clear="all">
 <?php require_once(dirname(__FILE__) . "/includes/products_list.php"); ?>
-</main>
+
             <div class="cleaner_with_height">&nbsp;</div>
         </div> <!-- end of content right -->
 <?php /* require_once(dirname(__FILE__) . "/includes/right.php"); */ ?>
